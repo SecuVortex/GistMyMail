@@ -3,6 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "description": "GistMyMail — Multi-inbox Gmail AI Daily Digest with Deterministic Evidence Verification",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SecuVortex/GistMyMail.git"
+  },
+  "keywords": [
+    "hacktoberfest",
+    "dev",
+    "devrelay",
+    "graphify",
+    "mlh",
+    "lnmiit",
+    "llmniit",
+    "cipher",
+    "ai",
+    "email-digest",
+    "fastify",
+    "react",
+    "ollama",
+    "openrouter"
+  ],
   "scripts": {
     "build": "pnpm --filter shared build && pnpm --filter api build && pnpm --filter web build",
     "dev": "pnpm --parallel dev",

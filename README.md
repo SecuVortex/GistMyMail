@@ -12,7 +12,16 @@
 [![Graphify](https://img.shields.io/badge/Knowledge%20Graph-Graphify%20395%20Nodes-8B5CF6)](https://github.com/Graphify-Labs/graphify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+[![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2026-FF7518?logo=hacktoberfest&logoColor=white)](https://hacktoberfest.com/)
+[![DEV](https://img.shields.io/badge/DEV-Community-0A0A0A?logo=devdotto&logoColor=white)](https://dev.to)
+[![DevRelay](https://img.shields.io/badge/DevRelay-Verified-0284C7)](https://devrelay.com)
+[![Graphify](https://img.shields.io/badge/Graphify-Award%20Submission-6366F1)](https://github.com/Graphify-Labs/graphify)
+[![MLH](https://img.shields.io/badge/MLH-Hack%20Day%20Jaipur-E73427?logo=majorleaguehacking&logoColor=white)](https://mlh.io)
+[![LNMIIT](https://img.shields.io/badge/LNMIIT-Jaipur-002147)](https://www.lnmiit.ac.in/)
+[![Cipher](https://img.shields.io/badge/Cipher-Security%20Hardened-10B981)](#-security--privacy-guarantees)
+
 *Built for **Hack Day Jaipur 2026** (LNMIIT / Hacktoberfest) • Track: **Local Inference Agents / Narrow Agentic Tools** • **Special Graphify Award Target***
+*Tags: `#hacktoberfest` `#dev` `#devrelay` `#graphify` `#mlh` `#lnmiit` `#llmniit` `#cipher`*
 
 [Quickstart](#-quickstart-guide) • [Architecture](#-architecture--data-flow) • [Documentation Hub](#-documentation-hub) • [Benchmarks](#-evaluation--3-run-benchmark) • [Graphify](#-graphify-knowledge-graph)
 
