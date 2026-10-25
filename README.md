@@ -86,7 +86,8 @@ Explore our dedicated, beginner-friendly setup and operational guides:
 | 🏗️ [**System Architecture & Flow**](docs/ARCHITECTURE.md) | Deep dive into multi-inbox ingestion, verification guardrail, and data flow pipeline. |
 | 🔒 [**Security & Threat Model**](docs/SECURITY.md) | AES-256-GCM encryption, prompt injection quarantine, scope minimization, and session security. |
 | 📊 [**Evaluation & Benchmarks**](docs/EVALUATION.md) | Hack Day Jaipur 2026 rubric alignment, 3-run benchmark matrix, and Vitest test matrix. |
-| 🌐 [**Interactive Knowledge Graph**](graphify-out/graph.html) | Cyber-glassmorphic AST knowledge graph featuring **464 nodes** and **22 clusters**. |
+| 📑 [**Hackathon Pitch Deck (6 Slides)**](docs/PRESENTATION.md) | Complete 6-slide presentation deck with speaker notes, timing, and [interactive slide viewer](presentation.html). |
+| 🌐 [**Interactive Knowledge Graph**](graphify-out/graph.html) | Cyber-glassmorphic AST knowledge graph featuring **591 nodes** and **29 clusters**. |
 
 ---
 

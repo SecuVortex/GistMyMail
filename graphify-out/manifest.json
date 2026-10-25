@@ -40,8 +40,8 @@
     "semantic_hash": "c6cd54a773936b465f969e846d099d11"
   },
   "apps/api/src/auth/oauth.ts": {
-    "mtime": 1792922624.154508,
-    "ast_hash": "df216fb14adf8b5f1c10e44ec7c91208",
+    "mtime": 1792923666.6550028,
+    "ast_hash": "f145d26d5531e2b9679b612ccd6033f8",
     "semantic_hash": ""
   },
   "apps/api/src/config.ts": {
@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792922346.1995413,
-    "ast_hash": "74100037521715ba3aefce47b2aef3de",
+    "mtime": 1792923655.710053,
+    "ast_hash": "b518ac994855074e35d27c3a4ae76e6e",
     "semantic_hash": ""
   },
   "apps/web/index.html": {
@@ -307,6 +307,21 @@
   "docs/TROUBLESHOOTING.md": {
     "mtime": 1792922306.5816717,
     "ast_hash": "e3082513f29eaed2cad9d05bc4dd423e",
+    "semantic_hash": ""
+  },
+  "docs/PRESENTATION.html": {
+    "mtime": 1792923639.4738514,
+    "ast_hash": "58ee33f3c2d5d35efa93f0ea54cf7ac6",
+    "semantic_hash": ""
+  },
+  "docs/PRESENTATION.md": {
+    "mtime": 1792923556.157079,
+    "ast_hash": "edc535b8e5c9aa13fe3a82bddddaf591",
+    "semantic_hash": ""
+  },
+  "presentation.html": {
+    "mtime": 1792923630.549927,
+    "ast_hash": "0619fafbacfa9f4a37564dcf766e8169",
     "semantic_hash": ""
   }
 }

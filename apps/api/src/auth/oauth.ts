@@ -19,7 +19,7 @@ export function getOAuth2Client() {
   );
 }
 
-export function generateGoogleAuthUrl(state: string, requestSendScope = false): string {
+export function generateGoogleAuthUrl(state: string, requestSendScope = true): string {
   if (!config.GOOGLE_CLIENT_ID || !config.GOOGLE_CLIENT_SECRET) {
     // If not configured, provide a dev/mock callback link
     return `${config.API_BASE_URL}/auth/google/callback?code=mock_oauth_code&state=${encodeURIComponent(state)}`;
