@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792915617.1398215,
-    "ast_hash": "e87b2180184a41ebb1ea96eb3bafa6bf",
+    "mtime": 1792920231.8673346,
+    "ast_hash": "ce01fd625c56ac88586599bc5a56c3fd",
     "semantic_hash": ""
   },
   "apps/web/index.html": {
@@ -252,6 +252,26 @@
   "hacktoberfest-hackday-jprxhis-participant-guide.pdf": {
     "mtime": 1792906688.2323701,
     "ast_hash": "8b133d90b5d027ceb2f7fc4d3f3c7ade",
+    "semantic_hash": ""
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1792920135.554647,
+    "ast_hash": "229fba7fa2149f4aaf9e88646e31e080",
+    "semantic_hash": ""
+  },
+  "docs/EVALUATION.md": {
+    "mtime": 1792920195.043545,
+    "ast_hash": "2abaf89d808075b051038c45e8335338",
+    "semantic_hash": ""
+  },
+  "docs/INTEGRATION_GUIDE.md": {
+    "mtime": 1792920175.5017622,
+    "ast_hash": "62d8ff70e05fcf8d02eed104ba105f3d",
+    "semantic_hash": ""
+  },
+  "docs/SECURITY.md": {
+    "mtime": 1792920155.377703,
+    "ast_hash": "8649a122baae65b613cbbf617d9167a0",
     "semantic_hash": ""
   }
 }

@@ -483,8 +483,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "apps_api_src_ai_index_getaiprovider",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "getaiprovider()"
     },
     {
@@ -736,8 +736,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "apps_api_src_auth_oauth_getauthorizedgmailclient",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "getauthorizedgmailclient()"
     },
     {
@@ -813,8 +813,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_db_index",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "db/index.ts"
     },
     {
@@ -824,8 +824,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "apps_api_src_db_index_getdatabase",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "getdatabase()"
     },
     {
@@ -1308,8 +1308,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": "postgresdatabaserepository"
     },
     {
@@ -1319,8 +1319,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_constructor",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".constructor()"
     },
     {
@@ -1330,8 +1330,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_init",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".init()"
     },
     {
@@ -1341,8 +1341,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_finduserbyid",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".finduserbyid()"
     },
     {
@@ -1352,8 +1352,8 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_finduserbygooglesub",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".finduserbygooglesub()"
     },
     {
@@ -1363,8 +1363,8 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_createorupdateuser",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".createorupdateuser()"
     },
     {
@@ -1374,8 +1374,8 @@
       "source_location": "L158",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getaccountsforuser",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getaccountsforuser()"
     },
     {
@@ -1385,8 +1385,8 @@
       "source_location": "L177",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getaccountbyid",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getaccountbyid()"
     },
     {
@@ -1396,8 +1396,8 @@
       "source_location": "L198",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_saveaccount",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".saveaccount()"
     },
     {
@@ -1407,8 +1407,8 @@
       "source_location": "L248",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_updateaccountlabel",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".updateaccountlabel()"
     },
     {
@@ -1418,8 +1418,8 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_disconnectaccount",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".disconnectaccount()"
     },
     {
@@ -1429,8 +1429,8 @@
       "source_location": "L282",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getstoredrefreshtoken",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getstoredrefreshtoken()"
     },
     {
@@ -1440,8 +1440,8 @@
       "source_location": "L288",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_saveemailmessages",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".saveemailmessages()"
     },
     {
@@ -1451,8 +1451,8 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getemailmessages",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getemailmessages()"
     },
     {
@@ -1462,8 +1462,8 @@
       "source_location": "L336",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_savedigest",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".savedigest()"
     },
     {
@@ -1473,8 +1473,8 @@
       "source_location": "L359",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getlatestdigest",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getlatestdigest()"
     },
     {
@@ -1484,8 +1484,8 @@
       "source_location": "L380",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getdigestbyid",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getdigestbyid()"
     },
     {
@@ -1495,8 +1495,8 @@
       "source_location": "L401",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getdeliverypreference",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getdeliverypreference()"
     },
     {
@@ -1506,8 +1506,8 @@
       "source_location": "L418",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_savedeliverypreference",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".savedeliverypreference()"
     },
     {
@@ -1517,8 +1517,8 @@
       "source_location": "L446",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_createdeliverylog",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".createdeliverylog()"
     },
     {
@@ -1528,8 +1528,8 @@
       "source_location": "L465",
       "_origin": "ast",
       "id": "apps_api_src_db_postgres_postgresdatabaserepository_getduedeliveries",
-      "community": 1,
-      "community_name": "DatabaseRepository",
+      "community": 22,
+      "community_name": "PostgresDatabaseRepository",
       "norm_label": ".getduedeliveries()"
     },
     {
@@ -1539,8 +1539,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_delivery_scheduler",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "scheduler.ts"
     },
     {
@@ -1550,8 +1550,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "apps_api_src_delivery_scheduler_processduedelivery",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "processduedelivery()"
     },
     {
@@ -1561,8 +1561,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "apps_api_src_delivery_scheduler_startdeliveryscheduler",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "startdeliveryscheduler()"
     },
     {
@@ -1572,8 +1572,8 @@
       "source_location": "L129",
       "_origin": "ast",
       "id": "apps_api_src_delivery_scheduler_stopdeliveryscheduler",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "stopdeliveryscheduler()"
     },
     {
@@ -1583,8 +1583,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_digest_generator",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "generator.ts"
     },
     {
@@ -1594,8 +1594,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "apps_api_src_digest_generator_generateuserdigest",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "generateuserdigest()"
     },
     {
@@ -1605,8 +1605,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_digest_renderer",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "renderer.ts"
     },
     {
@@ -1616,8 +1616,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "apps_api_src_digest_renderer_groupitems",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "groupitems()"
     },
     {
@@ -1627,8 +1627,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "apps_api_src_digest_renderer_renderplaintextdigest",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "renderplaintextdigest()"
     },
     {
@@ -1638,8 +1638,8 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "apps_api_src_digest_renderer_renderhtmldigest",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "renderhtmldigest()"
     },
     {
@@ -1737,8 +1737,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_gmail_sender",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "sender.ts"
     },
     {
@@ -1748,8 +1748,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "apps_api_src_gmail_sender_createmimemessage",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "createmimemessage()"
     },
     {
@@ -1759,8 +1759,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "apps_api_src_gmail_sender_senddigestemail",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "senddigestemail()"
     },
     {
@@ -1770,8 +1770,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_index",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "api/src/index.ts"
     },
     {
@@ -1781,8 +1781,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "apps_api_src_index_main",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "main()"
     },
     {
@@ -1858,8 +1858,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_src_routes_digest_routes",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "digest.routes.ts"
     },
     {
@@ -1869,8 +1869,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "apps_api_src_routes_digest_routes_digestroutes",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "digestroutes()"
     },
     {
@@ -1979,8 +1979,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_api_tests_repeat_runs_test",
-      "community": 11,
-      "community_name": "getDatabase",
+      "community": 5,
+      "community_name": "app.ts",
       "norm_label": "repeat-runs.test.ts"
     },
     {
@@ -3244,8 +3244,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "packages_shared_src_schemas_updatedeliverypreferencesschema",
-      "community": 5,
-      "community_name": "app.ts",
+      "community": 3,
+      "community_name": "src/types.ts",
       "norm_label": "updatedeliverypreferencesschema"
     },
     {
@@ -3618,103 +3618,103 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "readme",
-      "community": 8,
-      "community_name": "GistMyMail",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
       "norm_label": "readme.md"
     },
     {
-      "label": "GistMyMail",
+      "label": "\ud83d\udcec GistMyMail",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L1",
+      "source_location": "L3",
       "_origin": "ast",
       "id": "readme_gistmymail",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "gistmymail"
+      "norm_label": "\ud83d\udcec gistmymail"
     },
     {
-      "label": "Problem Statement & Target User",
+      "label": "\ud83d\udcd6 Table of Contents",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L8",
+      "source_location": "L23",
       "_origin": "ast",
-      "id": "readme_problem_statement_target_user",
+      "id": "readme_table_of_contents",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "problem statement & target user"
+      "norm_label": "\ud83d\udcd6 table of contents"
     },
     {
-      "label": "Who has the problem?",
+      "label": "\ud83c\udfaf Overview & The Problem",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L10",
+      "source_location": "L38",
       "_origin": "ast",
-      "id": "readme_who_has_the_problem",
+      "id": "readme_overview_the_problem",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "who has the problem?"
+      "norm_label": "\ud83c\udfaf overview & the problem"
     },
     {
-      "label": "What makes it painful?",
+      "label": "The Critical Flaws of Conventional Email AI:",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L13",
+      "source_location": "L42",
       "_origin": "ast",
-      "id": "readme_what_makes_it_painful",
+      "id": "readme_the_critical_flaws_of_conventional_email_ai",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "what makes it painful?"
+      "norm_label": "the critical flaws of conventional email ai:"
     },
     {
-      "label": "Approach, Architecture & Demo",
+      "label": "\ud83d\udee1\ufe0f How GistMyMail Solves It",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L27",
+      "source_location": "L51",
       "_origin": "ast",
-      "id": "readme_approach_architecture_demo",
+      "id": "readme_how_gistmymail_solves_it",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "approach, architecture & demo"
+      "norm_label": "\ud83d\udee1\ufe0f how gistmymail solves it"
     },
     {
-      "label": "Core Flow",
+      "label": "\ud83d\udcda Documentation Hub",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L29",
+      "source_location": "L64",
       "_origin": "ast",
-      "id": "readme_core_flow",
+      "id": "readme_documentation_hub",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "core flow"
+      "norm_label": "\ud83d\udcda documentation hub"
     },
     {
-      "label": "Model Details",
+      "label": "\ud83c\udfd7\ufe0f Architecture & Data Flow",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L49",
+      "source_location": "L82",
       "_origin": "ast",
-      "id": "readme_model_details",
+      "id": "readme_architecture_data_flow",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "model details"
+      "norm_label": "\ud83c\udfd7\ufe0f architecture & data flow"
     },
     {
-      "label": "Setup Instructions",
+      "label": "\u26a1 Quickstart Guide",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L62",
+      "source_location": "L122",
       "_origin": "ast",
-      "id": "readme_setup_instructions",
+      "id": "readme_quickstart_guide",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "setup instructions"
+      "norm_label": "\u26a1 quickstart guide"
     },
     {
       "label": "1. Prerequisites",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L124",
       "_origin": "ast",
       "id": "readme_1_prerequisites",
       "community": 8,
@@ -3722,125 +3722,686 @@
       "norm_label": "1. prerequisites"
     },
     {
-      "label": "2. Install Dependencies",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L68",
-      "_origin": "ast",
-      "id": "readme_2_install_dependencies",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "2. install dependencies"
-    },
-    {
-      "label": "3. Build Monorepo",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L75",
-      "_origin": "ast",
-      "id": "readme_3_build_monorepo",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "3. build monorepo"
-    },
-    {
-      "label": "4. Run Tests & Repeat Runs Benchmark",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L80",
-      "_origin": "ast",
-      "id": "readme_4_run_tests_repeat_runs_benchmark",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "4. run tests & repeat runs benchmark"
-    },
-    {
-      "label": "5. Start Development Servers",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L85",
-      "_origin": "ast",
-      "id": "readme_5_start_development_servers",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "5. start development servers"
-    },
-    {
-      "label": "Results & Repeat Runs Metrics",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L94",
-      "_origin": "ast",
-      "id": "readme_results_repeat_runs_metrics",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "results & repeat runs metrics"
-    },
-    {
-      "label": "3 Repeat Runs Benchmark Results",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L98",
-      "_origin": "ast",
-      "id": "readme_3_repeat_runs_benchmark_results",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "3 repeat runs benchmark results"
-    },
-    {
-      "label": "Verified Test Cases Passed (Vitest)",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L106",
-      "_origin": "ast",
-      "id": "readme_verified_test_cases_passed_vitest",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "verified test cases passed (vitest)"
-    },
-    {
-      "label": "Graphify Integration & Future Scope",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L116",
-      "_origin": "ast",
-      "id": "readme_graphify_integration_future_scope",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "graphify integration & future scope"
-    },
-    {
-      "label": "Graphify Knowledge Graph",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L118",
-      "_origin": "ast",
-      "id": "readme_graphify_knowledge_graph",
-      "community": 8,
-      "community_name": "GistMyMail",
-      "norm_label": "graphify knowledge graph"
-    },
-    {
-      "label": "Future Scope",
+      "label": "2. Clone & Install",
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L129",
       "_origin": "ast",
-      "id": "readme_future_scope",
+      "id": "readme_2_clone_install",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "future scope"
+      "norm_label": "2. clone & install"
     },
     {
-      "label": "License",
+      "label": "3. Environment Configuration",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L134",
+      "source_location": "L136",
+      "_origin": "ast",
+      "id": "readme_3_environment_configuration",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "3. environment configuration"
+    },
+    {
+      "label": "4. Build Monorepo",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "readme_4_build_monorepo",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "4. build monorepo"
+    },
+    {
+      "label": "5. Run Automated Tests",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L148",
+      "_origin": "ast",
+      "id": "readme_5_run_automated_tests",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "5. run automated tests"
+    },
+    {
+      "label": "6. Start Development Servers",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L154",
+      "_origin": "ast",
+      "id": "readme_6_start_development_servers",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "6. start development servers"
+    },
+    {
+      "label": "\ud83e\udd16 AI Providers & Inference Modes",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L163",
+      "_origin": "ast",
+      "id": "readme_ai_providers_inference_modes",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "\ud83e\udd16 ai providers & inference modes"
+    },
+    {
+      "label": "1. Local Ollama (Recommended for Privacy)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L178",
+      "_origin": "ast",
+      "id": "readme_1_local_ollama_recommended_for_privacy",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "1. local ollama (recommended for privacy)"
+    },
+    {
+      "label": "2. OpenRouter Gateway (Cloud / Free Tier)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L185",
+      "_origin": "ast",
+      "id": "readme_2_openrouter_gateway_cloud_free_tier",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "2. openrouter gateway (cloud / free tier)"
+    },
+    {
+      "label": "3. Deterministic Mock (Instant Offline Testing)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L194",
+      "_origin": "ast",
+      "id": "readme_3_deterministic_mock_instant_offline_testing",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "3. deterministic mock (instant offline testing)"
+    },
+    {
+      "label": "\ud83d\udcca Evaluation & 3-Run Benchmark",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L201",
+      "_origin": "ast",
+      "id": "readme_evaluation_3_run_benchmark",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "\ud83d\udcca evaluation & 3-run benchmark"
+    },
+    {
+      "label": "\ud83d\udd12 Security & Privacy Guarantees",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L215",
+      "_origin": "ast",
+      "id": "readme_security_privacy_guarantees",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "\ud83d\udd12 security & privacy guarantees"
+    },
+    {
+      "label": "\ud83c\udf10 Graphify Knowledge Graph",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L226",
+      "_origin": "ast",
+      "id": "readme_graphify_knowledge_graph",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "\ud83c\udf10 graphify knowledge graph"
+    },
+    {
+      "label": "\ud83d\ude80 Roadmap & Hackathon Team",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L241",
+      "_origin": "ast",
+      "id": "readme_roadmap_hackathon_team",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "\ud83d\ude80 roadmap & hackathon team"
+    },
+    {
+      "label": "Future Enhancements:",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L243",
+      "_origin": "ast",
+      "id": "readme_future_enhancements",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "future enhancements:"
+    },
+    {
+      "label": "Team:",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L248",
+      "_origin": "ast",
+      "id": "readme_team",
+      "community": 8,
+      "community_name": "GistMyMail",
+      "norm_label": "team:"
+    },
+    {
+      "label": "\ud83d\udcc4 License",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L254",
       "_origin": "ast",
       "id": "readme_license",
       "community": 8,
       "community_name": "GistMyMail",
-      "norm_label": "license"
+      "norm_label": "\ud83d\udcc4 license"
+    },
+    {
+      "label": "ARCHITECTURE.md",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_architecture",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "architecture.md"
+    },
+    {
+      "label": "GistMyMail Architecture & Data Flow",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_architecture_gistmymail_architecture_data_flow",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "gistmymail architecture & data flow"
+    },
+    {
+      "label": "1. High-Level System Architecture",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_architecture_1_high_level_system_architecture",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "1. high-level system architecture"
+    },
+    {
+      "label": "2. Core Subsystems",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "docs_architecture_2_core_subsystems",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2. core subsystems"
+    },
+    {
+      "label": "2.1 Multi-Inbox Ingestion & Purpose Labeling",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "docs_architecture_2_1_multi_inbox_ingestion_purpose_labeling",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2.1 multi-inbox ingestion & purpose labeling"
+    },
+    {
+      "label": "2.2 The Deterministic Evidence Verifier (The Guardrail)",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "docs_architecture_2_2_the_deterministic_evidence_verifier_the_guardrail",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2.2 the deterministic evidence verifier (the guardrail)"
+    },
+    {
+      "label": "2.3 Prompt Injection Defense & Quarantine",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "docs_architecture_2_3_prompt_injection_defense_quarantine",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2.3 prompt injection defense & quarantine"
+    },
+    {
+      "label": "2.4 Resilient Dual-Mode Database Layer",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "docs_architecture_2_4_resilient_dual_mode_database_layer",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2.4 resilient dual-mode database layer"
+    },
+    {
+      "label": "2.5 Multi-Provider AI Inference Gateway",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "docs_architecture_2_5_multi_provider_ai_inference_gateway",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2.5 multi-provider ai inference gateway"
+    },
+    {
+      "label": "3. Data Models & Schemas",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L98",
+      "_origin": "ast",
+      "id": "docs_architecture_3_data_models_schemas",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "3. data models & schemas"
+    },
+    {
+      "label": "4. Architectural Knowledge Graph",
+      "file_type": "document",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L130",
+      "_origin": "ast",
+      "id": "docs_architecture_4_architectural_knowledge_graph",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "4. architectural knowledge graph"
+    },
+    {
+      "label": "EVALUATION.md",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_evaluation",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "evaluation.md"
+    },
+    {
+      "label": "GistMyMail Evaluation & Hackathon Rubric Alignment",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_evaluation_gistmymail_evaluation_hackathon_rubric_alignment",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "gistmymail evaluation & hackathon rubric alignment"
+    },
+    {
+      "label": "1. Hackathon Metadata",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_evaluation_1_hackathon_metadata",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "1. hackathon metadata"
+    },
+    {
+      "label": "2. 3 Repeat Test Runs Benchmark Table",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "docs_evaluation_2_3_repeat_test_runs_benchmark_table",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2. 3 repeat test runs benchmark table"
+    },
+    {
+      "label": "Benchmark Takeaways:",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "docs_evaluation_benchmark_takeaways",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "benchmark takeaways:"
+    },
+    {
+      "label": "3. Automated Test Coverage (Vitest)",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "docs_evaluation_3_automated_test_coverage_vitest",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "3. automated test coverage (vitest)"
+    },
+    {
+      "label": "Verified Test Cases:",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "docs_evaluation_verified_test_cases",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "verified test cases:"
+    },
+    {
+      "label": "4. Special Graphify Award Submission",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "docs_evaluation_4_special_graphify_award_submission",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "4. special graphify award submission"
+    },
+    {
+      "label": "Graph Metrics:",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "docs_evaluation_graph_metrics",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "graph metrics:"
+    },
+    {
+      "label": "Visual Interfaces:",
+      "file_type": "document",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "docs_evaluation_visual_interfaces",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "visual interfaces:"
+    },
+    {
+      "label": "INTEGRATION_GUIDE.md",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_integration_guide",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "integration_guide.md"
+    },
+    {
+      "label": "GistMyMail Integration & Setup Guide",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_integration_guide_gistmymail_integration_setup_guide",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "gistmymail integration & setup guide"
+    },
+    {
+      "label": "1. Google Cloud OAuth 2.0 Setup",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_integration_guide_1_google_cloud_oauth_2_0_setup",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "1. google cloud oauth 2.0 setup"
+    },
+    {
+      "label": "Step 1: Create a Google Cloud Project",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_integration_guide_step_1_create_a_google_cloud_project",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "step 1: create a google cloud project"
+    },
+    {
+      "label": "Step 2: Enable the Gmail API",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "docs_integration_guide_step_2_enable_the_gmail_api",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "step 2: enable the gmail api"
+    },
+    {
+      "label": "Step 3: Configure the OAuth Consent Screen",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "docs_integration_guide_step_3_configure_the_oauth_consent_screen",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "step 3: configure the oauth consent screen"
+    },
+    {
+      "label": "Step 4: Create OAuth 2.0 Client Credentials",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "docs_integration_guide_step_4_create_oauth_2_0_client_credentials",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "step 4: create oauth 2.0 client credentials"
+    },
+    {
+      "label": "2. AI Provider Configuration",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "docs_integration_guide_2_ai_provider_configuration",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "2. ai provider configuration"
+    },
+    {
+      "label": "Mode A: OpenRouter AI Gateway (Cloud / Free Tier)",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "docs_integration_guide_mode_a_openrouter_ai_gateway_cloud_free_tier",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "mode a: openrouter ai gateway (cloud / free tier)"
+    },
+    {
+      "label": "Mode B: Ollama (100% Private Local Inference)",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "docs_integration_guide_mode_b_ollama_100_private_local_inference",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "mode b: ollama (100% private local inference)"
+    },
+    {
+      "label": "Mode C: Deterministic Mock Provider (Zero Setup / Fast Tests)",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "docs_integration_guide_mode_c_deterministic_mock_provider_zero_setup_fast_tests",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "mode c: deterministic mock provider (zero setup / fast tests)"
+    },
+    {
+      "label": "3. Database Configuration",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "docs_integration_guide_3_database_configuration",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "3. database configuration"
+    },
+    {
+      "label": "Option 1: In-Memory Mode (Default / Zero Dependencies)",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "docs_integration_guide_option_1_in_memory_mode_default_zero_dependencies",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "option 1: in-memory mode (default / zero dependencies)"
+    },
+    {
+      "label": "Option 2: PostgreSQL (Neon / Supabase / Local)",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L102",
+      "_origin": "ast",
+      "id": "docs_integration_guide_option_2_postgresql_neon_supabase_local",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "option 2: postgresql (neon / supabase / local)"
+    },
+    {
+      "label": "4. Environment Variables Dictionary",
+      "file_type": "document",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L111",
+      "_origin": "ast",
+      "id": "docs_integration_guide_4_environment_variables_dictionary",
+      "community": 23,
+      "community_name": "1. Google Cloud OAuth 2.0 Setup",
+      "norm_label": "4. environment variables dictionary"
+    },
+    {
+      "label": "SECURITY.md",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_security",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "security.md"
+    },
+    {
+      "label": "GistMyMail Security Model & Threat Defense",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_security_gistmymail_security_model_threat_defense",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "gistmymail security model & threat defense"
+    },
+    {
+      "label": "1. Threat Model & Security Posture",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_security_1_threat_model_security_posture",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "1. threat model & security posture"
+    },
+    {
+      "label": "2. Cryptographic Token Protection (AES-256-GCM)",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "docs_security_2_cryptographic_token_protection_aes_256_gcm",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "2. cryptographic token protection (aes-256-gcm)"
+    },
+    {
+      "label": "Key Security Properties:",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "docs_security_key_security_properties",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "key security properties:"
+    },
+    {
+      "label": "3. Prompt Injection Defense & Quarantine Pipeline",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "docs_security_3_prompt_injection_defense_quarantine_pipeline",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "3. prompt injection defense & quarantine pipeline"
+    },
+    {
+      "label": "Detection Mechanism:",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "docs_security_detection_mechanism",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "detection mechanism:"
+    },
+    {
+      "label": "Remediation Workflow:",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "docs_security_remediation_workflow",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "remediation workflow:"
+    },
+    {
+      "label": "4. Google OAuth 2.0 Scope Minimization",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "docs_security_4_google_oauth_2_0_scope_minimization",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "4. google oauth 2.0 scope minimization"
+    },
+    {
+      "label": "5. Security Checklist for Deployments",
+      "file_type": "document",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "docs_security_5_security_checklist_for_deployments",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
+      "norm_label": "5. security checklist for deployments"
     },
     {
       "label": "plan.md",
@@ -3849,8 +4410,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "plan",
-      "community": 4,
-      "community_name": "GistMyMail \u2014 Hackathon MVP Implementation Plan",
+      "community": 21,
+      "community_name": "2. Core Subsystems",
       "norm_label": "plan.md"
     },
     {
@@ -9910,10 +10471,65 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_evaluation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_integration_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "docs_security",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme",
+      "target": "plan",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L1",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme",
@@ -9924,99 +10540,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L27",
+      "source_location": "L163",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_gistmymail",
-      "target": "readme_approach_architecture_demo",
+      "target": "readme_ai_providers_inference_modes",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L116",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_gistmymail",
-      "target": "readme_graphify_integration_future_scope",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L49",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_gistmymail",
-      "target": "readme_model_details",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_gistmymail",
-      "target": "readme_problem_statement_target_user",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L94",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_gistmymail",
-      "target": "readme_results_repeat_runs_metrics",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L62",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_gistmymail",
-      "target": "readme_setup_instructions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L13",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_problem_statement_target_user",
-      "target": "readme_what_makes_it_painful",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_problem_statement_target_user",
-      "target": "readme_who_has_the_problem",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L29",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_approach_architecture_demo",
-      "target": "readme_core_flow",
+      "target": "readme_architecture_data_flow",
       "confidence_score": 1.0
     },
     {
@@ -10026,74 +10565,129 @@
       "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "readme_setup_instructions",
+      "source": "readme_gistmymail",
+      "target": "readme_documentation_hub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L201",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_evaluation_3_run_benchmark",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L226",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_graphify_knowledge_graph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_how_gistmymail_solves_it",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L254",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_overview_the_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_quickstart_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L241",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_roadmap_hackathon_team",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L215",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_security_privacy_guarantees",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_gistmymail",
+      "target": "readme_table_of_contents",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_overview_the_problem",
+      "target": "readme_the_critical_flaws_of_conventional_email_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_quickstart_guide",
       "target": "readme_1_prerequisites",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L68",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_setup_instructions",
-      "target": "readme_2_install_dependencies",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L75",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_setup_instructions",
-      "target": "readme_3_build_monorepo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L80",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_setup_instructions",
-      "target": "readme_4_run_tests_repeat_runs_benchmark",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L85",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_setup_instructions",
-      "target": "readme_5_start_development_servers",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L98",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_results_repeat_runs_metrics",
-      "target": "readme_3_repeat_runs_benchmark_results",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L106",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_results_repeat_runs_metrics",
-      "target": "readme_verified_test_cases_passed_vitest",
       "confidence_score": 1.0
     },
     {
@@ -10103,30 +10697,569 @@
       "source_location": "L129",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "readme_graphify_integration_future_scope",
-      "target": "readme_future_scope",
+      "source": "readme_quickstart_guide",
+      "target": "readme_2_clone_install",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L118",
+      "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "readme_graphify_integration_future_scope",
-      "target": "readme_graphify_knowledge_graph",
+      "source": "readme_quickstart_guide",
+      "target": "readme_3_environment_configuration",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L134",
+      "source_location": "L143",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "readme_graphify_integration_future_scope",
-      "target": "readme_license",
+      "source": "readme_quickstart_guide",
+      "target": "readme_4_build_monorepo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_quickstart_guide",
+      "target": "readme_5_run_automated_tests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_quickstart_guide",
+      "target": "readme_6_start_development_servers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L178",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_ai_providers_inference_modes",
+      "target": "readme_1_local_ollama_recommended_for_privacy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L185",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_ai_providers_inference_modes",
+      "target": "readme_2_openrouter_gateway_cloud_free_tier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L194",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_ai_providers_inference_modes",
+      "target": "readme_3_deterministic_mock_instant_offline_testing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L243",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_roadmap_hackathon_team",
+      "target": "readme_future_enhancements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L248",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "readme_roadmap_hackathon_team",
+      "target": "readme_team",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture",
+      "target": "docs_architecture_gistmymail_architecture_data_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_gistmymail_architecture_data_flow",
+      "target": "docs_architecture_1_high_level_system_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_gistmymail_architecture_data_flow",
+      "target": "docs_architecture_2_core_subsystems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_gistmymail_architecture_data_flow",
+      "target": "docs_architecture_3_data_models_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_gistmymail_architecture_data_flow",
+      "target": "docs_architecture_4_architectural_knowledge_graph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_2_core_subsystems",
+      "target": "docs_architecture_2_1_multi_inbox_ingestion_purpose_labeling",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_2_core_subsystems",
+      "target": "docs_architecture_2_2_the_deterministic_evidence_verifier_the_guardrail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_2_core_subsystems",
+      "target": "docs_architecture_2_3_prompt_injection_defense_quarantine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_2_core_subsystems",
+      "target": "docs_architecture_2_4_resilient_dual_mode_database_layer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ARCHITECTURE.md",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_architecture_2_core_subsystems",
+      "target": "docs_architecture_2_5_multi_provider_ai_inference_gateway",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation",
+      "target": "docs_evaluation_gistmymail_evaluation_hackathon_rubric_alignment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_gistmymail_evaluation_hackathon_rubric_alignment",
+      "target": "docs_evaluation_1_hackathon_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_gistmymail_evaluation_hackathon_rubric_alignment",
+      "target": "docs_evaluation_2_3_repeat_test_runs_benchmark_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_gistmymail_evaluation_hackathon_rubric_alignment",
+      "target": "docs_evaluation_3_automated_test_coverage_vitest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_gistmymail_evaluation_hackathon_rubric_alignment",
+      "target": "docs_evaluation_4_special_graphify_award_submission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_2_3_repeat_test_runs_benchmark_table",
+      "target": "docs_evaluation_benchmark_takeaways",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_3_automated_test_coverage_vitest",
+      "target": "docs_evaluation_verified_test_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_4_special_graphify_award_submission",
+      "target": "docs_evaluation_graph_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/EVALUATION.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_evaluation_4_special_graphify_award_submission",
+      "target": "docs_evaluation_visual_interfaces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide",
+      "target": "docs_integration_guide_gistmymail_integration_setup_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_gistmymail_integration_setup_guide",
+      "target": "docs_integration_guide_1_google_cloud_oauth_2_0_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_gistmymail_integration_setup_guide",
+      "target": "docs_integration_guide_2_ai_provider_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_gistmymail_integration_setup_guide",
+      "target": "docs_integration_guide_3_database_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_gistmymail_integration_setup_guide",
+      "target": "docs_integration_guide_4_environment_variables_dictionary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_1_google_cloud_oauth_2_0_setup",
+      "target": "docs_integration_guide_step_1_create_a_google_cloud_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_1_google_cloud_oauth_2_0_setup",
+      "target": "docs_integration_guide_step_2_enable_the_gmail_api",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_1_google_cloud_oauth_2_0_setup",
+      "target": "docs_integration_guide_step_3_configure_the_oauth_consent_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_1_google_cloud_oauth_2_0_setup",
+      "target": "docs_integration_guide_step_4_create_oauth_2_0_client_credentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_2_ai_provider_configuration",
+      "target": "docs_integration_guide_mode_a_openrouter_ai_gateway_cloud_free_tier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_2_ai_provider_configuration",
+      "target": "docs_integration_guide_mode_b_ollama_100_private_local_inference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_2_ai_provider_configuration",
+      "target": "docs_integration_guide_mode_c_deterministic_mock_provider_zero_setup_fast_tests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_3_database_configuration",
+      "target": "docs_integration_guide_option_1_in_memory_mode_default_zero_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/INTEGRATION_GUIDE.md",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_integration_guide_3_database_configuration",
+      "target": "docs_integration_guide_option_2_postgresql_neon_supabase_local",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security",
+      "target": "docs_security_gistmymail_security_model_threat_defense",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_gistmymail_security_model_threat_defense",
+      "target": "docs_security_1_threat_model_security_posture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_gistmymail_security_model_threat_defense",
+      "target": "docs_security_2_cryptographic_token_protection_aes_256_gcm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_gistmymail_security_model_threat_defense",
+      "target": "docs_security_3_prompt_injection_defense_quarantine_pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_gistmymail_security_model_threat_defense",
+      "target": "docs_security_4_google_oauth_2_0_scope_minimization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_gistmymail_security_model_threat_defense",
+      "target": "docs_security_5_security_checklist_for_deployments",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_2_cryptographic_token_protection_aes_256_gcm",
+      "target": "docs_security_key_security_properties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_3_prompt_injection_defense_quarantine_pipeline",
+      "target": "docs_security_detection_mechanism",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SECURITY.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_security_3_prompt_injection_defense_quarantine_pipeline",
+      "target": "docs_security_remediation_workflow",
       "confidence_score": 1.0
     },
     {
@@ -10626,5 +11759,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "419d848a2ad0f9745bed546ef1d0c40f83bafda2"
+  "built_at_commit": "17af63bf9d7cbc5f85e98cb983c53541b6fac5e3"
 }
