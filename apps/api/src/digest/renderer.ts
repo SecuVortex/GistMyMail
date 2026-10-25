@@ -52,13 +52,14 @@ export function renderPlainTextDigest(digest: Digest, userName: string): string 
       text += `• [${item.accountLabel}] ${item.title}\n`;
       text += `  Summary: ${item.summary}\n`;
       if (item.deadlineText) {
-        text += `  Deadline: ${item.deadlineText} (Verified in source: ${item.evidence.verifiedInSource ? 'YES' : 'FLAGGED'})\n`;
+        text += `  Deadline: ${item.deadlineText} (Verified in source: ${item.evidence?.verifiedInSource ? 'YES' : 'FLAGGED'})\n`;
       }
       if (item.actionItem) {
         text += `  Action: ${item.actionItem}\n`;
       }
-      if (item.evidence.quote) {
-        text += `  Evidence: "${item.evidence.quote}"\n`;
+      const quoteText = item.evidence?.quote || (item as any).evidenceQuote;
+      if (quoteText) {
+        text += `  Evidence: "${quoteText}"\n`;
       }
       if (item.uncertainties && item.uncertainties.length > 0) {
         text += `  Notes: ${item.uncertainties.join(' | ')}\n`;
@@ -106,8 +107,8 @@ export function renderHtmlDigest(digest: Digest, userName: string): string {
           ${item.deadlineText ? `
             <div style="background: #fff7ed; border: 1px solid #ffedd5; padding: 6px 10px; border-radius: 4px; margin-bottom: 8px; font-size: 12px; color: #9a3412;">
               <strong>Deadline:</strong> ${item.deadlineText} 
-              <span style="color: ${item.evidence.verifiedInSource ? '#15803d' : '#b45309'}; font-size: 11px; margin-left: 6px;">
-                (${item.evidence.verifiedInSource ? '✓ Verified Quote' : '⚠ Unverified'})
+              <span style="color: ${item.evidence?.verifiedInSource ? '#15803d' : '#b45309'}; font-size: 11px; margin-left: 6px;">
+                (${item.evidence?.verifiedInSource ? '✓ Verified Quote' : '⚠ Unverified'})
               </span>
             </div>
           ` : ''}
@@ -116,9 +117,9 @@ export function renderHtmlDigest(digest: Digest, userName: string): string {
               <strong>Action:</strong> ${item.actionItem}
             </div>
           ` : ''}
-          ${item.evidence.quote ? `
+          ${(item.evidence?.quote || (item as any).evidenceQuote) ? `
             <blockquote style="margin: 6px 0; padding: 4px 10px; background: #f9fafb; border-left: 2px solid #d1d5db; font-size: 11px; color: #6b7280; font-style: italic;">
-              "${item.evidence.quote}"
+              "${item.evidence?.quote || (item as any).evidenceQuote}"
             </blockquote>
           ` : ''}
           ${item.uncertainties && item.uncertainties.length > 0 ? `

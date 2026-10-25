@@ -1,4 +1,6 @@
 import { getAuthorizedGmailClient } from '../auth/oauth.js';
+import { decryptToken } from '../security/encryption.js';
+import { config } from '../config.js';
 import type { ConnectedAccount } from '@gistmymail/shared';
 
 function createMimeMessage(options: {
@@ -50,8 +52,23 @@ export async function sendDigestEmail(params: {
 }): Promise<{ success: boolean; gmailMessageId: string | null; error?: string }> {
   const { destinationEmail, subject, textContent, htmlContent, senderAccount, encryptedRefreshToken } = params;
 
-  // If mock mode or missing refresh token, simulate successful sending
-  if (!encryptedRefreshToken || encryptedRefreshToken.startsWith('mock_') || encryptedRefreshToken.includes('mock_refresh_token')) {
+  let plainToken = encryptedRefreshToken;
+  if (encryptedRefreshToken) {
+    try {
+      plainToken = decryptToken(encryptedRefreshToken);
+    } catch {
+      plainToken = encryptedRefreshToken;
+    }
+  }
+
+  // If mock mode, missing credentials, or test refresh token, simulate successful sending
+  if (
+    !plainToken ||
+    plainToken.startsWith('mock_') ||
+    plainToken.includes('mock_refresh_token') ||
+    !config.GOOGLE_CLIENT_ID ||
+    !config.GOOGLE_CLIENT_SECRET
+  ) {
     console.log(`[Digest Email Sender - Simulation] Successfully sent digest to ${destinationEmail} from ${senderAccount.email}`);
     const simulatedMessageId = `mock_sent_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
     return {

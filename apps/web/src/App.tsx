@@ -172,10 +172,12 @@ export default function App() {
   const handleSendTest = async () => {
     setSendingTest(true);
     try {
+      const destId = preferences?.destinationAccountId || (accounts.length > 0 ? accounts[0].id : undefined);
       const res = await fetch('/api/digest/test-send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include'
+        credentials: 'include',
+        body: JSON.stringify({ destinationAccountId: destId })
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -306,9 +308,19 @@ export default function App() {
   };
 
   const handleUpdatePreferences = async (newPref: Partial<DeliveryPreference>) => {
-    if (!preferences) return;
+    const base: DeliveryPreference = preferences || {
+      userId: user?.id || '',
+      enabled: true,
+      destinationAccountId: accounts[0]?.id || null,
+      destinationAccountEmail: accounts[0]?.email || null,
+      deliveryTime: '08:00',
+      timezone: 'Asia/Kolkata',
+      lastAttemptAt: null,
+      lastSuccessAt: null,
+      lastError: null
+    };
     setSavingPrefs(true);
-    const updated = { ...preferences, ...newPref };
+    const updated = { ...base, ...newPref };
     try {
       const res = await fetch('/api/delivery/preferences', {
         method: 'PUT',

@@ -7,7 +7,7 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
   // Start OAuth
   fastify.get('/auth/google', async (request, reply) => {
     const query = request.query as { send?: string; link?: string; link_user?: string };
-    const requestSend = query?.send === 'true';
+    const requestSend = query?.send !== 'false';
 
     // Determine if this OAuth is linking to an existing user session or an explicit target user ID
     const linkingUserId = query?.link_user || request.cookies.session_user_id || null;
@@ -91,9 +91,11 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
       if (existingAccounts.length === 1 && !existingAcc) defaultLabel = 'Business';
       else if (existingAccounts.length >= 2 && !existingAcc) defaultLabel = 'Clients';
 
+      const accountId = existingAcc ? existingAcc.id : `acc_${tokenData.googleSub}`;
+
       // Save connected account attached to targetUser
       await db.saveAccount({
-        id: existingAcc ? existingAcc.id : `acc_${tokenData.googleSub}`,
+        id: accountId,
         userId: targetUser.id,
         email: tokenData.email,
         label: existingAcc ? existingAcc.label : defaultLabel,
@@ -103,6 +105,22 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
         status: 'connected',
         encryptedRefreshToken: tokenData.encryptedRefreshToken
       });
+
+      // Auto-initialize delivery preferences if not yet configured
+      const existingPref = await db.getDeliveryPreference(targetUser.id);
+      if (!existingPref || !existingPref.destinationAccountId) {
+        await db.saveDeliveryPreference({
+          userId: targetUser.id,
+          enabled: true,
+          destinationAccountId: accountId,
+          destinationAccountEmail: tokenData.email,
+          deliveryTime: '07:00',
+          timezone: 'America/New_York',
+          lastAttemptAt: null,
+          lastSuccessAt: null,
+          lastError: null
+        });
+      }
 
       // Set application session cookie for targetUser
       reply.setCookie('session_user_id', targetUser.id, {

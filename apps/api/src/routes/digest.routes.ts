@@ -59,21 +59,73 @@ export const digestRoutes: FastifyPluginAsync = async (fastify) => {
       return reply.status(401).send({ error: 'User not found' });
     }
 
-    const pref = await db.getDeliveryPreference(userId);
-    if (!pref || !pref.destinationAccountId) {
-      return reply.status(400).send({ error: 'No destination Gmail account selected in delivery preferences.' });
+    const body = (request.body as { destinationAccountId?: string } | undefined);
+    let pref = await db.getDeliveryPreference(userId);
+    let destAccount = null;
+
+    if (body?.destinationAccountId) {
+      destAccount = await db.getAccountById(body.destinationAccountId, userId);
     }
 
-    const destAccount = await db.getAccountById(pref.destinationAccountId, userId);
+    if (!destAccount && pref?.destinationAccountId) {
+      destAccount = await db.getAccountById(pref.destinationAccountId, userId);
+    }
+
     if (!destAccount) {
-      return reply.status(400).send({ error: 'Selected destination account is not connected.' });
+      const accounts = await db.getAccountsForUser(userId);
+      if (accounts.length === 0) {
+        return reply.status(400).send({ error: 'No connected Gmail accounts found. Please connect an account first.' });
+      }
+      destAccount = accounts.find((a) => a.hasSendPermission) || accounts[0];
+    }
+
+    // Ensure preference record exists and is synced with destAccount
+    if (!pref) {
+      pref = {
+        userId,
+        enabled: true,
+        destinationAccountId: destAccount.id,
+        destinationAccountEmail: destAccount.email,
+        deliveryTime: '07:00',
+        timezone: 'America/New_York',
+        lastAttemptAt: null,
+        lastSuccessAt: null,
+        lastError: null
+      };
+      await db.saveDeliveryPreference(pref);
+    } else if (pref.destinationAccountId !== destAccount.id) {
+      pref.destinationAccountId = destAccount.id;
+      pref.destinationAccountEmail = destAccount.email;
+      await db.saveDeliveryPreference(pref);
+    }
+
+    let refreshToken = await db.getStoredRefreshToken(destAccount.id);
+
+    // If selected account lacks send permission, try to find another connected account with send permission
+    if (!destAccount.hasSendPermission && refreshToken && !refreshToken.startsWith('mock_')) {
+      const accounts = await db.getAccountsForUser(userId);
+      const sendAccount = accounts.find((a) => a.hasSendPermission);
+      if (sendAccount) {
+        destAccount = sendAccount;
+        refreshToken = await db.getStoredRefreshToken(destAccount.id);
+      } else {
+        return reply.status(400).send({
+          error: `Connected account (${destAccount.email}) lacks Gmail Send permission. Please reconnect your account to grant email delivery access.`
+        });
+      }
     }
 
     try {
       // 1. Generate or fetch latest digest
       let digest = await db.getLatestDigest(userId);
       if (!digest) {
-        digest = await generateUserDigest(userId);
+        try {
+          digest = await generateUserDigest(userId);
+        } catch (genErr) {
+          return reply.status(400).send({
+            error: `Could not synthesize a digest to send: ${(genErr as Error).message}. Please click "Generate Today's Digest" first.`
+          });
+        }
       }
 
       // 2. Render text & HTML
@@ -81,7 +133,6 @@ export const digestRoutes: FastifyPluginAsync = async (fastify) => {
       const htmlContent = renderHtmlDigest(digest, user.name);
 
       // 3. Send email via authorized Gmail client
-      const refreshToken = await db.getStoredRefreshToken(destAccount.id);
       const sendResult = await sendDigestEmail({
         destinationEmail: destAccount.email,
         subject: `[Test] Your GistMyMail Daily Digest — ${new Date().toLocaleDateString()}`,

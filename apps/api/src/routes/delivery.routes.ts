@@ -14,7 +14,25 @@ export const deliveryRoutes: FastifyPluginAsync = async (fastify) => {
       return { preferences: null };
     }
     const db = await getDatabase();
-    const pref = await db.getDeliveryPreference(userId);
+    let pref = await db.getDeliveryPreference(userId);
+    if (!pref || !pref.destinationAccountId) {
+      const accounts = await db.getAccountsForUser(userId);
+      if (accounts.length > 0) {
+        const defaultAccount = accounts.find((a) => a.hasSendPermission) || accounts[0];
+        pref = {
+          userId,
+          enabled: pref?.enabled ?? true,
+          destinationAccountId: defaultAccount.id,
+          destinationAccountEmail: defaultAccount.email,
+          deliveryTime: pref?.deliveryTime ?? '07:00',
+          timezone: pref?.timezone ?? 'America/New_York',
+          lastAttemptAt: pref?.lastAttemptAt ?? null,
+          lastSuccessAt: pref?.lastSuccessAt ?? null,
+          lastError: pref?.lastError ?? null
+        };
+        await db.saveDeliveryPreference(pref);
+      }
+    }
     return { preferences: pref };
   });
 

@@ -1,16 +1,16 @@
 # Graph Report - Gistmymail  (2026-10-25)
 
 ## Corpus Check
-- 60 files · ~41,624 words
+- 61 files · ~42,398 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 638 nodes · 801 edges · 29 communities (25 shown, 4 thin omitted)
+- 639 nodes · 812 edges · 27 communities (23 shown, 4 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `12d2045b`
+- Built from commit: `4b56b3fc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,10 +36,8 @@
 - App.tsx
 - workflows/graphify.md
 - 2. Core Subsystems
-- validateAndAggregateItems
 - 🛠️ GistMyMail — Comprehensive Troubleshooting FAQ
 - 🤖 GistMyMail — AI Providers & Inference Configuration
-- 🚀 GistMyMail — Production Deployment Guide
 - 📬 GistMyMail — Email Digest Generation & Delivery Guide
 - GistMyMail Security Model & Threat Defense
 - client.ts
@@ -47,13 +45,13 @@
 ## God Nodes (most connected - your core abstractions)
 1. `DatabaseRepository` - 25 edges
 2. `PostgresDatabaseRepository` - 23 edges
-3. `MemoryDatabaseRepository` - 22 edges
-4. `getDatabase()` - 21 edges
+3. `getDatabase()` - 22 edges
+4. `MemoryDatabaseRepository` - 22 edges
 5. `GistMyMail — Hackathon MVP Implementation Plan` - 19 edges
 6. `compilerOptions` - 16 edges
 7. `keywords` - 15 edges
 8. `📬 GistMyMail` - 13 edges
-9. `config` - 11 edges
+9. `config` - 12 edges
 10. `generateUserDigest()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -71,7 +69,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (29 total, 4 thin omitted)
+## Communities (27 total, 4 thin omitted)
 
 ### Community 0 - "api/package.json"
 Cohesion: 0.05
@@ -90,7 +88,7 @@ Cohesion: 0.04
 Nodes (45): 10. AI provider configuration, 11. Background job design and Docker, 12. Google OAuth verification and realistic limitations, 13. Repeatable test plan, 14. Suggested repository structure, 15. Prioritized implementation checklist, 16. Exact acceptance criteria, 17. Features to postpone deliberately (+37 more)
 
 ### Community 5 - "app.ts"
-Cohesion: 0.13
+Cohesion: 0.14
 Nodes (30): getAIProvider(), buildApp(), BASE_SCOPES, exchangeOAuthCode(), generateGoogleAuthUrl(), getAuthorizedGmailClient(), getOAuth2Client(), AppConfig (+22 more)
 
 ### Community 7 - "devDependencies"
@@ -106,8 +104,8 @@ Cohesion: 0.05
 Nodes (35): description, engines, node, keywords, name, packageManager, pnpm, onlyBuiltDependencies (+27 more)
 
 ### Community 10 - "ai/index.ts"
-Cohesion: 0.25
-Nodes (6): MockAIProvider, OllamaAIProvider, OpenRouterAIProvider, AIProvider, AIProviderResult, ExtractedEmailSummaryRawSchema
+Cohesion: 0.19
+Nodes (9): normalizeForComparison(), validateAndAggregateItems(), verifyEvidenceInSource(), MockAIProvider, OllamaAIProvider, OpenRouterAIProvider, AIProvider, AIProviderResult (+1 more)
 
 ### Community 11 - "getDatabase"
 Cohesion: 0.10
@@ -130,8 +128,8 @@ Cohesion: 0.15
 Nodes (12): compilerOptions, esModuleInterop, forceConsistentCasingInFileNames, module, moduleResolution, outDir, rootDir, skipLibCheck (+4 more)
 
 ### Community 17 - "GistMyMail Evaluation & Hackathon Rubric Alignment"
-Cohesion: 0.06
-Nodes (28): 1. High-Level System Architecture, 2.1 Multi-Inbox Ingestion & Purpose Labeling, 2.2 The Deterministic Evidence Verifier (The Guardrail), 2.3 Prompt Injection Defense & Quarantine, 2.4 Resilient Dual-Mode Database Layer, 2.5 Multi-Provider AI Inference Gateway, 2. Core Subsystems, 3. Data Models & Schemas (+20 more)
+Cohesion: 0.04
+Nodes (44): 1. High-Level System Architecture, 2.1 Multi-Inbox Ingestion & Purpose Labeling, 2.2 The Deterministic Evidence Verifier (The Guardrail), 2.3 Prompt Injection Defense & Quarantine, 2.4 Resilient Dual-Mode Database Layer, 2.5 Multi-Provider AI Inference Gateway, 2. Core Subsystems, 3. Data Models & Schemas (+36 more)
 
 ### Community 18 - "App.tsx"
 Cohesion: 0.04
@@ -141,10 +139,6 @@ Nodes (46): **Automated Test Matrix:**, **Core Data Pipeline:**, **End-to-End Us
 Cohesion: 0.13
 Nodes (14): 1. Google Cloud OAuth 2.0 Setup, 2. AI Provider Configuration, 3. Database Configuration, 4. Environment Variables Dictionary, GistMyMail Integration & Setup Guide, Mode A: OpenRouter AI Gateway (Cloud / Free Tier), Mode B: Ollama (100% Private Local Inference), Mode C: Deterministic Mock Provider (Zero Setup / Fast Tests) (+6 more)
 
-### Community 22 - "validateAndAggregateItems"
-Cohesion: 0.90
-Nodes (3): normalizeForComparison(), validateAndAggregateItems(), verifyEvidenceInSource()
-
 ### Community 23 - "🛠️ GistMyMail — Comprehensive Troubleshooting FAQ"
 Cohesion: 0.08
 Nodes (23): 1. Port & Startup Conflicts, 2. Google OAuth & Authentication Errors, 3. Database & Storage Issues, `401: invalid_client (The OAuth client was not found)`, `403 access_denied: GistMyMail has not completed the Google verification process`, 4. AI Provider & Inference Errors, 5. Email Delivery & Scheduler Failures, 6. Frontend & Vite Proxy Problems (+15 more)
@@ -152,10 +146,6 @@ Nodes (23): 1. Port & Startup Conflicts, 2. Google OAuth & Authentication Errors
 ### Community 24 - "🤖 GistMyMail — AI Providers & Inference Configuration"
 Cohesion: 0.12
 Nodes (16): 🌐 1. OpenRouter Gateway Setup, 💻 2. Ollama Local Inference (100% Private), 🛡️ 3. Prompt Injection Defense & Evidence Grounding, 🛠️ AI Troubleshooting Checklist, Deterministic Verifier (The Ground Truth Engine), 🤖 GistMyMail — AI Providers & Inference Configuration, Model Integrity & Anti-Silent-Fallback Verification, 🧭 Provider Comparison Matrix (+8 more)
-
-### Community 25 - "🚀 GistMyMail — Production Deployment Guide"
-Cohesion: 0.12
-Nodes (16): 1. Environment Variables in Dashboard, 1. Mandatory HTTPS, 2. Build & Start Commands, 2. Continuous Background Daemon Requirement, 3. Persistent Database, 🔐 Generating Production Cryptographic Secrets, 🚀 GistMyMail — Production Deployment Guide, ☁️ Option A: Deploy to Railway / Render (Recommended PaaS) (+8 more)
 
 ### Community 26 - "📬 GistMyMail — Email Digest Generation & Delivery Guide"
 Cohesion: 0.12
@@ -178,7 +168,7 @@ Nodes (5): fetchAccountEmails(), getMockEmailsForAccount(), cleanHtmlToText(), c
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `keywords` connect `package.json` to `app.ts`?**
-  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Why does `fastify` connect `app.ts` to `package.json`?**
   _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Why does `📬 GistMyMail` connect `GistMyMail` to `GistMyMail Evaluation & Hackathon Rubric Alignment`?**
