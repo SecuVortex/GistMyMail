@@ -1,0 +1,23 @@
+{
+  "0": "api/package.json",
+  "1": "DatabaseRepository",
+  "2": "compilerOptions",
+  "3": "src/types.ts",
+  "4": "GistMyMail — Hackathon MVP Implementation Plan",
+  "5": "app.ts",
+  "6": "MemoryDatabaseRepository",
+  "7": "devDependencies",
+  "8": "GistMyMail",
+  "9": "package.json",
+  "10": "ai/index.ts",
+  "11": "getDatabase",
+  "12": "dependencies",
+  "13": "rules/graphify.md",
+  "14": "shared/package.json",
+  "15": "compilerOptions",
+  "16": "compilerOptions",
+  "17": "validateAndAggregateItems",
+  "18": "App.tsx",
+  "19": "vite.config.ts",
+  "20": "workflows/graphify.md"
+}

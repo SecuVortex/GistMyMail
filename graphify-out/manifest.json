@@ -25,9 +25,9 @@
     "semantic_hash": "2393c6ff6fa0934169218840be1112f5"
   },
   "apps/api/src/ai/providers/openrouter.ts": {
-    "mtime": 1792914860.9600477,
-    "ast_hash": "e05345435eb837292a74a9ca4357622c",
-    "semantic_hash": "e05345435eb837292a74a9ca4357622c"
+    "mtime": 1792919428.6925683,
+    "ast_hash": "9ab87b7b622d67f70d7831a1e561b9d9",
+    "semantic_hash": ""
   },
   "apps/api/src/ai/types.ts": {
     "mtime": 1792914773.2406259,
@@ -45,9 +45,9 @@
     "semantic_hash": "7e995127a1054e258446e95308653c83"
   },
   "apps/api/src/config.ts": {
-    "mtime": 1792914516.8034496,
-    "ast_hash": "3b78a31f8db16ddebb93aa92715972f4",
-    "semantic_hash": "3b78a31f8db16ddebb93aa92715972f4"
+    "mtime": 1792919359.3434677,
+    "ast_hash": "d999c3d18bf8dc98c940d7a2dffd6dcb",
+    "semantic_hash": ""
   },
   "apps/api/src/db/index.ts": {
     "mtime": 1792914652.5606873,
@@ -213,5 +213,45 @@
     "mtime": 1792914428.053839,
     "ast_hash": "a203b19e96da6e7d0ed6ec9926b6ec5a",
     "semantic_hash": "a203b19e96da6e7d0ed6ec9926b6ec5a"
+  },
+  "apps/api/tests/openrouter-integration.test.ts": {
+    "mtime": 1792919585.8910594,
+    "ast_hash": "0abfc3424424f7507b65fe8239df12a1",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1792912884.11171,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1792912884.1136677,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792915617.1398215,
+    "ast_hash": "e87b2180184a41ebb1ea96eb3bafa6bf",
+    "semantic_hash": ""
+  },
+  "apps/web/index.html": {
+    "mtime": 1792915088.9072158,
+    "ast_hash": "0f6b35295b18f09899d9a2be207378d8",
+    "semantic_hash": ""
+  },
+  "plan.md": {
+    "mtime": 1792912449.3856266,
+    "ast_hash": "edb17b9f986a59b7269f499ba6927ee8",
+    "semantic_hash": ""
+  },
+  "pnpm-workspace.yaml": {
+    "mtime": 1792915324.4640408,
+    "ast_hash": "db2ab6f811f7e1452fb8930730c4ae13",
+    "semantic_hash": ""
+  },
+  "hacktoberfest-hackday-jprxhis-participant-guide.pdf": {
+    "mtime": 1792906688.2323701,
+    "ast_hash": "8b133d90b5d027ceb2f7fc4d3f3c7ade",
+    "semantic_hash": ""
   }
 }

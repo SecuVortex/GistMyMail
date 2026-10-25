@@ -49,30 +49,6 @@ ul, ol { margin: 8px 0 8px 24px; color: var(--muted); }
 li { margin: 4px 0; }
 a { color: var(--accent); }
 hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
-#top-deck {
-  margin: 14px 0 24px;
-  height: 52px;
-  background: rgba(30, 41, 59, 0.78);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
-}
-.deck-brand { display: flex; align-items: center; gap: 10px; }
-.brand-orb { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 12px var(--ok); }
-.brand-title { font-size: 14px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
-.brand-badge { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 6px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent); }
-.deck-nav { display: flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.3); padding: 4px; border-radius: 10px; }
-.nav-pill { padding: 5px 12px; border-radius: 7px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none !important; transition: all 0.15s ease; }
-.nav-pill:hover { color: var(--text); background: rgba(255, 255, 255, 0.06); }
-.nav-pill.active { background: #6366f1; color: #fff; box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4); }
-.deck-stats { display: flex; align-items: center; gap: 8px; }
-.stat-chip { font-size: 11px; font-weight: 600; color: var(--muted); background: rgba(255, 255, 255, 0.05); padding: 4px 9px; border-radius: 7px; }
 .nav { position: sticky; top: 0; background: var(--bg); z-index: 10; padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; }
 .nav a { text-decoration: none; }
 .nav a:hover { text-decoration: underline; }
@@ -83,37 +59,18 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <body>
 <div class="container">
 
-<!-- Top Navigation Deck -->
-<div id="top-deck">
-  <div class="deck-brand">
-    <div class="brand-orb"></div>
-    <div class="brand-title">
-      GistMyMail
-      <span class="brand-badge">Hack Day Jaipur 2026</span>
-    </div>
-  </div>
-
-  <div class="deck-nav">
-    <a href="graph.html" class="nav-pill">🌐 Network Graph</a>
-    <a href="Gistmymail-callflow.html" class="nav-pill active">🔀 Architecture Callflow</a>
-    <a href="GRAPH_TREE.html" class="nav-pill">🌳 Hierarchy Tree</a>
-  </div>
-
-  <div class="deck-stats">
-    <div class="stat-chip">Mermaid Architecture &amp; Callflow</div>
-  </div>
-</div>
-
 <h1>Gistmymail — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 322 nodes, 477 edges, 20 communities. Commit: master</p>
+<p class="subtitle">Generated from graphify knowledge graph: 395 nodes, 549 edges, 21 communities. Commit: 419d848</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
     <a href="#build-graph">Graph Build</a>
     <a href="#cli-skills">CLI &amp; Skill Installers</a>
     <a href="#serve-api">Serving API</a>
-    <a href="#shared-packages-typests">Shared Packages Typests</a>
-    <a href="#viteconfigts-apps-web">Viteconfigts Apps Web</a>
+    <a href="#src-types-ts">src/types.ts</a>
+    <a href="#rules-graphify-md">rules/graphify.md</a>
+    <a href="#workflows-graphify-md">workflows/graphify.md</a>
+    <a href="#vite-config-ts">vite.config.ts</a>
 </div>
 
 <!-- ====== Architecture Overview ====== -->
@@ -123,19 +80,22 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>127 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>222 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>3 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>169 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>144 nodes</small>")
     class SERVE_API_35EC8E86 module;
-    SHARED_PACKAGES_TYPESTS_3B4FEB94("Shared Packages Typests<br/><small>22 nodes</small>")
-    class SHARED_PACKAGES_TYPESTS_3B4FEB94 module;
-    VITECONFIGTS_APPS_WEB_1357328C("Viteconfigts Apps Web<br/><small>1 nodes</small>")
-    class VITECONFIGTS_APPS_WEB_1357328C module;
-    SERVE_API_35EC8E86 -->|references x3| SHARED_PACKAGES_TYPESTS_3B4FEB94
-    BUILD_GRAPH_321CBB04 -->|contains| SERVE_API_35EC8E86
-    SHARED_PACKAGES_TYPESTS_3B4FEB94 -->|contains| SERVE_API_35EC8E86
+    SRC_TYPES_TS_7EA4E4D6("src/types.ts<br/><small>21 nodes</small>")
+    class SRC_TYPES_TS_7EA4E4D6 module;
+    RULES_GRAPHIFY_MD_3459230E("rules/graphify.md<br/><small>2 nodes</small>")
+    class RULES_GRAPHIFY_MD_3459230E module;
+    WORKFLOWS_GRAPHIFY_MD_C6A40BAC("workflows/graphify.md<br/><small>2 nodes</small>")
+    class WORKFLOWS_GRAPHIFY_MD_C6A40BAC module;
+    VITE_CONFIG_TS_0DD6E2FA("vite.config.ts<br/><small>1 nodes</small>")
+    class VITE_CONFIG_TS_0DD6E2FA module;
+    SERVE_API_35EC8E86 -->|references x2| SRC_TYPES_TS_7EA4E4D6
+    SRC_TYPES_TS_7EA4E4D6 -->|contains x2| SERVE_API_35EC8E86
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -152,19 +112,19 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>127</td><td><code>0, 2, 7, 9, 13, 14, 15</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>3</td><td><code>18</code></td></tr><tr><td>Serving API</td><td>169</td><td><code>1, 4, 5, 6, 8, 10, 11, 12, 16, 17</code></td></tr><tr><td>Shared Packages Typests</td><td>22</td><td><code>3</code></td></tr><tr><td>Viteconfigts Apps Web</td><td>1</td><td><code>19</code></td></tr>
+      <tr><td>Graph Build</td><td>222</td><td><code>4, 7, 0, 2, 8, 9, 12, 14, 15, 16</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>3</td><td><code>18</code></td></tr><tr><td>Serving API</td><td>144</td><td><code>1, 11, 5, 6, 10, 17</code></td></tr><tr><td>src/types.ts</td><td>21</td><td><code>3</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>13</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>20</code></td></tr><tr><td>vite.config.ts</td><td>1</td><td><code>19</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Graph Build -&gt; Serving API -&gt; Shared Packages Typests -&gt; CLI &amp; Skill Installers -&gt; Viteconfigts Apps Web</div>
+    <div class="arrow-chain">Graph Build -&gt; CLI &amp; Skill Installers -&gt; Serving API -&gt; src/types.ts -&gt; rules/graphify.md -&gt; workflows/graphify.md -&gt; vite.config.ts</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>322 nodes · 477 edges · 20 communities (17 shown, 3 thin omitted)</li>
+      <li>395 nodes · 549 edges · 21 communities (17 shown, 4 thin omitted)</li>
       <li>Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `DatabaseRepository` - 25 edges</li>
@@ -176,62 +136,58 @@ flowchart LR
 <hr>
 <!-- ====== 2. Graph Build ====== -->
 <h2 id="build-graph">2. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, apps, web, tsconfigjson, mostly in apps/web/package.json, apps/api/package.json, apps/web/tsconfig.json. This section covers 127 nodes and 121 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around packagejson, apps, web, api, mostly in plan.md, apps/api/package.json, apps/web/package.json. This section covers 222 nodes and 213 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (127 nodes, 121 edges)
-    subgraph build_graph_apps_api_package_json_3f87ec1f["apps/api/package.json"]
-        apps_api_package_devdependencies_tsx_0706f9e7("tsx<br/><small>apps/api/package.json</small>")
-        apps_api_package_devdependencies_types_node_c95bec66("@types/node<br/><small>apps/api/package.json</small>")
-        apps_api_package_devdependencies_types_pg_be2e7563("@types/pg<br/><small>apps/api/package.json</small>")
-        apps_api_package_devdependencies_typescript_f612fa31("typescript<br/><small>apps/api/package.json</small>")
-        apps_api_package_devdependencies_vitest_979e0c8d("vitest<br/><small>apps/api/package.json</small>")
-        types_node_eed9011c("@types/node<br/><small>apps/api/package.json</small>")
-        types_pg_07120c0e("@types/pg<br/><small>apps/api/package.json</small>")
-        tsx_a90e8eec("tsx<br/><small>apps/api/package.json</small>")
-        apps_api_package_json_typescript_61788e39("typescript<br/><small>apps/api/package.json</small>")
-        vitest_4c9cfa13("vitest<br/><small>apps/api/package.json</small>")
-    end
-    subgraph build_graph_apps_web_package_json_279b86e3["apps/web/package.json"]
-        apps_web_package_dependencies_clsx_01aa5291("clsx<br/><small>apps/web/package.json</small>")
-        apps_web_package_dependencies_gistmymail_shared_7d51b0ae("@gistmymail/shared<br/><small>apps/web/package.json</small>")
-        apps_web_package_json_gistmymail_shared_4b7467e6("@gistmymail/shared<br/><small>apps/web/package.json</small>")
-        clsx_ed67b7e7("clsx<br/><small>apps/web/package.json</small>")
-        apps_web_package_dependencies_lucide_react_a0cc85b2("lucide-react<br/><small>apps/web/package.json</small>")
-        lucide_react_0d541e45("lucide-react<br/><small>apps/web/package.json</small>")
-        apps_web_package_dependencies_react_74df5b50("react<br/><small>apps/web/package.json</small>")
-        react_6b810c90("react<br/><small>apps/web/package.json</small>")
-    end
+    %% Section: Graph Build (222 nodes, 213 edges)
+    apps_api_package_dependencies_fastify_a2df9009("fastify<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_fastify_cookie_f75e1a77("@fastify/cookie<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_fastify_cors_8b88de84("@fastify/cors<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_gistmymail_shared_0f42b9ac("@gistmymail/shared<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_googleapis_1115d3fe("googleapis<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_pg_74fce8c5("pg<br/><small>apps/api/package.json</small>")
+    fastify_cookie_68c926cf("@fastify/cookie<br/><small>apps/api/package.json</small>")
+    fastify_cors_cb4feda0("@fastify/cors<br/><small>apps/api/package.json</small>")
+    apps_api_package_json_gistmymail_shared_45691fef("@gistmymail/shared<br/><small>apps/api/package.json</small>")
+    fastify_c1855c58("fastify<br/><small>apps/api/package.json</small>")
+    googleapis_18fa03d5("googleapis<br/><small>apps/api/package.json</small>")
+    pg_96dd8d96("pg<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_zod_2e7419e3("zod<br/><small>apps/api/package.json</small>")
+    apps_api_package_json_zod_b74847e1("zod<br/><small>apps/api/package.json</small>")
+    apps_api_package_devdependencies_types_node_c95bec66("@types/node<br/><small>apps/api/package.json</small>")
+    types_node_eed9011c("@types/node<br/><small>apps/api/package.json</small>")
+    apps_api_package_devdependencies_types_pg_be2e7563("@types/pg<br/><small>apps/api/package.json</small>")
+    types_pg_07120c0e("@types/pg<br/><small>apps/api/package.json</small>")
+    apps_api_package_dependencies_fastify_cookie_f75e1a77 -->|imports| fastify_cookie_68c926cf
+    apps_api_package_dependencies_fastify_cors_8b88de84 -->|imports| fastify_cors_cb4feda0
+    apps_api_package_dependencies_gistmymail_shared_0f42b9ac -->|imports| apps_api_package_json_gistmymail_shared_45691fef
+    apps_api_package_dependencies_fastify_a2df9009 -->|imports| fastify_c1855c58
+    apps_api_package_dependencies_googleapis_1115d3fe -->|imports| googleapis_18fa03d5
+    apps_api_package_dependencies_pg_74fce8c5 -->|imports| pg_96dd8d96
+    apps_api_package_dependencies_zod_2e7419e3 -->|imports| apps_api_package_json_zod_b74847e1
     apps_api_package_devdependencies_types_node_c95bec66 -->|imports| types_node_eed9011c
     apps_api_package_devdependencies_types_pg_be2e7563 -->|imports| types_pg_07120c0e
-    apps_api_package_devdependencies_tsx_0706f9e7 -->|imports| tsx_a90e8eec
-    apps_api_package_devdependencies_typescript_f612fa31 -->|imports| apps_api_package_json_typescript_61788e39
-    apps_api_package_devdependencies_vitest_979e0c8d -->|imports| vitest_4c9cfa13
-    apps_web_package_dependencies_gistmymail_shared_7d51b0ae -->|imports| apps_web_package_json_gistmymail_shared_4b7467e6
-    apps_web_package_dependencies_clsx_01aa5291 -->|imports| clsx_ed67b7e7
-    apps_web_package_dependencies_lucide_react_a0cc85b2 -->|imports| lucide_react_0d541e45
-    apps_web_package_dependencies_react_74df5b50 -->|imports| react_6b810c90
-    %% Omitted for readability: 109 nodes, 0 edges
-    class apps_api_package_devdependencies_tsx_0706f9e7 function;
+    %% Omitted for readability: 204 nodes, 0 edges
+    class apps_api_package_dependencies_fastify_a2df9009 function;
+    class apps_api_package_dependencies_fastify_cookie_f75e1a77 function;
+    class apps_api_package_dependencies_fastify_cors_8b88de84 function;
+    class apps_api_package_dependencies_gistmymail_shared_0f42b9ac function;
+    class apps_api_package_dependencies_googleapis_1115d3fe api;
+    class apps_api_package_dependencies_pg_74fce8c5 function;
+    class fastify_cookie_68c926cf function;
+    class fastify_cors_cb4feda0 function;
+    class apps_api_package_json_gistmymail_shared_45691fef function;
+    class fastify_c1855c58 function;
+    class googleapis_18fa03d5 api;
+    class pg_96dd8d96 function;
+    class apps_api_package_dependencies_zod_2e7419e3 function;
+    class apps_api_package_json_zod_b74847e1 function;
     class apps_api_package_devdependencies_types_node_c95bec66 function;
-    class apps_api_package_devdependencies_types_pg_be2e7563 function;
-    class apps_api_package_devdependencies_typescript_f612fa31 function;
-    class apps_api_package_devdependencies_vitest_979e0c8d function;
     class types_node_eed9011c function;
+    class apps_api_package_devdependencies_types_pg_be2e7563 function;
     class types_pg_07120c0e function;
-    class tsx_a90e8eec function;
-    class apps_api_package_json_typescript_61788e39 function;
-    class vitest_4c9cfa13 function;
-    class apps_web_package_dependencies_clsx_01aa5291 function;
-    class apps_web_package_dependencies_gistmymail_shared_7d51b0ae function;
-    class apps_web_package_json_gistmymail_shared_4b7467e6 function;
-    class clsx_ed67b7e7 function;
-    class apps_web_package_dependencies_lucide_react_a0cc85b2 function;
-    class lucide_react_0d541e45 function;
-    class apps_web_package_dependencies_react_74df5b50 function;
-    class react_6b810c90 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -255,243 +211,243 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>api/package.json</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
+  <td><code>plan.md</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>api/package.json node in apps/api/package.json.</td>
+  <td>Documentation node describing plan.md.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>name</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>GistMyMail — Hackathon MVP Implementation Plan</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>name node in apps/api/package.json.</td>
+  <td>Documentation node describing GistMyMail — Hackathon MVP Implementation Plan.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>version</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>1. Scope and architectural decisions</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>version node in apps/api/package.json.</td>
+  <td>Documentation node describing 1. Scope and architectural decisions.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>type</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Recommended stack</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>type node in apps/api/package.json.</td>
+  <td>Documentation node describing Recommended stack.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>main</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>2. System architecture, including parallel AI processing</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>main node in apps/api/package.json.</td>
+  <td>Documentation node describing 2. System architecture, including parallel AI processing.</td>
 </tr>
 <tr>
   <td>6</td>
-  <td><code>scripts</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Hosted versus self-hosted responsibilities</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>scripts node in apps/api/package.json.</td>
+  <td>Documentation node describing Hosted versus self-hosted responsibilities.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>build</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>3. Google Cloud and OAuth setup</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>build node in apps/api/package.json.</td>
+  <td>Documentation node describing 3. Google Cloud and OAuth setup.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>dev</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Step-by-step setup</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>dev node in apps/api/package.json.</td>
+  <td>Documentation node describing Step-by-step setup.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>start</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Required scopes</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>start node in apps/api/package.json.</td>
+  <td>Documentation node describing Required scopes.</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>test</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Complete OAuth flow</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Documentation node describing Complete OAuth flow.</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>test:watch</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>4. Gmail synchronization and deduplication</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Documentation node describing 4. Gmail synchronization and deduplication.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>test:repeat-runs</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Initial sync</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Documentation node describing Initial sync.</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>devDependencies</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Threads and duplicates</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>devDependencies node in apps/api/package.json.</td>
+  <td>Documentation node describing Threads and duplicates.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Incremental synchronization</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td>@types/node node in apps/api/package.json.</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Incremental synchronization.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><code>5. Parallel AI processing design</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>@types/node node in apps/api/package.json.</td>
+  <td>Documentation node describing 5. Parallel AI processing design.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Provider and worker interfaces</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td>@types/pg node in apps/api/package.json.</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Provider and worker interfaces.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><code>Worker responsibilities</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>@types/pg node in apps/api/package.json.</td>
+  <td>Documentation node describing Worker responsibilities.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Five execution modes</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td>tsx node in apps/api/package.json.</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Five execution modes.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><code>Parallel execution sequence</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>tsx node in apps/api/package.json.</td>
+  <td>Documentation node describing Parallel execution sequence.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Concurrency and failure behavior</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td>typescript node in apps/api/package.json.</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Concurrency and failure behavior.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><code>6. Structured AI output and deterministic aggregation</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>typescript node in apps/api/package.json.</td>
+  <td>Documentation node describing 6. Structured AI output and deterministic aggregation.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Example worker schema</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Example worker schema.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><code>Example aggregated digest JSON</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td>Documentation node describing Example aggregated digest JSON.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>web/tsconfig.json</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Aggregator rules</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Reads, resolves, or persists project configuration.</td>
+  <td>Documentation node describing Aggregator rules.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>compilerOptions</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>7. Database schema</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>compilerOptions node in apps/web/tsconfig.json.</td>
+  <td>Documentation node describing 7. Database schema.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>target</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Database rules</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>target node in apps/web/tsconfig.json.</td>
+  <td>Documentation node describing Database rules.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>useDefineForClassFields</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>8. API endpoints</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>useDefineForClassFields node in apps/web/tsconfig.json.</td>
+  <td>Documentation node describing 8. API endpoints.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>lib</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
+  <td><code>Starting a job</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>lib node in apps/web/tsconfig.json.</td>
+  <td>Documentation node describing Starting a job.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>ES2022</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-class">Class</span></td>
+  <td><code>Job status</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ES2022 node in apps/web/tsconfig.json.</td>
+  <td>Documentation node describing Job status.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>DOM</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
-  <td><span class="tag tag-class">Class</span></td>
+  <td><code>9. Security and privacy controls</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>DOM node in apps/web/tsconfig.json.</td>
+  <td>Documentation node describing 9. Security and privacy controls.</td>
 </tr>
 </table>
 
@@ -500,9 +456,11 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>apps/web/package.json</code></td><td>35 nodes</td></tr>
-<tr><td><code>apps/api/package.json</code></td><td>23 nodes</td></tr>
+      <tr><td><code>plan.md</code></td><td>46 nodes</td></tr>
+<tr><td><code>apps/api/package.json</code></td><td>38 nodes</td></tr>
+<tr><td><code>apps/web/package.json</code></td><td>35 nodes</td></tr>
 <tr><td><code>apps/web/tsconfig.json</code></td><td>22 nodes</td></tr>
+<tr><td><code>README.md</code></td><td>21 nodes</td></tr>
 <tr><td><code>package.json</code></td><td>19 nodes</td></tr>
 <tr><td><code>packages/shared/package.json</code></td><td>14 nodes</td></tr>
 <tr><td><code>packages/shared/tsconfig.json</code></td><td>14 nodes</td></tr>
@@ -510,7 +468,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x96, imports x19, extends x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x180, imports x26, extends x7. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -597,12 +555,12 @@ flowchart LR
 
 <!-- ====== 4. Serving API ====== -->
 <h2 id="serve-api">4. Serving API</h2>
-<p>Serving API groups implementation around api, apps, postgrests, interfacets, mostly in src/db/postgres.ts, src/db/interface.ts, src/db/memory.ts. This section covers 169 nodes and 328 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around api, apps, postgrests, interfacets, mostly in src/db/postgres.ts, src/db/interface.ts, src/db/memory.ts. This section covers 144 nodes and 308 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (169 nodes, 328 edges)
+    %% Section: Serving API (144 nodes, 308 edges)
     subgraph serve_api_ai_aggregator_deterministic_ts_3fb83a8d["ai/aggregator/deterministic.ts"]
         apps_api_src_ai_aggregator_deterministic_normali_663e8fa9("normalizeForComparison()<br/><small>ai/aggregator/deterministic.ts</small>")
         apps_api_src_ai_aggregator_deterministic_validat_befdbfca("validateAndAggregateItems()<br/><small>ai/aggregator/deterministic.ts</small>")
@@ -644,7 +602,7 @@ flowchart LR
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_interface_databaserepository_55103da3
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_memory_memorydatabaserepository_af61b3b5
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_postgres_postgresdatabasereposit_1ffc9444
-    %% Omitted for readability: 151 nodes, 0 edges
+    %% Omitted for readability: 126 nodes, 0 edges
     class apps_api_src_ai_aggregator_deterministic_normali_663e8fa9 function;
     class apps_api_src_ai_aggregator_deterministic_validat_befdbfca function;
     class apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf function;
@@ -686,6 +644,14 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
+  <td><code>db/index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small><br><code>config.ts</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br>+12 more</td>
+  <td>Module file in src/db/index.ts.</td>
+</tr>
+<tr>
+  <td>2</td>
   <td><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
@@ -693,7 +659,7 @@ flowchart LR
   <td>Module file in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>3</td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
@@ -701,7 +667,7 @@ flowchart LR
   <td>DatabaseRepository node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>4</td>
   <td><code>.init()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -709,7 +675,7 @@ flowchart LR
   <td>.init() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>5</td>
   <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -717,7 +683,7 @@ flowchart LR
   <td>.findUserById() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>6</td>
   <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -725,7 +691,7 @@ flowchart LR
   <td>.findUserByGoogleSub() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>7</td>
   <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -733,7 +699,7 @@ flowchart LR
   <td>.createOrUpdateUser() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>8</td>
   <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -741,7 +707,7 @@ flowchart LR
   <td>.getAccountsForUser() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>9</td>
   <td><code>.getAccountById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -749,7 +715,7 @@ flowchart LR
   <td>.getAccountById() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>10</td>
   <td><code>.saveAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -757,7 +723,7 @@ flowchart LR
   <td>.saveAccount() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>11</td>
   <td><code>.updateAccountLabel()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -765,7 +731,7 @@ flowchart LR
   <td>.updateAccountLabel() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>12</td>
   <td><code>.disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -773,7 +739,7 @@ flowchart LR
   <td>.disconnectAccount() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>13</td>
   <td><code>.getStoredRefreshToken()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -781,7 +747,7 @@ flowchart LR
   <td>.getStoredRefreshToken() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>.saveEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -789,7 +755,7 @@ flowchart LR
   <td>.saveEmailMessages() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>.getEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -797,7 +763,7 @@ flowchart LR
   <td>.getEmailMessages() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>16</td>
   <td><code>.saveDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -805,7 +771,7 @@ flowchart LR
   <td>.saveDigest() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>17</td>
   <td><code>.getLatestDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -813,7 +779,7 @@ flowchart LR
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>18</td>
   <td><code>.getDigestById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -821,7 +787,7 @@ flowchart LR
   <td>.getDigestById() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>19</td>
   <td><code>.getDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -829,7 +795,7 @@ flowchart LR
   <td>.getDeliveryPreference() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>20</td>
   <td><code>.saveDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -837,7 +803,7 @@ flowchart LR
   <td>.saveDeliveryPreference() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>21</td>
   <td><code>.createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -845,7 +811,7 @@ flowchart LR
   <td>.createDeliveryLog() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>22</td>
   <td><code>.getDueDeliveries()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -853,7 +819,7 @@ flowchart LR
   <td>.getDueDeliveries() node in src/db/interface.ts.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>23</td>
   <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -861,7 +827,7 @@ flowchart LR
   <td>Module file in src/db/memory.ts.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>24</td>
   <td><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
@@ -869,7 +835,7 @@ flowchart LR
   <td>Module file in src/db/postgres.ts.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>25</td>
   <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
@@ -877,7 +843,7 @@ flowchart LR
   <td>PostgresDatabaseRepository node in src/db/postgres.ts.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>26</td>
   <td><code>.constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
@@ -885,7 +851,7 @@ flowchart LR
   <td>.constructor() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>27</td>
   <td><code>.init()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
@@ -893,7 +859,7 @@ flowchart LR
   <td>.init() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>28</td>
   <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
@@ -901,7 +867,7 @@ flowchart LR
   <td>.findUserById() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>29</td>
   <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
@@ -909,20 +875,12 @@ flowchart LR
   <td>.findUserByGoogleSub() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>30</td>
   <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td>No direct outbound edge</td>
   <td>.createOrUpdateUser() node in src/db/postgres.ts.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.getAccountsForUser() node in src/db/postgres.ts.</td>
 </tr>
 </table>
 
@@ -934,29 +892,29 @@ flowchart LR
       <tr><td><code>src/db/postgres.ts</code></td><td>22 nodes</td></tr>
 <tr><td><code>src/db/interface.ts</code></td><td>21 nodes</td></tr>
 <tr><td><code>src/db/memory.ts</code></td><td>21 nodes</td></tr>
-<tr><td><code>apps/api/package.json</code></td><td>15 nodes</td></tr>
-<tr><td><code>apps/api/tsconfig.json</code></td><td>13 nodes</td></tr>
 <tr><td><code>src/auth/oauth.ts</code></td><td>6 nodes</td></tr>
-<tr><td><code>api/src/config.ts</code></td><td>5 nodes</td></tr>
+<tr><td><code>api/src/config.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>ai/aggregator/deterministic.ts</code></td><td>4 nodes</td></tr>
+<tr><td><code>ai/providers/ollama.ts</code></td><td>4 nodes</td></tr>
+<tr><td><code>ai/providers/openrouter.ts</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x75, contains x64, method x64, imports x55. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x70, method x64, imports x57, calls x51. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 5. Shared Packages Typests ====== -->
-<h2 id="shared-packages-typests">5. Shared Packages Typests</h2>
-<p>Shared Packages Typests groups implementation around shared, packages, typests, schemasts, mostly in shared/src/types.ts, shared/src/schemas.ts, shared/src/index.ts. This section covers 22 nodes and 21 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 5. src/types.ts ====== -->
+<h2 id="src-types-ts">5. src/types.ts</h2>
+<p>src/types.ts groups implementation around shared, packages, typests, schemasts, mostly in shared/src/types.ts, shared/src/schemas.ts, shared/src/index.ts. This section covers 21 nodes and 20 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Shared Packages Typests (22 nodes, 21 edges)
-    subgraph shared_packages_typests_shared_src_types_ts_f84512b6["shared/src/types.ts"]
+    %% Section: src/types.ts (21 nodes, 20 edges)
+    subgraph src_types_ts_shared_src_types_ts_86a21873["shared/src/types.ts"]
         packages_shared_src_types_ea2bd147("types.ts")
         packages_shared_src_types_aiprovidertype_34279fc6("AIProviderType<br/><small>shared/src/types.ts</small>")
         packages_shared_src_types_connectedaccount_b0ee42ef("ConnectedAccount<br/><small>shared/src/types.ts</small>")
@@ -967,15 +925,15 @@ flowchart LR
         packages_shared_src_types_digestitem_3a923f81("DigestItem<br/><small>shared/src/types.ts</small>")
         packages_shared_src_types_emailmessage_72d3e5e7("EmailMessage<br/><small>shared/src/types.ts</small>")
         packages_shared_src_types_evidencequote_c1211457("EvidenceQuote<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_extractedactionraw_85c5fef2("ExtractedActionRaw<br/><small>shared/src/types.ts</small>")
     end
-    subgraph shared_packages_typests_shared_src_schemas_ts_33d1ab6a["shared/src/schemas.ts"]
+    subgraph src_types_ts_shared_src_schemas_ts_e927619e["shared/src/schemas.ts"]
         packages_shared_src_schemas_d1c37e30("schemas.ts")
         packages_shared_src_schemas_digestcategoryschema_250a2f9d("DigestCategorySchema<br/><small>shared/src/schemas.ts</small>")
         packages_shared_src_schemas_extractedactionrawsc_7164fa4c("ExtractedActionRawSchema<br/><small>shared/src/schemas.ts</small>")
         packages_shared_src_schemas_extractedbatchrespon_c27c3943("ExtractedBatchResponseSchema<br/><small>shared/src/schemas.ts</small>")
         packages_shared_src_schemas_generatedigestreques_c56e415d("GenerateDigestRequestSchema<br/><small>shared/src/schemas.ts</small>")
         packages_shared_src_schemas_updateaccountlabelsc_831e58d6("UpdateAccountLabelSchema<br/><small>shared/src/schemas.ts</small>")
-        packages_shared_src_schemas_updatedeliveryprefer_61a01907("UpdateDeliveryPreferencesSchema<br/><small>shared/src/schemas.ts</small>")
     end
     packages_shared_src_index_477184c2("index.ts")
     packages_shared_src_index_477184c2 -->|re exports| packages_shared_src_schemas_d1c37e30
@@ -985,7 +943,6 @@ flowchart LR
     packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_extractedbatchrespon_c27c3943
     packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_generatedigestreques_c56e415d
     packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_updateaccountlabelsc_831e58d6
-    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_updatedeliveryprefer_61a01907
     packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_aiprovidertype_34279fc6
     packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_connectedaccount_b0ee42ef
     packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_deliverylog_9843ea1f
@@ -995,7 +952,8 @@ flowchart LR
     packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_digestitem_3a923f81
     packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_emailmessage_72d3e5e7
     packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_evidencequote_c1211457
-    %% Omitted for readability: 4 nodes, 0 edges
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_extractedactionraw_85c5fef2
+    %% Omitted for readability: 3 nodes, 0 edges
     class packages_shared_src_types_ea2bd147 module;
     class packages_shared_src_types_aiprovidertype_34279fc6 klass;
     class packages_shared_src_types_connectedaccount_b0ee42ef klass;
@@ -1006,13 +964,13 @@ flowchart LR
     class packages_shared_src_types_digestitem_3a923f81 klass;
     class packages_shared_src_types_emailmessage_72d3e5e7 klass;
     class packages_shared_src_types_evidencequote_c1211457 klass;
+    class packages_shared_src_types_extractedactionraw_85c5fef2 klass;
     class packages_shared_src_schemas_d1c37e30 module;
     class packages_shared_src_schemas_digestcategoryschema_250a2f9d klass;
     class packages_shared_src_schemas_extractedactionrawsc_7164fa4c klass;
     class packages_shared_src_schemas_extractedbatchrespon_c27c3943 klass;
     class packages_shared_src_schemas_generatedigestreques_c56e415d klass;
     class packages_shared_src_schemas_updateaccountlabelsc_831e58d6 klass;
-    class packages_shared_src_schemas_updatedeliveryprefer_61a01907 klass;
     class packages_shared_src_index_477184c2 module;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1085,14 +1043,6 @@ flowchart LR
 </tr>
 <tr>
   <td>7</td>
-  <td><code>UpdateDeliveryPreferencesSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>UpdateDeliveryPreferencesSchema node in shared/src/schemas.ts.</td>
-</tr>
-<tr>
-  <td>8</td>
   <td><code>GenerateDigestRequestSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1100,7 +1050,7 @@ flowchart LR
   <td>GenerateDigestRequestSchema node in shared/src/schemas.ts.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>8</td>
   <td><code>src/types.ts</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -1108,7 +1058,7 @@ flowchart LR
   <td>Module file in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>9</td>
   <td><code>PurposeLabel</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1116,7 +1066,7 @@ flowchart LR
   <td>PurposeLabel node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>10</td>
   <td><code>User</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1124,7 +1074,7 @@ flowchart LR
   <td>User node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>11</td>
   <td><code>ConnectedAccount</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1132,7 +1082,7 @@ flowchart LR
   <td>ConnectedAccount node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>12</td>
   <td><code>EmailMessage</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1140,7 +1090,7 @@ flowchart LR
   <td>EmailMessage node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>13</td>
   <td><code>DigestCategory</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1148,7 +1098,7 @@ flowchart LR
   <td>DigestCategory node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>14</td>
   <td><code>EvidenceQuote</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1156,7 +1106,7 @@ flowchart LR
   <td>EvidenceQuote node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>15</td>
   <td><code>DigestItem</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1164,7 +1114,7 @@ flowchart LR
   <td>DigestItem node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>16</td>
   <td><code>Digest</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1172,7 +1122,7 @@ flowchart LR
   <td>Digest node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>17</td>
   <td><code>DeliveryPreference</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1180,7 +1130,7 @@ flowchart LR
   <td>DeliveryPreference node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>18</td>
   <td><code>DeliveryLog</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1188,7 +1138,7 @@ flowchart LR
   <td>DeliveryLog node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>19</td>
   <td><code>AIProviderType</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1196,7 +1146,7 @@ flowchart LR
   <td>AIProviderType node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>20</td>
   <td><code>ExtractedActionRaw</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1204,7 +1154,7 @@ flowchart LR
   <td>ExtractedActionRaw node in shared/src/types.ts.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>21</td>
   <td><code>ExtractedEmailSummaryRaw</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1219,25 +1169,159 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>shared/src/types.ts</code></td><td>14 nodes</td></tr>
-<tr><td><code>shared/src/schemas.ts</code></td><td>7 nodes</td></tr>
+<tr><td><code>shared/src/schemas.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>shared/src/index.ts</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x19, re exports x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x18, re exports x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 6. Viteconfigts Apps Web ====== -->
-<h2 id="viteconfigts-apps-web">6. Viteconfigts Apps Web</h2>
-<p>Viteconfigts Apps Web groups implementation around viteconfigts, apps, web, mostly in apps/web/vite.config.ts. This section covers 1 nodes and 0 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 6. rules/graphify.md ====== -->
+<h2 id="rules-graphify-md">6. rules/graphify.md</h2>
+<p>rules/graphify.md groups implementation around rules, graphifymd, agents, graphify, mostly in .agents/rules/graphify.md. This section covers 2 nodes and 1 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Viteconfigts Apps Web (1 nodes, 0 edges)
+    %% Section: rules/graphify.md (2 nodes, 1 edges)
+    agents_rules_graphify_8193478b("rules/graphify.md")
+    agents_rules_graphify_graphify_dd1d4f66("graphify<br/><small>.agents/rules/graphify.md</small>")
+    agents_rules_graphify_8193478b -->|contains| agents_rules_graphify_graphify_dd1d4f66
+    class agents_rules_graphify_8193478b concept;
+    class agents_rules_graphify_graphify_dd1d4f66 concept;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>rules/graphify.md</code><br><small style="color:var(--muted)">.agents/rules/graphify.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing rules/graphify.md.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>graphify</code><br><small style="color:var(--muted)">.agents/rules/graphify.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing graphify.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>.agents/rules/graphify.md</code></td><td>2 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 7. workflows/graphify.md ====== -->
+<h2 id="workflows-graphify-md">7. workflows/graphify.md</h2>
+<p>workflows/graphify.md groups implementation around workflows, graphifymd, agents, workflow, mostly in .agents/workflows/graphify.md. This section covers 2 nodes and 1 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: workflows/graphify.md (2 nodes, 1 edges)
+    agents_workflows_graphify_08a1cc26("workflows/graphify.md")
+    agents_workflows_graphify_workflow_graphify_87f5fa2b("Workflow: graphify<br/><small>.agents/workflows/graphify.md</small>")
+    agents_workflows_graphify_08a1cc26 -->|contains| agents_workflows_graphify_workflow_graphify_87f5fa2b
+    class agents_workflows_graphify_08a1cc26 concept;
+    class agents_workflows_graphify_workflow_graphify_87f5fa2b concept;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>workflows/graphify.md</code><br><small style="color:var(--muted)">.agents/workflows/graphify.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing workflows/graphify.md.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>Workflow: graphify</code><br><small style="color:var(--muted)">.agents/workflows/graphify.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Workflow: graphify.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>.agents/workflows/graphify.md</code></td><td>2 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 8. vite.config.ts ====== -->
+<h2 id="vite-config-ts">8. vite.config.ts</h2>
+<p>vite.config.ts groups implementation around viteconfigts, apps, web, mostly in apps/web/vite.config.ts. This section covers 1 nodes and 0 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: vite.config.ts (1 nodes, 0 edges)
     apps_web_vite_config_d4d869a8("vite.config.ts")
     class apps_web_vite_config_d4d869a8 module;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
@@ -1292,17 +1376,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>322</td></tr>
-      <tr><td>Edges</td><td>477</td></tr>
+      <tr><td>Nodes</td><td>395</td></tr>
+      <tr><td>Edges</td><td>549</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>20</td></tr>
-      <tr><td>Documented Sections</td><td>5</td></tr>
+      <tr><td>Communities</td><td>21</td></tr>
+      <tr><td>Documented Sections</td><td>7</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>472</td></tr>
+      <tr><td>EXTRACTED</td><td>544</td></tr>
       <tr><td>INFERRED</td><td>5</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -1311,7 +1395,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>Gistmymail — Architecture Documentation</p>
-  <p>Generated: 2026-10-25 08:26 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-10-25 09:14 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

@@ -1,4 +1,28 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { z } from 'zod';
+
+function loadEnvironmentFiles() {
+  if (typeof process.loadEnvFile === 'function') {
+    const candidates = [
+      path.resolve(process.cwd(), '.env'),
+      path.resolve(process.cwd(), '../../.env'),
+      path.resolve(process.cwd(), '../.env')
+    ];
+    for (const p of candidates) {
+      if (fs.existsSync(p)) {
+        try {
+          process.loadEnvFile(p);
+          break;
+        } catch {
+          // Ignore parsing or access errors
+        }
+      }
+    }
+  }
+}
+
+loadEnvironmentFiles();
 
 const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
