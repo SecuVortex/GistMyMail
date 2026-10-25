@@ -3,13 +3,16 @@ import { getDatabase } from '../db/index.js';
 import { UpdateDeliveryPreferencesSchema } from '@gistmymail/shared';
 
 export const deliveryRoutes: FastifyPluginAsync = async (fastify) => {
-  function getUserId(request: any): string {
-    return request.cookies.session_user_id || 'usr_demo_01';
+  function getUserId(request: any): string | null {
+    return request.cookies.session_user_id || null;
   }
 
   // Get delivery preferences
   fastify.get('/api/delivery/preferences', async (request, reply) => {
     const userId = getUserId(request);
+    if (!userId) {
+      return { preferences: null };
+    }
     const db = await getDatabase();
     const pref = await db.getDeliveryPreference(userId);
     return { preferences: pref };
@@ -18,6 +21,9 @@ export const deliveryRoutes: FastifyPluginAsync = async (fastify) => {
   // Update delivery preferences
   fastify.put('/api/delivery/preferences', async (request, reply) => {
     const userId = getUserId(request);
+    if (!userId) {
+      return reply.status(401).send({ error: 'Please connect a Gmail account or enter Demo Mode to update delivery preferences.' });
+    }
     const parseRes = UpdateDeliveryPreferencesSchema.safeParse(request.body);
 
     if (!parseRes.success) {

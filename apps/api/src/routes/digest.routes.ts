@@ -6,13 +6,16 @@ import { sendDigestEmail } from '../gmail/sender.js';
 import { GenerateDigestRequestSchema } from '@gistmymail/shared';
 
 export const digestRoutes: FastifyPluginAsync = async (fastify) => {
-  function getUserId(request: any): string {
-    return request.cookies.session_user_id || 'usr_demo_01';
+  function getUserId(request: any): string | null {
+    return request.cookies.session_user_id || null;
   }
 
   // Get latest digest
   fastify.get('/api/digest/latest', async (request, reply) => {
     const userId = getUserId(request);
+    if (!userId) {
+      return { digest: null };
+    }
     const db = await getDatabase();
     const digest = await db.getLatestDigest(userId);
     return { digest };
@@ -21,6 +24,10 @@ export const digestRoutes: FastifyPluginAsync = async (fastify) => {
   // Generate digest on demand
   fastify.post('/api/digest/generate', async (request, reply) => {
     const userId = getUserId(request);
+    if (!userId) {
+      return reply.status(401).send({ error: 'Please connect a Gmail account or enter Demo Mode to generate a digest.' });
+    }
+
     const parseRes = GenerateDigestRequestSchema.safeParse(request.body || {});
 
     if (!parseRes.success) {
@@ -43,6 +50,9 @@ export const digestRoutes: FastifyPluginAsync = async (fastify) => {
   // Send a test digest email immediately to the configured destination account
   fastify.post('/api/digest/test-send', async (request, reply) => {
     const userId = getUserId(request);
+    if (!userId) {
+      return reply.status(401).send({ error: 'Please connect a Gmail account or enter Demo Mode to send test emails.' });
+    }
     const db = await getDatabase();
     const user = await db.findUserById(userId);
     if (!user) {

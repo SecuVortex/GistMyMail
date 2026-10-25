@@ -60,12 +60,11 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>Gistmymail — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 446 nodes, 601 edges, 24 communities. Commit: 17af63b</p>
+<p class="subtitle">Generated from graphify knowledge graph: 464 nodes, 629 edges, 22 communities. Commit: 53264a6</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
     <a href="#build-graph">Graph Build</a>
-    <a href="#cli-skills">CLI &amp; Skill Installers</a>
     <a href="#ingest-cache-update">Ingestion &amp; Updates</a>
     <a href="#serve-api">Serving API</a>
     <a href="#security-global">Security &amp; Global Graph</a>
@@ -82,13 +81,11 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>225 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>245 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
-    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>3 nodes</small>")
-    class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>15 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>143 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>144 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>33 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
@@ -102,6 +99,7 @@ flowchart LR
     class VITE_CONFIG_TS_0DD6E2FA module;
     SERVE_API_35EC8E86 -->|references x3| SRC_TYPES_TS_7EA4E4D6
     SECURITY_GLOBAL_5B9C6A04 -->|contains x2| BUILD_GRAPH_321CBB04
+    BUILD_GRAPH_321CBB04 -->|extends| SERVE_API_35EC8E86
     SRC_TYPES_TS_7EA4E4D6 -->|contains| SERVE_API_35EC8E86
     SECURITY_GLOBAL_5B9C6A04 -->|references| INGEST_CACHE_UPDATE_FF457338
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
@@ -120,19 +118,19 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>225</td><td><code>4, 7, 8, 0, 2, 9, 12, 14, 15, 16</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>3</td><td><code>18</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>15</td><td><code>23</code></td></tr><tr><td>Serving API</td><td>143</td><td><code>5, 1, 22, 6, 10, 11, 17</code></td></tr><tr><td>Security &amp; Global Graph</td><td>33</td><td><code>21</code></td></tr><tr><td>src/types.ts</td><td>22</td><td><code>3</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>13</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>20</code></td></tr><tr><td>vite.config.ts</td><td>1</td><td><code>19</code></td></tr>
+      <tr><td>Graph Build</td><td>245</td><td><code>4, 7, 8, 0, 2, 9, 18, 12, 14, 15, 16</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>15</td><td><code>23</code></td></tr><tr><td>Serving API</td><td>144</td><td><code>1, 5, 10, 11, 6</code></td></tr><tr><td>Security &amp; Global Graph</td><td>33</td><td><code>21</code></td></tr><tr><td>src/types.ts</td><td>22</td><td><code>3</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>13</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>20</code></td></tr><tr><td>vite.config.ts</td><td>1</td><td><code>19</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">CLI &amp; Skill Installers -&gt; Graph Build -&gt; Ingestion &amp; Updates -&gt; Serving API -&gt; src/types.ts -&gt; Security &amp; Global Graph -&gt; rules/graphify.md</div>
+    <div class="arrow-chain">Security &amp; Global Graph -&gt; Graph Build -&gt; Serving API -&gt; src/types.ts -&gt; Ingestion &amp; Updates -&gt; rules/graphify.md -&gt; workflows/graphify.md</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>446 nodes · 601 edges · 24 communities (19 shown, 5 thin omitted)</li>
+      <li>464 nodes · 629 edges · 22 communities (18 shown, 4 thin omitted)</li>
       <li>Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `DatabaseRepository` - 25 edges</li>
@@ -144,30 +142,32 @@ flowchart LR
 <hr>
 <!-- ====== 2. Graph Build ====== -->
 <h2 id="build-graph">2. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, apps, web, api, mostly in plan.md, apps/api/package.json, apps/web/package.json. This section covers 225 nodes and 216 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around packagejson, apps, web, api, mostly in plan.md, apps/api/package.json, package.json. This section covers 245 nodes and 237 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (225 nodes, 216 edges)
-    apps_api_package_dependencies_fastify_a2df9009("fastify<br/><small>apps/api/package.json</small>")
-    apps_api_package_dependencies_fastify_cookie_f75e1a77("@fastify/cookie<br/><small>apps/api/package.json</small>")
-    apps_api_package_dependencies_fastify_cors_8b88de84("@fastify/cors<br/><small>apps/api/package.json</small>")
-    apps_api_package_dependencies_gistmymail_shared_0f42b9ac("@gistmymail/shared<br/><small>apps/api/package.json</small>")
-    apps_api_package_dependencies_googleapis_1115d3fe("googleapis<br/><small>apps/api/package.json</small>")
-    apps_api_package_dependencies_pg_74fce8c5("pg<br/><small>apps/api/package.json</small>")
-    fastify_cookie_68c926cf("@fastify/cookie<br/><small>apps/api/package.json</small>")
-    fastify_cors_cb4feda0("@fastify/cors<br/><small>apps/api/package.json</small>")
-    apps_api_package_json_gistmymail_shared_45691fef("@gistmymail/shared<br/><small>apps/api/package.json</small>")
-    fastify_c1855c58("fastify<br/><small>apps/api/package.json</small>")
-    googleapis_18fa03d5("googleapis<br/><small>apps/api/package.json</small>")
-    pg_96dd8d96("pg<br/><small>apps/api/package.json</small>")
-    apps_api_package_dependencies_zod_2e7419e3("zod<br/><small>apps/api/package.json</small>")
-    apps_api_package_json_zod_b74847e1("zod<br/><small>apps/api/package.json</small>")
-    apps_api_package_devdependencies_types_node_c95bec66("@types/node<br/><small>apps/api/package.json</small>")
-    types_node_eed9011c("@types/node<br/><small>apps/api/package.json</small>")
-    apps_api_package_devdependencies_types_pg_be2e7563("@types/pg<br/><small>apps/api/package.json</small>")
-    types_pg_07120c0e("@types/pg<br/><small>apps/api/package.json</small>")
+    %% Section: Graph Build (245 nodes, 237 edges)
+    subgraph build_graph_apps_api_package_json_3f87ec1f["apps/api/package.json"]
+        apps_api_package_dependencies_fastify_a2df9009("fastify<br/><small>apps/api/package.json</small>")
+        apps_api_package_dependencies_fastify_cookie_f75e1a77("@fastify/cookie<br/><small>apps/api/package.json</small>")
+        apps_api_package_dependencies_fastify_cors_8b88de84("@fastify/cors<br/><small>apps/api/package.json</small>")
+        apps_api_package_dependencies_gistmymail_shared_0f42b9ac("@gistmymail/shared<br/><small>apps/api/package.json</small>")
+        apps_api_package_dependencies_googleapis_1115d3fe("googleapis<br/><small>apps/api/package.json</small>")
+        fastify_cookie_68c926cf("@fastify/cookie<br/><small>apps/api/package.json</small>")
+        fastify_cors_cb4feda0("@fastify/cors<br/><small>apps/api/package.json</small>")
+        apps_api_package_json_gistmymail_shared_45691fef("@gistmymail/shared<br/><small>apps/api/package.json</small>")
+        fastify_c1855c58("fastify<br/><small>apps/api/package.json</small>")
+        googleapis_18fa03d5("googleapis<br/><small>apps/api/package.json</small>")
+        apps_api_package_dependencies_pg_74fce8c5("pg<br/><small>apps/api/package.json</small>")
+        pg_96dd8d96("pg<br/><small>apps/api/package.json</small>")
+        apps_api_package_dependencies_zod_2e7419e3("zod<br/><small>apps/api/package.json</small>")
+        apps_api_package_json_zod_b74847e1("zod<br/><small>apps/api/package.json</small>")
+        apps_api_package_devdependencies_types_node_c95bec66("@types/node<br/><small>apps/api/package.json</small>")
+        types_node_eed9011c("@types/node<br/><small>apps/api/package.json</small>")
+        apps_api_package_devdependencies_types_pg_be2e7563("@types/pg<br/><small>apps/api/package.json</small>")
+    end
+    apps_web_src_app_9afe72b4("App.tsx")
     apps_api_package_dependencies_fastify_cookie_f75e1a77 -->|imports| fastify_cookie_68c926cf
     apps_api_package_dependencies_fastify_cors_8b88de84 -->|imports| fastify_cors_cb4feda0
     apps_api_package_dependencies_gistmymail_shared_0f42b9ac -->|imports| apps_api_package_json_gistmymail_shared_45691fef
@@ -176,26 +176,25 @@ flowchart LR
     apps_api_package_dependencies_pg_74fce8c5 -->|imports| pg_96dd8d96
     apps_api_package_dependencies_zod_2e7419e3 -->|imports| apps_api_package_json_zod_b74847e1
     apps_api_package_devdependencies_types_node_c95bec66 -->|imports| types_node_eed9011c
-    apps_api_package_devdependencies_types_pg_be2e7563 -->|imports| types_pg_07120c0e
-    %% Omitted for readability: 207 nodes, 0 edges
+    %% Omitted for readability: 227 nodes, 0 edges
     class apps_api_package_dependencies_fastify_a2df9009 function;
     class apps_api_package_dependencies_fastify_cookie_f75e1a77 function;
     class apps_api_package_dependencies_fastify_cors_8b88de84 function;
     class apps_api_package_dependencies_gistmymail_shared_0f42b9ac function;
     class apps_api_package_dependencies_googleapis_1115d3fe api;
-    class apps_api_package_dependencies_pg_74fce8c5 function;
     class fastify_cookie_68c926cf function;
     class fastify_cors_cb4feda0 function;
     class apps_api_package_json_gistmymail_shared_45691fef function;
     class fastify_c1855c58 function;
     class googleapis_18fa03d5 api;
+    class apps_api_package_dependencies_pg_74fce8c5 function;
     class pg_96dd8d96 function;
     class apps_api_package_dependencies_zod_2e7419e3 function;
     class apps_api_package_json_zod_b74847e1 function;
     class apps_api_package_devdependencies_types_node_c95bec66 function;
     class types_node_eed9011c function;
     class apps_api_package_devdependencies_types_pg_be2e7563 function;
-    class types_pg_07120c0e function;
+    class apps_web_src_app_9afe72b4 ui;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -466,103 +465,23 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>plan.md</code></td><td>45 nodes</td></tr>
 <tr><td><code>apps/api/package.json</code></td><td>38 nodes</td></tr>
+<tr><td><code>package.json</code></td><td>36 nodes</td></tr>
 <tr><td><code>apps/web/package.json</code></td><td>35 nodes</td></tr>
 <tr><td><code>README.md</code></td><td>25 nodes</td></tr>
 <tr><td><code>apps/web/tsconfig.json</code></td><td>22 nodes</td></tr>
-<tr><td><code>package.json</code></td><td>19 nodes</td></tr>
 <tr><td><code>packages/shared/package.json</code></td><td>14 nodes</td></tr>
 <tr><td><code>packages/shared/tsconfig.json</code></td><td>14 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x183, imports x26, extends x7. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x188, imports x26, extends x20, imports x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 3. CLI & Skill Installers ====== -->
-<h2 id="cli-skills">3. CLI &amp; Skill Installers</h2>
-<p>CLI &amp; Skill Installers groups implementation around apptsx, apps, web, maintsx, mostly in web/src/App.tsx, web/src/main.tsx. This section covers 3 nodes and 2 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: CLI &amp; Skill Installers (3 nodes, 2 edges)
-    subgraph cli_skills_web_src_App_tsx_b401c089["web/src/App.tsx"]
-        apps_web_src_app_9afe72b4("App.tsx")
-        apps_web_src_app_app_e2b10e93("App()<br/><small>web/src/App.tsx</small>")
-    end
-    apps_web_src_main_34983031("main.tsx")
-    apps_web_src_app_9afe72b4 -->|imports| apps_web_src_main_34983031
-    class apps_web_src_app_9afe72b4 ui;
-    class apps_web_src_app_app_e2b10e93 ui;
-    class apps_web_src_main_34983031 ui;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>App.tsx</code><br><small style="color:var(--muted)">web/src/App.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>main.tsx</code><br><small style="color:var(--muted)">web/src/main.tsx</small></td>
-  <td>Module file in web/src/App.tsx.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>App()</code><br><small style="color:var(--muted)">web/src/App.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>App() node in web/src/App.tsx.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>main.tsx</code><br><small style="color:var(--muted)">web/src/main.tsx</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>App.tsx</code><br><small style="color:var(--muted)">web/src/App.tsx</small></td>
-  <td>No direct outbound edge</td>
-  <td>Module file in web/src/main.tsx.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>web/src/App.tsx</code></td><td>2 nodes</td></tr>
-<tr><td><code>web/src/main.tsx</code></td><td>1 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x1, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 4. Ingestion & Updates ====== -->
-<h2 id="ingest-cache-update">4. Ingestion &amp; Updates</h2>
+<!-- ====== 3. Ingestion & Updates ====== -->
+<h2 id="ingest-cache-update">3. Ingestion &amp; Updates</h2>
 <p>Ingestion &amp; Updates groups implementation around integration, guidemd, docs, step, mostly in docs/INTEGRATION_GUIDE.md. This section covers 15 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -771,14 +690,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 5. Serving API ====== -->
-<h2 id="serve-api">5. Serving API</h2>
-<p>Serving API groups implementation around api, apps, postgrests, interfacets, mostly in src/db/postgres.ts, src/db/interface.ts, src/db/memory.ts. This section covers 143 nodes and 307 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 4. Serving API ====== -->
+<h2 id="serve-api">4. Serving API</h2>
+<p>Serving API groups implementation around api, apps, postgrests, interfacets, mostly in src/db/postgres.ts, src/db/interface.ts, src/db/memory.ts. This section covers 144 nodes and 315 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (143 nodes, 307 edges)
+    %% Section: Serving API (144 nodes, 315 edges)
     subgraph serve_api_ai_aggregator_deterministic_ts_3fb83a8d["ai/aggregator/deterministic.ts"]
         apps_api_src_ai_aggregator_deterministic_normali_663e8fa9("normalizeForComparison()<br/><small>ai/aggregator/deterministic.ts</small>")
         apps_api_src_ai_aggregator_deterministic_validat_befdbfca("validateAndAggregateItems()<br/><small>ai/aggregator/deterministic.ts</small>")
@@ -820,7 +739,7 @@ flowchart LR
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_interface_databaserepository_55103da3
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_memory_memorydatabaserepository_af61b3b5
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_postgres_postgresdatabasereposit_1ffc9444
-    %% Omitted for readability: 125 nodes, 0 edges
+    %% Omitted for readability: 126 nodes, 0 edges
     class apps_api_src_ai_aggregator_deterministic_normali_663e8fa9 function;
     class apps_api_src_ai_aggregator_deterministic_validat_befdbfca function;
     class apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf function;
@@ -862,243 +781,243 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>getAIProvider()</code><br><small style="color:var(--muted)">src/ai/index.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>generator.ts</code><br><small style="color:var(--muted)">src/digest/generator.ts</small></td>
-  <td>getAIProvider() node in src/ai/index.ts.</td>
+  <td><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small><br><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>Module file in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>app.ts</code><br><small style="color:var(--muted)">api/src/app.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>accountsRoutes()</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br>+10 more</td>
-  <td>Module file in api/src/app.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br>+18 more</td>
+  <td>DatabaseRepository node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>buildApp()</code><br><small style="color:var(--muted)">api/src/app.ts</small></td>
+  <td><code>.init()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>index.ts</code><br><small style="color:var(--muted)">api/src/index.ts</small><br><code>main()</code><br><small style="color:var(--muted)">api/src/index.ts</small></td>
-  <td>buildApp() node in api/src/app.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.init() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>client.ts</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small><br>+5 more</td>
-  <td>Module file in src/auth/oauth.ts.</td>
+  <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserById() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>BASE_SCOPES</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>BASE_SCOPES node in src/auth/oauth.ts.</td>
+  <td>.findUserByGoogleSub() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>6</td>
-  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><span class="tag tag-cmd">Entry</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>exchangeOAuthCode()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>generateGoogleAuthUrl()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td>getOAuth2Client() node in src/auth/oauth.ts.</td>
+  <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.createOrUpdateUser() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>generateGoogleAuthUrl()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>authRoutes()</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small></td>
-  <td>generateGoogleAuthUrl() node in src/auth/oauth.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getAccountsForUser() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>exchangeOAuthCode()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>.getAccountById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>authRoutes()</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>encryptToken()</code><br><small style="color:var(--muted)">src/security/encryption.ts</small></td>
-  <td>exchangeOAuthCode() node in src/auth/oauth.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getAccountById() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><span class="tag tag-cmd">Entry</span></td>
-  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><code>client.ts</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br><code>decryptToken()</code><br><small style="color:var(--muted)">src/security/encryption.ts</small><br><code>fetchAccountEmails()</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br>+2 more</td>
-  <td>getAuthorizedGmailClient() node in src/auth/oauth.ts.</td>
+  <td><code>.saveAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveAccount() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>config.ts</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>app.ts</code><br><small style="color:var(--muted)">api/src/app.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>encryption.ts</code><br><small style="color:var(--muted)">src/security/encryption.ts</small><br><code>health.routes.ts</code><br><small style="color:var(--muted)">src/routes/health.routes.ts</small><br>+3 more</td>
-  <td>Module file in api/src/config.ts.</td>
+  <td><code>.updateAccountLabel()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.updateAccountLabel() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>loadEnvironmentFiles()</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><code>.disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>loadEnvironmentFiles() node in api/src/config.ts.</td>
+  <td>.disconnectAccount() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>EnvSchema</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>.getStoredRefreshToken()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>EnvSchema node in api/src/config.ts.</td>
+  <td>.getStoredRefreshToken() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>AppConfig</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>.saveEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>Reads, resolves, or persists project configuration.</td>
+  <td>.saveEmailMessages() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>loadConfig()</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><code>.getEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>Reads, resolves, or persists project configuration.</td>
+  <td>.getEmailMessages() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><code>.saveDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>app.ts</code><br><small style="color:var(--muted)">api/src/app.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
-  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>encryption.ts</code><br><small style="color:var(--muted)">src/security/encryption.ts</small><br><code>health.routes.ts</code><br><small style="color:var(--muted)">src/routes/health.routes.ts</small><br>+3 more</td>
-  <td>Reads, resolves, or persists project configuration.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveDigest() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>db/index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small><br><code>config.ts</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
-  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br>+12 more</td>
-  <td>Module file in src/db/index.ts.</td>
+  <td><code>.getLatestDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>.getDigestById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>accountsRoutes()</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br>+17 more</td>
-  <td>getDatabase() node in src/db/index.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getDigestById() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
-  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>generator.ts</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">api/src/index.ts</small><br>+5 more</td>
-  <td>Module file in src/delivery/scheduler.ts.</td>
+  <td><code>.getDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getDeliveryPreference() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>.saveDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
-  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>renderHtmlDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>renderPlainTextDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br>+2 more</td>
-  <td>processDueDelivery() node in src/delivery/scheduler.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveDeliveryPreference() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>startDeliveryScheduler()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>.createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
-  <td><code>index.ts</code><br><small style="color:var(--muted)">api/src/index.ts</small><br><code>main()</code><br><small style="color:var(--muted)">api/src/index.ts</small></td>
-  <td>startDeliveryScheduler() node in src/delivery/scheduler.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.createDeliveryLog() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>stopDeliveryScheduler()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>.getDueDeliveries()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
   <td>No direct outbound edge</td>
-  <td>stopDeliveryScheduler() node in src/delivery/scheduler.ts.</td>
+  <td>.getDueDeliveries() node in src/db/interface.ts.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>generator.ts</code><br><small style="color:var(--muted)">src/digest/generator.ts</small></td>
+  <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
-  <td><code>getAIProvider()</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br>+3 more</td>
-  <td><code>client.ts</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>fetchAccountEmails()</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br>+2 more</td>
-  <td>Module file in src/digest/generator.ts.</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Module file in src/db/memory.ts.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>getAIProvider()</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br>+2 more</td>
-  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>fetchAccountEmails()</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br>+2 more</td>
-  <td>generateUserDigest() node in src/digest/generator.ts.</td>
+  <td><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Module file in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>renderer.ts</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
-  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
-  <td>Module file in src/digest/renderer.ts.</td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br><code>createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br><code>createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br>+17 more</td>
+  <td>PostgresDatabaseRepository node in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>groupItems()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
+  <td><code>.constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>renderHtmlDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>renderPlainTextDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
-  <td>groupItems() node in src/digest/renderer.ts.</td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.constructor() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>renderPlainTextDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
+  <td><code>.init()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>groupItems()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
-  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
-  <td>renderPlainTextDigest() node in src/digest/renderer.ts.</td>
+  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.init() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>renderHtmlDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
+  <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>groupItems()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
-  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
-  <td>Exports documentation data to a target format.</td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserById() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>sender.ts</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
-  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
-  <td>Module file in src/gmail/sender.ts.</td>
+  <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserByGoogleSub() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>createMimeMessage()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
+  <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>sendDigestEmail()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
-  <td>createMimeMessage() node in src/gmail/sender.ts.</td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.createOrUpdateUser() node in src/db/postgres.ts.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>sendDigestEmail()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
+  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>createMimeMessage()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small><br><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br>+1 more</td>
-  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
-  <td>sendDigestEmail() node in src/gmail/sender.ts.</td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getAccountsForUser() node in src/db/postgres.ts.</td>
 </tr>
 </table>
 
@@ -1119,13 +1038,13 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x70, method x64, imports x57, calls x51. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x71, imports x64, method x64, calls x51. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 6. Security & Global Graph ====== -->
-<h2 id="security-global">6. Security &amp; Global Graph</h2>
+<!-- ====== 5. Security & Global Graph ====== -->
+<h2 id="security-global">5. Security &amp; Global Graph</h2>
 <p>Security &amp; Global Graph groups implementation around docs, architecturemd, evaluationmd, securitymd, mostly in docs/ARCHITECTURE.md, docs/EVALUATION.md, docs/SECURITY.md. This section covers 33 nodes and 32 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1474,8 +1393,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 7. src/types.ts ====== -->
-<h2 id="src-types-ts">7. src/types.ts</h2>
+<!-- ====== 6. src/types.ts ====== -->
+<h2 id="src-types-ts">6. src/types.ts</h2>
 <p>src/types.ts groups implementation around shared, packages, typests, schemasts, mostly in shared/src/types.ts, shared/src/schemas.ts, shared/src/index.ts. This section covers 22 nodes and 21 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1756,8 +1675,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 8. rules/graphify.md ====== -->
-<h2 id="rules-graphify-md">8. rules/graphify.md</h2>
+<!-- ====== 7. rules/graphify.md ====== -->
+<h2 id="rules-graphify-md">7. rules/graphify.md</h2>
 <p>rules/graphify.md groups implementation around rules, graphifymd, agents, graphify, mostly in .agents/rules/graphify.md. This section covers 2 nodes and 1 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1823,8 +1742,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 9. workflows/graphify.md ====== -->
-<h2 id="workflows-graphify-md">9. workflows/graphify.md</h2>
+<!-- ====== 8. workflows/graphify.md ====== -->
+<h2 id="workflows-graphify-md">8. workflows/graphify.md</h2>
 <p>workflows/graphify.md groups implementation around workflows, graphifymd, agents, workflow, mostly in .agents/workflows/graphify.md. This section covers 2 nodes and 1 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1890,8 +1809,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 10. vite.config.ts ====== -->
-<h2 id="vite-config-ts">10. vite.config.ts</h2>
+<!-- ====== 9. vite.config.ts ====== -->
+<h2 id="vite-config-ts">9. vite.config.ts</h2>
 <p>vite.config.ts groups implementation around viteconfigts, apps, web, mostly in apps/web/vite.config.ts. This section covers 1 nodes and 0 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1952,17 +1871,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>446</td></tr>
-      <tr><td>Edges</td><td>601</td></tr>
+      <tr><td>Nodes</td><td>464</td></tr>
+      <tr><td>Edges</td><td>629</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>24</td></tr>
-      <tr><td>Documented Sections</td><td>9</td></tr>
+      <tr><td>Communities</td><td>22</td></tr>
+      <tr><td>Documented Sections</td><td>8</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>596</td></tr>
+      <tr><td>EXTRACTED</td><td>624</td></tr>
       <tr><td>INFERRED</td><td>5</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -1971,7 +1890,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>Gistmymail — Architecture Documentation</p>
-  <p>Generated: 2026-10-25 09:24 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-10-25 09:41 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

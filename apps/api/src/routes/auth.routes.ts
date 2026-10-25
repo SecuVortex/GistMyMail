@@ -81,18 +81,47 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
 
   // Get current user identity
   fastify.get('/api/me', async (request, reply) => {
-    const userId = request.cookies.session_user_id || 'usr_demo_01'; // Default to demo user if unauthenticated
+    const userId = request.cookies.session_user_id;
+    if (!userId) {
+      return { user: null, isAuthenticated: false, isDemo: false };
+    }
     const db = await getDatabase();
     const user = await db.findUserById(userId);
     if (!user) {
-      return reply.status(401).send({ error: 'User not authenticated' });
+      reply.clearCookie('session_user_id', { path: '/' });
+      return { user: null, isAuthenticated: false, isDemo: false };
     }
-    return { user };
+    return {
+      user,
+      isAuthenticated: true,
+      isDemo: user.id === 'usr_demo_01' || user.id.startsWith('usr_mock_')
+    };
+  });
+
+  // Explicit demo session starter (for hackathon / demo walkthroughs)
+  fastify.post('/auth/demo-session', async (request, reply) => {
+    const db = await getDatabase();
+    await db.init();
+    const demoUser = await db.findUserById('usr_demo_01');
+    if (!demoUser) {
+      return reply.status(500).send({ error: 'Failed to initialize demo session' });
+    }
+
+    reply.setCookie('session_user_id', demoUser.id, {
+      path: '/',
+      httpOnly: true,
+      secure: config.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 86400 // 24 hours
+    });
+
+    return { success: true, user: demoUser, isDemo: true };
   });
 
   // Logout
   fastify.post('/auth/logout', async (request, reply) => {
     reply.clearCookie('session_user_id', { path: '/' });
+    reply.clearCookie('oauth_state', { path: '/' });
     return { success: true };
   });
 };

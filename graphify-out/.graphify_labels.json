@@ -16,11 +16,9 @@
   "14": "shared/package.json",
   "15": "compilerOptions",
   "16": "compilerOptions",
-  "17": "validateAndAggregateItems",
   "18": "App.tsx",
   "19": "vite.config.ts",
   "20": "workflows/graphify.md",
   "21": "2. Core Subsystems",
-  "22": "PostgresDatabaseRepository",
   "23": "1. Google Cloud OAuth 2.0 Setup"
 }
