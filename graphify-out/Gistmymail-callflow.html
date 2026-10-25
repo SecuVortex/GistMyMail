@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gistmymail — Complete Call Flow &amp; Architecture Documentation</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+:root {
+  --bg: #0f172a; --surface: #1e293b; --border: #334155;
+  --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8;
+  --warn: #fbbf24; --err: #f87171; --ok: #34d399;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+h1 { font-size: 2.4rem; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+h2 { font-size: 1.7rem; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+h3 { font-size: 1.25rem; margin: 32px 0 12px; color: var(--accent); }
+h4 { font-size: 1.05rem; margin: 20px 0 8px; color: var(--warn); }
+p { margin: 8px 0; color: var(--muted); }
+.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
+.mermaid { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; overflow-x: auto; position: relative; }
+.mermaid.is-enhanced { padding: 0; overflow: hidden; min-height: 260px; }
+.mermaid-viewport { padding: 54px 24px 24px; overflow: hidden; cursor: grab; touch-action: none; min-height: 260px; }
+.mermaid-viewport.is-dragging { cursor: grabbing; }
+.mermaid-viewport svg { max-width: none !important; height: auto; transform-origin: 0 0; transition: transform 120ms ease; }
+.mermaid-toolbar { position: absolute; top: 10px; right: 10px; z-index: 3; display: flex; align-items: center; gap: 6px; padding: 6px; background: rgba(15,23,42,0.92); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
+.mermaid-toolbar button, .mermaid-toolbar .zoom-level { height: 28px; min-width: 32px; border: 1px solid var(--border); border-radius: 6px; background: #1e293b; color: var(--text); font: 600 0.78rem system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; }
+.mermaid-toolbar button { cursor: pointer; }
+.mermaid-toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+.mermaid-toolbar .zoom-level { min-width: 52px; color: var(--muted); background: transparent; }
+.call-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
+.call-table th { background: #1a2744; color: var(--accent); text-align: left; padding: 10px 14px; border: 1px solid var(--border); }
+.call-table td { padding: 8px 14px; border: 1px solid var(--border); vertical-align: top; }
+.call-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.tag-async { background: #7c3aed33; color: #a78bfa; }
+.tag-class { background: #05966933; color: var(--ok); }
+.tag-func { background: #2563eb33; color: var(--accent); }
+.tag-cmd { background: #d9770633; color: var(--warn); }
+.tag-endpoint { background: #dc262633; color: var(--err); }
+.tag-hook { background: #db277733; color: #f472b6; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 16px 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin: 16px 0; }
+.arrow-chain { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--accent); padding: 10px; background: rgba(56,189,248,0.06); border-radius: 6px; }
+code { font-family: 'Fira Code', 'Cascadia Code', monospace; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 3px; font-size: 0.88em; }
+ul, ol { margin: 8px 0 8px 24px; color: var(--muted); }
+li { margin: 4px 0; }
+a { color: var(--accent); }
+hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+#top-deck {
+  margin: 14px 0 24px;
+  height: 52px;
+  background: rgba(30, 41, 59, 0.78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+.deck-brand { display: flex; align-items: center; gap: 10px; }
+.brand-orb { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 12px var(--ok); }
+.brand-title { font-size: 14px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+.brand-badge { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 6px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent); }
+.deck-nav { display: flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.3); padding: 4px; border-radius: 10px; }
+.nav-pill { padding: 5px 12px; border-radius: 7px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none !important; transition: all 0.15s ease; }
+.nav-pill:hover { color: var(--text); background: rgba(255, 255, 255, 0.06); }
+.nav-pill.active { background: #6366f1; color: #fff; box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4); }
+.deck-stats { display: flex; align-items: center; gap: 8px; }
+.stat-chip { font-size: 11px; font-weight: 600; color: var(--muted); background: rgba(255, 255, 255, 0.05); padding: 4px 9px; border-radius: 7px; }
+.nav { position: sticky; top: 0; background: var(--bg); z-index: 10; padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; }
+.nav a { text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+@media (max-width: 768px) { .container { padding: 16px; } h1 { font-size: 1.8rem; } }
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Top Navigation Deck -->
+<div id="top-deck">
+  <div class="deck-brand">
+    <div class="brand-orb"></div>
+    <div class="brand-title">
+      GistMyMail
+      <span class="brand-badge">Hack Day Jaipur 2026</span>
+    </div>
+  </div>
+
+  <div class="deck-nav">
+    <a href="graph.html" class="nav-pill">🌐 Network Graph</a>
+    <a href="Gistmymail-callflow.html" class="nav-pill active">🔀 Architecture Callflow</a>
+    <a href="GRAPH_TREE.html" class="nav-pill">🌳 Hierarchy Tree</a>
+  </div>
+
+  <div class="deck-stats">
+    <div class="stat-chip">Mermaid Architecture &amp; Callflow</div>
+  </div>
+</div>
+
+<h1>Gistmymail — Complete Call Flow &amp; Architecture Documentation</h1>
+<p class="subtitle">Generated from graphify knowledge graph: 322 nodes, 477 edges, 20 communities. Commit: master</p>
+
+<div class="nav">
+    <a href="#overview">Architecture Overview</a>
+    <a href="#build-graph">Graph Build</a>
+    <a href="#cli-skills">CLI &amp; Skill Installers</a>
+    <a href="#serve-api">Serving API</a>
+    <a href="#shared-packages-typests">Shared Packages Typests</a>
+    <a href="#viteconfigts-apps-web">Viteconfigts Apps Web</a>
+</div>
+
+<!-- ====== Architecture Overview ====== -->
+<h2 id="overview">1. Architecture Overview</h2>
+
+<div class="mermaid">
+
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>127 nodes</small>")
+    class BUILD_GRAPH_321CBB04 module;
+    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>3 nodes</small>")
+    class CLI_SKILLS_9964CBB8 module;
+    SERVE_API_35EC8E86("Serving API<br/><small>169 nodes</small>")
+    class SERVE_API_35EC8E86 module;
+    SHARED_PACKAGES_TYPESTS_3B4FEB94("Shared Packages Typests<br/><small>22 nodes</small>")
+    class SHARED_PACKAGES_TYPESTS_3B4FEB94 module;
+    VITECONFIGTS_APPS_WEB_1357328C("Viteconfigts Apps Web<br/><small>1 nodes</small>")
+    class VITECONFIGTS_APPS_WEB_1357328C module;
+    SERVE_API_35EC8E86 -->|references x3| SHARED_PACKAGES_TYPESTS_3B4FEB94
+    BUILD_GRAPH_321CBB04 -->|contains| SERVE_API_35EC8E86
+    SHARED_PACKAGES_TYPESTS_3B4FEB94 -->|contains| SERVE_API_35EC8E86
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h4>Architecture Layers</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
+      <tr><td>Graph Build</td><td>127</td><td><code>0, 2, 7, 9, 13, 14, 15</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>3</td><td><code>18</code></td></tr><tr><td>Serving API</td><td>169</td><td><code>1, 4, 5, 6, 8, 10, 11, 12, 16, 17</code></td></tr><tr><td>Shared Packages Typests</td><td>22</td><td><code>3</code></td></tr><tr><td>Viteconfigts Apps Web</td><td>1</td><td><code>19</code></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Core Flow</h4>
+    <div class="arrow-chain">Graph Build -&gt; Serving API -&gt; Shared Packages Typests -&gt; CLI &amp; Skill Installers -&gt; Viteconfigts Apps Web</div>
+  </div>
+</div>
+<div class="grid">
+  <div class="card">
+    <h4>Graph Report Highlights</h4>
+    <ul>
+      <li>322 nodes · 477 edges · 20 communities (17 shown, 3 thin omitted)</li>
+      <li>Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)</li>
+      <li>Token cost: 0 input · 0 output</li>
+      <li>1. `DatabaseRepository` - 25 edges</li>
+      <li>2. `PostgresDatabaseRepository` - 23 edges</li>
+      <li>3. `MemoryDatabaseRepository` - 22 edges</li>
+    </ul>
+  </div>
+</div>
+<hr>
+<!-- ====== 2. Graph Build ====== -->
+<h2 id="build-graph">2. Graph Build</h2>
+<p>Graph Build groups implementation around packagejson, apps, web, tsconfigjson, mostly in apps/web/package.json, apps/api/package.json, apps/web/tsconfig.json. This section covers 127 nodes and 121 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Graph Build (127 nodes, 121 edges)
+    subgraph build_graph_apps_api_package_json_3f87ec1f["apps/api/package.json"]
+        apps_api_package_devdependencies_tsx_0706f9e7("tsx<br/><small>apps/api/package.json</small>")
+        apps_api_package_devdependencies_types_node_c95bec66("@types/node<br/><small>apps/api/package.json</small>")
+        apps_api_package_devdependencies_types_pg_be2e7563("@types/pg<br/><small>apps/api/package.json</small>")
+        apps_api_package_devdependencies_typescript_f612fa31("typescript<br/><small>apps/api/package.json</small>")
+        apps_api_package_devdependencies_vitest_979e0c8d("vitest<br/><small>apps/api/package.json</small>")
+        types_node_eed9011c("@types/node<br/><small>apps/api/package.json</small>")
+        types_pg_07120c0e("@types/pg<br/><small>apps/api/package.json</small>")
+        tsx_a90e8eec("tsx<br/><small>apps/api/package.json</small>")
+        apps_api_package_json_typescript_61788e39("typescript<br/><small>apps/api/package.json</small>")
+        vitest_4c9cfa13("vitest<br/><small>apps/api/package.json</small>")
+    end
+    subgraph build_graph_apps_web_package_json_279b86e3["apps/web/package.json"]
+        apps_web_package_dependencies_clsx_01aa5291("clsx<br/><small>apps/web/package.json</small>")
+        apps_web_package_dependencies_gistmymail_shared_7d51b0ae("@gistmymail/shared<br/><small>apps/web/package.json</small>")
+        apps_web_package_json_gistmymail_shared_4b7467e6("@gistmymail/shared<br/><small>apps/web/package.json</small>")
+        clsx_ed67b7e7("clsx<br/><small>apps/web/package.json</small>")
+        apps_web_package_dependencies_lucide_react_a0cc85b2("lucide-react<br/><small>apps/web/package.json</small>")
+        lucide_react_0d541e45("lucide-react<br/><small>apps/web/package.json</small>")
+        apps_web_package_dependencies_react_74df5b50("react<br/><small>apps/web/package.json</small>")
+        react_6b810c90("react<br/><small>apps/web/package.json</small>")
+    end
+    apps_api_package_devdependencies_types_node_c95bec66 -->|imports| types_node_eed9011c
+    apps_api_package_devdependencies_types_pg_be2e7563 -->|imports| types_pg_07120c0e
+    apps_api_package_devdependencies_tsx_0706f9e7 -->|imports| tsx_a90e8eec
+    apps_api_package_devdependencies_typescript_f612fa31 -->|imports| apps_api_package_json_typescript_61788e39
+    apps_api_package_devdependencies_vitest_979e0c8d -->|imports| vitest_4c9cfa13
+    apps_web_package_dependencies_gistmymail_shared_7d51b0ae -->|imports| apps_web_package_json_gistmymail_shared_4b7467e6
+    apps_web_package_dependencies_clsx_01aa5291 -->|imports| clsx_ed67b7e7
+    apps_web_package_dependencies_lucide_react_a0cc85b2 -->|imports| lucide_react_0d541e45
+    apps_web_package_dependencies_react_74df5b50 -->|imports| react_6b810c90
+    %% Omitted for readability: 109 nodes, 0 edges
+    class apps_api_package_devdependencies_tsx_0706f9e7 function;
+    class apps_api_package_devdependencies_types_node_c95bec66 function;
+    class apps_api_package_devdependencies_types_pg_be2e7563 function;
+    class apps_api_package_devdependencies_typescript_f612fa31 function;
+    class apps_api_package_devdependencies_vitest_979e0c8d function;
+    class types_node_eed9011c function;
+    class types_pg_07120c0e function;
+    class tsx_a90e8eec function;
+    class apps_api_package_json_typescript_61788e39 function;
+    class vitest_4c9cfa13 function;
+    class apps_web_package_dependencies_clsx_01aa5291 function;
+    class apps_web_package_dependencies_gistmymail_shared_7d51b0ae function;
+    class apps_web_package_json_gistmymail_shared_4b7467e6 function;
+    class clsx_ed67b7e7 function;
+    class apps_web_package_dependencies_lucide_react_a0cc85b2 function;
+    class lucide_react_0d541e45 function;
+    class apps_web_package_dependencies_react_74df5b50 function;
+    class react_6b810c90 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>api/package.json</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-endpoint">API</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>api/package.json node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>name</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>name node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>version</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>version node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>type</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>type node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>main</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>main node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>scripts</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>scripts node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>build</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>build node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>dev</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>dev node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>start</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>start node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>test</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>test:watch</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>test:repeat-runs</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>devDependencies</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>devDependencies node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>@types/node node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>@types/node</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>No direct outbound edge</td>
+  <td>@types/node node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>@types/pg node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>@types/pg</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>No direct outbound edge</td>
+  <td>@types/pg node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>tsx node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>tsx</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>No direct outbound edge</td>
+  <td>tsx node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>typescript node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>typescript</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>No direct outbound edge</td>
+  <td>typescript node in apps/api/package.json.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>vitest</code><br><small style="color:var(--muted)">apps/api/package.json</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>web/tsconfig.json</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Reads, resolves, or persists project configuration.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>compilerOptions</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>compilerOptions node in apps/web/tsconfig.json.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>target</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>target node in apps/web/tsconfig.json.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>useDefineForClassFields</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>useDefineForClassFields node in apps/web/tsconfig.json.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>lib</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>lib node in apps/web/tsconfig.json.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>ES2022</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ES2022 node in apps/web/tsconfig.json.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>DOM</code><br><small style="color:var(--muted)">apps/web/tsconfig.json</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DOM node in apps/web/tsconfig.json.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>apps/web/package.json</code></td><td>35 nodes</td></tr>
+<tr><td><code>apps/api/package.json</code></td><td>23 nodes</td></tr>
+<tr><td><code>apps/web/tsconfig.json</code></td><td>22 nodes</td></tr>
+<tr><td><code>package.json</code></td><td>19 nodes</td></tr>
+<tr><td><code>packages/shared/package.json</code></td><td>14 nodes</td></tr>
+<tr><td><code>packages/shared/tsconfig.json</code></td><td>14 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x96, imports x19, extends x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 3. CLI & Skill Installers ====== -->
+<h2 id="cli-skills">3. CLI &amp; Skill Installers</h2>
+<p>CLI &amp; Skill Installers groups implementation around apptsx, apps, web, maintsx, mostly in web/src/App.tsx, web/src/main.tsx. This section covers 3 nodes and 2 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: CLI &amp; Skill Installers (3 nodes, 2 edges)
+    subgraph cli_skills_web_src_App_tsx_b401c089["web/src/App.tsx"]
+        apps_web_src_app_9afe72b4("App.tsx")
+        apps_web_src_app_app_e2b10e93("App()<br/><small>web/src/App.tsx</small>")
+    end
+    apps_web_src_main_34983031("main.tsx")
+    apps_web_src_app_9afe72b4 -->|imports| apps_web_src_main_34983031
+    class apps_web_src_app_9afe72b4 ui;
+    class apps_web_src_app_app_e2b10e93 ui;
+    class apps_web_src_main_34983031 ui;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>App.tsx</code><br><small style="color:var(--muted)">web/src/App.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>main.tsx</code><br><small style="color:var(--muted)">web/src/main.tsx</small></td>
+  <td>Module file in web/src/App.tsx.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>App()</code><br><small style="color:var(--muted)">web/src/App.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>App() node in web/src/App.tsx.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>main.tsx</code><br><small style="color:var(--muted)">web/src/main.tsx</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>App.tsx</code><br><small style="color:var(--muted)">web/src/App.tsx</small></td>
+  <td>No direct outbound edge</td>
+  <td>Module file in web/src/main.tsx.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>web/src/App.tsx</code></td><td>2 nodes</td></tr>
+<tr><td><code>web/src/main.tsx</code></td><td>1 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x1, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 4. Serving API ====== -->
+<h2 id="serve-api">4. Serving API</h2>
+<p>Serving API groups implementation around api, apps, postgrests, interfacets, mostly in src/db/postgres.ts, src/db/interface.ts, src/db/memory.ts. This section covers 169 nodes and 328 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Serving API (169 nodes, 328 edges)
+    subgraph serve_api_ai_aggregator_deterministic_ts_3fb83a8d["ai/aggregator/deterministic.ts"]
+        apps_api_src_ai_aggregator_deterministic_normali_663e8fa9("normalizeForComparison()<br/><small>ai/aggregator/deterministic.ts</small>")
+        apps_api_src_ai_aggregator_deterministic_validat_befdbfca("validateAndAggregateItems()<br/><small>ai/aggregator/deterministic.ts</small>")
+        apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf("verifyEvidenceInSource()<br/><small>ai/aggregator/deterministic.ts</small>")
+    end
+    subgraph serve_api_ai_providers_ollama_ts_7b207d06["ai/providers/ollama.ts"]
+        apps_api_src_ai_providers_ollama_ollamaaiprovide_795d445e("OllamaAIProvider<br/><small>ai/providers/ollama.ts</small>")
+        apps_api_src_ai_providers_ollama_ollamaaiprovide_bd72e0b6("constructor()<br/><small>ai/providers/ollama.ts</small>")
+        apps_api_src_ai_providers_ollama_ollamaaiprovide_6093f79b("extractEmail()<br/><small>ai/providers/ollama.ts</small>")
+    end
+    subgraph serve_api_ai_providers_mock_ts_537e949b["ai/providers/mock.ts"]
+        apps_api_src_ai_providers_mock_mockaiprovider_fdf80a7f("MockAIProvider<br/><small>ai/providers/mock.ts</small>")
+        apps_api_src_ai_providers_mock_mockaiprovider_ex_db352d8e("extractEmail()<br/><small>ai/providers/mock.ts</small>")
+    end
+    subgraph serve_api_ai_providers_openrouter_ts_afd00fc2["ai/providers/openrouter.ts"]
+        apps_api_src_ai_providers_openrouter_openroutera_097f1eac("OpenRouterAIProvider<br/><small>ai/providers/openrouter.ts</small>")
+        apps_api_src_ai_providers_openrouter_openroutera_ddf808f0("constructor()<br/><small>ai/providers/openrouter.ts</small>")
+    end
+    subgraph serve_api_src_db_index_ts_37943f91["src/db/index.ts"]
+        apps_api_src_db_index_getdatabase_643ddb22("getDatabase()<br/><small>src/db/index.ts</small>")
+        apps_api_src_db_index_e5fbb80f("index.ts")
+    end
+    apps_api_src_app_92b00a8f("app.ts")
+    apps_api_src_ai_index_getaiprovider_dc85685f("getAIProvider()<br/><small>src/ai/index.ts</small>")
+    apps_api_src_db_interface_databaserepository_55103da3("DatabaseRepository<br/><small>src/db/interface.ts</small>")
+    apps_api_src_db_memory_memorydatabaserepository_af61b3b5("MemoryDatabaseRepository<br/><small>src/db/memory.ts</small>")
+    apps_api_src_db_postgres_postgresdatabasereposit_1ffc9444("PostgresDatabaseRepository<br/><small>src/db/postgres.ts</small>")
+    apps_api_src_digest_generator_generateuserdigest_f142a010("generateUserDigest()<br/><small>src/digest/generator.ts</small>")
+    apps_api_src_ai_aggregator_deterministic_normali_663e8fa9 -->|calls| apps_api_src_ai_aggregator_deterministic_validat_befdbfca
+    apps_api_src_ai_aggregator_deterministic_normali_663e8fa9 -->|calls| apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf
+    apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf -->|calls| apps_api_src_ai_aggregator_deterministic_validat_befdbfca
+    apps_api_src_ai_aggregator_deterministic_validat_befdbfca -->|calls| apps_api_src_digest_generator_generateuserdigest_f142a010
+    apps_api_src_ai_index_getaiprovider_dc85685f -->|calls| apps_api_src_digest_generator_generateuserdigest_f142a010
+    apps_api_src_ai_providers_mock_mockaiprovider_fdf80a7f -->|method| apps_api_src_ai_providers_mock_mockaiprovider_ex_db352d8e
+    apps_api_src_ai_providers_ollama_ollamaaiprovide_795d445e -->|method| apps_api_src_ai_providers_ollama_ollamaaiprovide_bd72e0b6
+    apps_api_src_ai_providers_ollama_ollamaaiprovide_795d445e -->|method| apps_api_src_ai_providers_ollama_ollamaaiprovide_6093f79b
+    apps_api_src_ai_providers_openrouter_openroutera_097f1eac -->|method| apps_api_src_ai_providers_openrouter_openroutera_ddf808f0
+    apps_api_src_db_index_getdatabase_643ddb22 -->|calls| apps_api_src_digest_generator_generateuserdigest_f142a010
+    apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_interface_databaserepository_55103da3
+    apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_memory_memorydatabaserepository_af61b3b5
+    apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_postgres_postgresdatabasereposit_1ffc9444
+    %% Omitted for readability: 151 nodes, 0 edges
+    class apps_api_src_ai_aggregator_deterministic_normali_663e8fa9 function;
+    class apps_api_src_ai_aggregator_deterministic_validat_befdbfca function;
+    class apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf function;
+    class apps_api_src_ai_providers_ollama_ollamaaiprovide_795d445e klass;
+    class apps_api_src_ai_providers_ollama_ollamaaiprovide_bd72e0b6 function;
+    class apps_api_src_ai_providers_ollama_ollamaaiprovide_6093f79b function;
+    class apps_api_src_ai_providers_mock_mockaiprovider_fdf80a7f klass;
+    class apps_api_src_ai_providers_mock_mockaiprovider_ex_db352d8e function;
+    class apps_api_src_ai_providers_openrouter_openroutera_097f1eac api;
+    class apps_api_src_ai_providers_openrouter_openroutera_ddf808f0 function;
+    class apps_api_src_db_index_getdatabase_643ddb22 function;
+    class apps_api_src_db_index_e5fbb80f module;
+    class apps_api_src_app_92b00a8f module;
+    class apps_api_src_ai_index_getaiprovider_dc85685f function;
+    class apps_api_src_db_interface_databaserepository_55103da3 klass;
+    class apps_api_src_db_memory_memorydatabaserepository_af61b3b5 klass;
+    class apps_api_src_db_postgres_postgresdatabasereposit_1ffc9444 klass;
+    class apps_api_src_digest_generator_generateuserdigest_f142a010 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small><br><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>Module file in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br>+18 more</td>
+  <td>DatabaseRepository node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>.init()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.init() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserById() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserByGoogleSub() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.createOrUpdateUser() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getAccountsForUser() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>.getAccountById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getAccountById() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>.saveAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveAccount() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>.updateAccountLabel()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.updateAccountLabel() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>.disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.disconnectAccount() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>.getStoredRefreshToken()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getStoredRefreshToken() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>.saveEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveEmailMessages() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>.getEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getEmailMessages() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>.saveDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveDigest() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>.getLatestDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>.getDigestById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getDigestById() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>.getDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getDeliveryPreference() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>.saveDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.saveDeliveryPreference() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>.createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.createDeliveryLog() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>.getDueDeliveries()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getDueDeliveries() node in src/db/interface.ts.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Module file in src/db/memory.ts.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>Module file in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br><code>createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br><code>createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br>+17 more</td>
+  <td>PostgresDatabaseRepository node in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>.constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.constructor() node in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>.init()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.init() node in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserById() node in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.findUserByGoogleSub() node in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.createOrUpdateUser() node in src/db/postgres.ts.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td>No direct outbound edge</td>
+  <td>.getAccountsForUser() node in src/db/postgres.ts.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>src/db/postgres.ts</code></td><td>22 nodes</td></tr>
+<tr><td><code>src/db/interface.ts</code></td><td>21 nodes</td></tr>
+<tr><td><code>src/db/memory.ts</code></td><td>21 nodes</td></tr>
+<tr><td><code>apps/api/package.json</code></td><td>15 nodes</td></tr>
+<tr><td><code>apps/api/tsconfig.json</code></td><td>13 nodes</td></tr>
+<tr><td><code>src/auth/oauth.ts</code></td><td>6 nodes</td></tr>
+<tr><td><code>api/src/config.ts</code></td><td>5 nodes</td></tr>
+<tr><td><code>ai/aggregator/deterministic.ts</code></td><td>4 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x75, contains x64, method x64, imports x55. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 5. Shared Packages Typests ====== -->
+<h2 id="shared-packages-typests">5. Shared Packages Typests</h2>
+<p>Shared Packages Typests groups implementation around shared, packages, typests, schemasts, mostly in shared/src/types.ts, shared/src/schemas.ts, shared/src/index.ts. This section covers 22 nodes and 21 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Shared Packages Typests (22 nodes, 21 edges)
+    subgraph shared_packages_typests_shared_src_types_ts_f84512b6["shared/src/types.ts"]
+        packages_shared_src_types_ea2bd147("types.ts")
+        packages_shared_src_types_aiprovidertype_34279fc6("AIProviderType<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_connectedaccount_b0ee42ef("ConnectedAccount<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_deliverylog_9843ea1f("DeliveryLog<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_deliverypreference_241dcdc3("DeliveryPreference<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_digest_13830902("Digest<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_digestcategory_532f58f2("DigestCategory<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_digestitem_3a923f81("DigestItem<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_emailmessage_72d3e5e7("EmailMessage<br/><small>shared/src/types.ts</small>")
+        packages_shared_src_types_evidencequote_c1211457("EvidenceQuote<br/><small>shared/src/types.ts</small>")
+    end
+    subgraph shared_packages_typests_shared_src_schemas_ts_33d1ab6a["shared/src/schemas.ts"]
+        packages_shared_src_schemas_d1c37e30("schemas.ts")
+        packages_shared_src_schemas_digestcategoryschema_250a2f9d("DigestCategorySchema<br/><small>shared/src/schemas.ts</small>")
+        packages_shared_src_schemas_extractedactionrawsc_7164fa4c("ExtractedActionRawSchema<br/><small>shared/src/schemas.ts</small>")
+        packages_shared_src_schemas_extractedbatchrespon_c27c3943("ExtractedBatchResponseSchema<br/><small>shared/src/schemas.ts</small>")
+        packages_shared_src_schemas_generatedigestreques_c56e415d("GenerateDigestRequestSchema<br/><small>shared/src/schemas.ts</small>")
+        packages_shared_src_schemas_updateaccountlabelsc_831e58d6("UpdateAccountLabelSchema<br/><small>shared/src/schemas.ts</small>")
+        packages_shared_src_schemas_updatedeliveryprefer_61a01907("UpdateDeliveryPreferencesSchema<br/><small>shared/src/schemas.ts</small>")
+    end
+    packages_shared_src_index_477184c2("index.ts")
+    packages_shared_src_index_477184c2 -->|re exports| packages_shared_src_schemas_d1c37e30
+    packages_shared_src_index_477184c2 -->|re exports| packages_shared_src_types_ea2bd147
+    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_digestcategoryschema_250a2f9d
+    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_extractedactionrawsc_7164fa4c
+    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_extractedbatchrespon_c27c3943
+    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_generatedigestreques_c56e415d
+    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_updateaccountlabelsc_831e58d6
+    packages_shared_src_schemas_d1c37e30 -->|contains| packages_shared_src_schemas_updatedeliveryprefer_61a01907
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_aiprovidertype_34279fc6
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_connectedaccount_b0ee42ef
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_deliverylog_9843ea1f
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_deliverypreference_241dcdc3
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_digest_13830902
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_digestcategory_532f58f2
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_digestitem_3a923f81
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_emailmessage_72d3e5e7
+    packages_shared_src_types_ea2bd147 -->|contains| packages_shared_src_types_evidencequote_c1211457
+    %% Omitted for readability: 4 nodes, 0 edges
+    class packages_shared_src_types_ea2bd147 module;
+    class packages_shared_src_types_aiprovidertype_34279fc6 klass;
+    class packages_shared_src_types_connectedaccount_b0ee42ef klass;
+    class packages_shared_src_types_deliverylog_9843ea1f klass;
+    class packages_shared_src_types_deliverypreference_241dcdc3 klass;
+    class packages_shared_src_types_digest_13830902 klass;
+    class packages_shared_src_types_digestcategory_532f58f2 klass;
+    class packages_shared_src_types_digestitem_3a923f81 klass;
+    class packages_shared_src_types_emailmessage_72d3e5e7 klass;
+    class packages_shared_src_types_evidencequote_c1211457 klass;
+    class packages_shared_src_schemas_d1c37e30 module;
+    class packages_shared_src_schemas_digestcategoryschema_250a2f9d klass;
+    class packages_shared_src_schemas_extractedactionrawsc_7164fa4c klass;
+    class packages_shared_src_schemas_extractedbatchrespon_c27c3943 klass;
+    class packages_shared_src_schemas_generatedigestreques_c56e415d klass;
+    class packages_shared_src_schemas_updateaccountlabelsc_831e58d6 klass;
+    class packages_shared_src_schemas_updatedeliveryprefer_61a01907 klass;
+    class packages_shared_src_index_477184c2 module;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>shared/src/index.ts</code><br><small style="color:var(--muted)">shared/src/index.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in shared/src/index.ts.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>schemas.ts</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>DigestCategorySchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DigestCategorySchema node in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>ExtractedActionRawSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ExtractedActionRawSchema node in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>ExtractedBatchResponseSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ExtractedBatchResponseSchema node in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>UpdateAccountLabelSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>UpdateAccountLabelSchema node in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>UpdateDeliveryPreferencesSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>UpdateDeliveryPreferencesSchema node in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>GenerateDigestRequestSchema</code><br><small style="color:var(--muted)">shared/src/schemas.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>GenerateDigestRequestSchema node in shared/src/schemas.ts.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>src/types.ts</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>PurposeLabel</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>PurposeLabel node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>User</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>User node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>ConnectedAccount</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ConnectedAccount node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>EmailMessage</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>EmailMessage node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>DigestCategory</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DigestCategory node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>EvidenceQuote</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>EvidenceQuote node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>DigestItem</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DigestItem node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>Digest</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Digest node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>DeliveryPreference</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DeliveryPreference node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>DeliveryLog</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>DeliveryLog node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>AIProviderType</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>AIProviderType node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>ExtractedActionRaw</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ExtractedActionRaw node in shared/src/types.ts.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>ExtractedEmailSummaryRaw</code><br><small style="color:var(--muted)">shared/src/types.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ExtractedEmailSummaryRaw node in shared/src/types.ts.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>shared/src/types.ts</code></td><td>14 nodes</td></tr>
+<tr><td><code>shared/src/schemas.ts</code></td><td>7 nodes</td></tr>
+<tr><td><code>shared/src/index.ts</code></td><td>1 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x19, re exports x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 6. Viteconfigts Apps Web ====== -->
+<h2 id="viteconfigts-apps-web">6. Viteconfigts Apps Web</h2>
+<p>Viteconfigts Apps Web groups implementation around viteconfigts, apps, web, mostly in apps/web/vite.config.ts. This section covers 1 nodes and 0 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Viteconfigts Apps Web (1 nodes, 0 edges)
+    apps_web_vite_config_d4d869a8("vite.config.ts")
+    class apps_web_vite_config_d4d869a8 module;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>vite.config.ts</code><br><small style="color:var(--muted)">apps/web/vite.config.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Module file in apps/web/vite.config.ts.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>apps/web/vite.config.ts</code></td><td>1 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: No high-confidence call edges detected. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<h2 id="stats">Project Statistics</h2>
+
+<div class="grid">
+  <div class="card">
+    <h4>Graph</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><td>Nodes</td><td>322</td></tr>
+      <tr><td>Edges</td><td>477</td></tr>
+      <tr><td>Hyperedges</td><td>0</td></tr>
+      <tr><td>Communities</td><td>20</td></tr>
+      <tr><td>Documented Sections</td><td>5</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Edge Confidence</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><td>EXTRACTED</td><td>472</td></tr>
+      <tr><td>INFERRED</td><td>5</td></tr>
+      <tr><td>AMBIGUOUS</td><td>0</td></tr>
+    </table>
+  </div>
+</div>
+
+<div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
+  <p>Gistmymail — Architecture Documentation</p>
+  <p>Generated: 2026-10-25 08:26 UTC · graphify callflow-html</p>
+</div>
+
+</div><!-- .container -->
+
+<script>
+(function () {
+  const mermaidConfig = {
+    startOnLoad: false,
+    theme: 'dark',
+    securityLevel: 'loose',
+    flowchart: { htmlLabels: true, useMaxWidth: true },
+    themeVariables: {
+      primaryColor: '#1e293b',
+      primaryTextColor: '#e2e8f0',
+      primaryBorderColor: '#38bdf8',
+      secondaryColor: '#0f172a',
+      tertiaryColor: '#334155',
+      lineColor: '#64748b',
+      textColor: '#e2e8f0',
+    }
+  };
+
+  mermaid.initialize(mermaidConfig);
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function enhanceMermaidDiagrams() {
+    document.querySelectorAll('.mermaid').forEach((container) => {
+      if (container.dataset.zoomReady === 'true') return;
+      const svg = container.querySelector('svg');
+      if (!svg) return;
+
+      container.dataset.zoomReady = 'true';
+      container.classList.add('is-enhanced');
+
+      const viewport = document.createElement('div');
+      viewport.className = 'mermaid-viewport';
+      svg.parentNode.insertBefore(viewport, svg);
+      viewport.appendChild(svg);
+
+      const toolbar = document.createElement('div');
+      toolbar.className = 'mermaid-toolbar';
+      toolbar.innerHTML = [
+        '<button type="button" data-action="zoom-out" title="Zoom out">-</button>',
+        '<span class="zoom-level" data-role="level">100%</span>',
+        '<button type="button" data-action="zoom-in" title="Zoom in">+</button>',
+        '<button type="button" data-action="fit" title="Fit width">Fit</button>',
+        '<button type="button" data-action="reset" title="Reset view">Reset</button>'
+      ].join('');
+      container.insertBefore(toolbar, viewport);
+
+      const state = { scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0, originX: 0, originY: 0 };
+      const level = toolbar.querySelector('[data-role="level"]');
+
+      function applyTransform() {
+        svg.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+        level.textContent = `${Math.round(state.scale * 100)}%`;
+      }
+
+      function zoomBy(delta) {
+        state.scale = clamp(state.scale + delta, 0.25, 3);
+        applyTransform();
+      }
+
+      function reset() {
+        state.scale = 1;
+        state.x = 0;
+        state.y = 0;
+        applyTransform();
+      }
+
+      function fitWidth() {
+        const rawWidth = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width
+          ? svg.viewBox.baseVal.width
+          : svg.getBoundingClientRect().width / state.scale;
+        if (!rawWidth) {
+          reset();
+          return;
+        }
+        state.scale = clamp((viewport.clientWidth - 48) / rawWidth, 0.25, 1.4);
+        state.x = 0;
+        state.y = 0;
+        applyTransform();
+      }
+
+      toolbar.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-action]');
+        if (!button) return;
+        const action = button.dataset.action;
+        if (action === 'zoom-in') zoomBy(0.15);
+        if (action === 'zoom-out') zoomBy(-0.15);
+        if (action === 'fit') fitWidth();
+        if (action === 'reset') reset();
+      });
+
+      viewport.addEventListener('wheel', (event) => {
+        if (!event.ctrlKey && !event.metaKey) return;
+        event.preventDefault();
+        zoomBy(event.deltaY < 0 ? 0.1 : -0.1);
+      }, { passive: false });
+
+      viewport.addEventListener('pointerdown', (event) => {
+        if (event.button !== 0) return;
+        state.dragging = true;
+        state.startX = event.clientX;
+        state.startY = event.clientY;
+        state.originX = state.x;
+        state.originY = state.y;
+        viewport.classList.add('is-dragging');
+        viewport.setPointerCapture(event.pointerId);
+      });
+
+      viewport.addEventListener('pointermove', (event) => {
+        if (!state.dragging) return;
+        state.x = state.originX + event.clientX - state.startX;
+        state.y = state.originY + event.clientY - state.startY;
+        applyTransform();
+      });
+
+      function endDrag(event) {
+        if (!state.dragging) return;
+        state.dragging = false;
+        viewport.classList.remove('is-dragging');
+        if (viewport.hasPointerCapture(event.pointerId)) {
+          viewport.releasePointerCapture(event.pointerId);
+        }
+      }
+
+      viewport.addEventListener('pointerup', endDrag);
+      viewport.addEventListener('pointercancel', endDrag);
+      applyTransform();
+    });
+  }
+
+  function renderMermaid() {
+    const result = mermaid.run
+      ? mermaid.run({ querySelector: '.mermaid' })
+      : Promise.resolve();
+    Promise.resolve(result)
+      .then(enhanceMermaidDiagrams)
+      .catch((error) => {
+        console.error('Mermaid render failed:', error);
+        enhanceMermaidDiagrams();
+      });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaid);
+  } else {
+    renderMermaid();
+  }
+})();
+</script>
+
+</body>
+</html>
