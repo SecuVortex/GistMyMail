@@ -1,0 +1,24 @@
+{
+  "name": "gistmymail-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GistMyMail — Multi-inbox Gmail AI Daily Digest with Deterministic Evidence Verification",
+  "scripts": {
+    "build": "pnpm --filter shared build && pnpm --filter api build && pnpm --filter web build",
+    "dev": "pnpm --parallel dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev:web": "pnpm --filter web dev",
+    "test": "pnpm --filter api test",
+    "test:runs": "pnpm --filter api test:repeat-runs",
+    "graphify": "graphify extract . --code-only && graphify cluster-only . --no-label && graphify export html"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
