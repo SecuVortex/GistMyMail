@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>Gistmymail — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 464 nodes, 629 edges, 22 communities. Commit: 53264a6</p>
+<p class="subtitle">Generated from graphify knowledge graph: 591 nodes, 754 edges, 29 communities. Commit: 7a22029</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -69,6 +69,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#serve-api">Serving API</a>
     <a href="#security-global">Security &amp; Global Graph</a>
     <a href="#src-types-ts">src/types.ts</a>
+    <a href="#gistmymail-ai-providers-inference-configuration">🤖 GistMyMail — AI Providers &amp; Inference Configuration</a>
+    <a href="#gistmymail-email-digest-generation-delivery-guid">📬 GistMyMail — Email Digest Generation &amp; Delivery Guide</a>
     <a href="#rules-graphify-md">rules/graphify.md</a>
     <a href="#workflows-graphify-md">workflows/graphify.md</a>
     <a href="#vite-config-ts">vite.config.ts</a>
@@ -81,16 +83,20 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>245 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>303 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
-    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>15 nodes</small>")
+    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>30 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>144 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>168 nodes</small>")
     class SERVE_API_35EC8E86 module;
-    SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>33 nodes</small>")
+    SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>31 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
     SRC_TYPES_TS_7EA4E4D6("src/types.ts<br/><small>22 nodes</small>")
     class SRC_TYPES_TS_7EA4E4D6 module;
+    GISTMYMAIL_AI_PROVIDERS_INFERENCE_CONFIGURATION_28BB82F0("🤖 GistMyMail — AI Providers &amp; Inference Configuration<br/><small>17 nodes</small>")
+    class GISTMYMAIL_AI_PROVIDERS_INFERENCE_CONFIGURATION_28BB82F0 module;
+    GISTMYMAIL_EMAIL_DIGEST_GENERATION_DELIVERY_GUID_97E39032("📬 GistMyMail — Email Digest Generation &amp; Delivery Guide<br/><small>15 nodes</small>")
+    class GISTMYMAIL_EMAIL_DIGEST_GENERATION_DELIVERY_GUID_97E39032 module;
     RULES_GRAPHIFY_MD_3459230E("rules/graphify.md<br/><small>2 nodes</small>")
     class RULES_GRAPHIFY_MD_3459230E module;
     WORKFLOWS_GRAPHIFY_MD_C6A40BAC("workflows/graphify.md<br/><small>2 nodes</small>")
@@ -98,10 +104,12 @@ flowchart LR
     VITE_CONFIG_TS_0DD6E2FA("vite.config.ts<br/><small>1 nodes</small>")
     class VITE_CONFIG_TS_0DD6E2FA module;
     SERVE_API_35EC8E86 -->|references x3| SRC_TYPES_TS_7EA4E4D6
-    SECURITY_GLOBAL_5B9C6A04 -->|contains x2| BUILD_GRAPH_321CBB04
-    BUILD_GRAPH_321CBB04 -->|extends| SERVE_API_35EC8E86
+    BUILD_GRAPH_321CBB04 -->|extends x2| SERVE_API_35EC8E86
+    BUILD_GRAPH_321CBB04 -->|references x2| SECURITY_GLOBAL_5B9C6A04
     SRC_TYPES_TS_7EA4E4D6 -->|contains| SERVE_API_35EC8E86
-    SECURITY_GLOBAL_5B9C6A04 -->|references| INGEST_CACHE_UPDATE_FF457338
+    BUILD_GRAPH_321CBB04 -->|references| GISTMYMAIL_AI_PROVIDERS_INFERENCE_CONFIGURATION_28BB82F0
+    BUILD_GRAPH_321CBB04 -->|references| INGEST_CACHE_UPDATE_FF457338
+    BUILD_GRAPH_321CBB04 -->|contains| GISTMYMAIL_EMAIL_DIGEST_GENERATION_DELIVERY_GUID_97E39032
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -118,19 +126,19 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>245</td><td><code>4, 7, 8, 0, 2, 9, 18, 12, 14, 15, 16</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>15</td><td><code>23</code></td></tr><tr><td>Serving API</td><td>144</td><td><code>1, 5, 10, 11, 6</code></td></tr><tr><td>Security &amp; Global Graph</td><td>33</td><td><code>21</code></td></tr><tr><td>src/types.ts</td><td>22</td><td><code>3</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>13</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>20</code></td></tr><tr><td>vite.config.ts</td><td>1</td><td><code>19</code></td></tr>
+      <tr><td>Graph Build</td><td>303</td><td><code>4, 17, 0, 7, 8, 2, 9, 18, 25, 14, 15, 16</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>30</td><td><code>12, 21</code></td></tr><tr><td>Serving API</td><td>168</td><td><code>5, 1, 23, 6, 10, 28, 22</code></td></tr><tr><td>Security &amp; Global Graph</td><td>31</td><td><code>11, 27</code></td></tr><tr><td>src/types.ts</td><td>22</td><td><code>3</code></td></tr><tr><td>🤖 GistMyMail — AI Providers &amp; Inference Configuration</td><td>17</td><td><code>24</code></td></tr><tr><td>📬 GistMyMail — Email Digest Generation &amp; Delivery Guide</td><td>15</td><td><code>26</code></td></tr><tr><td>rules/graphify.md</td><td>2</td><td><code>13</code></td></tr><tr><td>workflows/graphify.md</td><td>2</td><td><code>20</code></td></tr><tr><td>vite.config.ts</td><td>1</td><td><code>19</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Security &amp; Global Graph -&gt; Graph Build -&gt; Serving API -&gt; src/types.ts -&gt; Ingestion &amp; Updates -&gt; rules/graphify.md -&gt; workflows/graphify.md</div>
+    <div class="arrow-chain">Graph Build -&gt; Serving API -&gt; src/types.ts -&gt; Ingestion &amp; Updates -&gt; Security &amp; Global Graph -&gt; 🤖 GistMyMail — AI Providers &amp; Inference Configuration -&gt; 📬 GistMyMail — Email Digest Generation &amp; Delivery Guide</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>464 nodes · 629 edges · 22 communities (18 shown, 4 thin omitted)</li>
+      <li>591 nodes · 754 edges · 29 communities (25 shown, 4 thin omitted)</li>
       <li>Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `DatabaseRepository` - 25 edges</li>
@@ -142,12 +150,12 @@ flowchart LR
 <hr>
 <!-- ====== 2. Graph Build ====== -->
 <h2 id="build-graph">2. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, apps, web, api, mostly in plan.md, apps/api/package.json, package.json. This section covers 245 nodes and 237 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around packagejson, apps, web, docs, mostly in plan.md, apps/api/package.json, package.json. This section covers 303 nodes and 295 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (245 nodes, 237 edges)
+    %% Section: Graph Build (303 nodes, 295 edges)
     subgraph build_graph_apps_api_package_json_3f87ec1f["apps/api/package.json"]
         apps_api_package_dependencies_fastify_a2df9009("fastify<br/><small>apps/api/package.json</small>")
         apps_api_package_dependencies_fastify_cookie_f75e1a77("@fastify/cookie<br/><small>apps/api/package.json</small>")
@@ -176,7 +184,7 @@ flowchart LR
     apps_api_package_dependencies_pg_74fce8c5 -->|imports| pg_96dd8d96
     apps_api_package_dependencies_zod_2e7419e3 -->|imports| apps_api_package_json_zod_b74847e1
     apps_api_package_devdependencies_types_node_c95bec66 -->|imports| types_node_eed9011c
-    %% Omitted for readability: 227 nodes, 0 edges
+    %% Omitted for readability: 285 nodes, 0 edges
     class apps_api_package_dependencies_fastify_a2df9009 function;
     class apps_api_package_dependencies_fastify_cookie_f75e1a77 function;
     class apps_api_package_dependencies_fastify_cors_8b88de84 function;
@@ -218,6 +226,14 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
+  <td><code>plan.md</code><br><small style="color:var(--muted)">plan.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing plan.md.</td>
+</tr>
+<tr>
+  <td>2</td>
   <td><code>GistMyMail — Hackathon MVP Implementation Plan</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -225,7 +241,7 @@ flowchart LR
   <td>Documentation node describing GistMyMail — Hackathon MVP Implementation Plan.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>3</td>
   <td><code>1. Scope and architectural decisions</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -233,7 +249,7 @@ flowchart LR
   <td>Documentation node describing 1. Scope and architectural decisions.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>4</td>
   <td><code>Recommended stack</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -241,7 +257,7 @@ flowchart LR
   <td>Documentation node describing Recommended stack.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>5</td>
   <td><code>2. System architecture, including parallel AI processing</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -249,7 +265,7 @@ flowchart LR
   <td>Documentation node describing 2. System architecture, including parallel AI processing.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>6</td>
   <td><code>Hosted versus self-hosted responsibilities</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -257,7 +273,7 @@ flowchart LR
   <td>Documentation node describing Hosted versus self-hosted responsibilities.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>7</td>
   <td><code>3. Google Cloud and OAuth setup</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -265,7 +281,7 @@ flowchart LR
   <td>Documentation node describing 3. Google Cloud and OAuth setup.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>8</td>
   <td><code>Step-by-step setup</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -273,7 +289,7 @@ flowchart LR
   <td>Documentation node describing Step-by-step setup.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>9</td>
   <td><code>Required scopes</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -281,7 +297,7 @@ flowchart LR
   <td>Documentation node describing Required scopes.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>10</td>
   <td><code>Complete OAuth flow</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -289,7 +305,7 @@ flowchart LR
   <td>Documentation node describing Complete OAuth flow.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>11</td>
   <td><code>4. Gmail synchronization and deduplication</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -297,7 +313,7 @@ flowchart LR
   <td>Documentation node describing 4. Gmail synchronization and deduplication.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>12</td>
   <td><code>Initial sync</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -305,7 +321,7 @@ flowchart LR
   <td>Documentation node describing Initial sync.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>13</td>
   <td><code>Threads and duplicates</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -313,7 +329,7 @@ flowchart LR
   <td>Documentation node describing Threads and duplicates.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>Incremental synchronization</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -321,7 +337,7 @@ flowchart LR
   <td>Documentation node describing Incremental synchronization.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>5. Parallel AI processing design</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -329,7 +345,7 @@ flowchart LR
   <td>Documentation node describing 5. Parallel AI processing design.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>16</td>
   <td><code>Provider and worker interfaces</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -337,7 +353,7 @@ flowchart LR
   <td>Documentation node describing Provider and worker interfaces.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>17</td>
   <td><code>Worker responsibilities</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -345,7 +361,7 @@ flowchart LR
   <td>Documentation node describing Worker responsibilities.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>18</td>
   <td><code>Five execution modes</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -353,7 +369,7 @@ flowchart LR
   <td>Documentation node describing Five execution modes.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>19</td>
   <td><code>Parallel execution sequence</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -361,7 +377,7 @@ flowchart LR
   <td>Documentation node describing Parallel execution sequence.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>20</td>
   <td><code>Concurrency and failure behavior</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -369,7 +385,7 @@ flowchart LR
   <td>Documentation node describing Concurrency and failure behavior.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>21</td>
   <td><code>6. Structured AI output and deterministic aggregation</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -377,7 +393,7 @@ flowchart LR
   <td>Documentation node describing 6. Structured AI output and deterministic aggregation.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>22</td>
   <td><code>Example worker schema</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -385,7 +401,7 @@ flowchart LR
   <td>Documentation node describing Example worker schema.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>23</td>
   <td><code>Example aggregated digest JSON</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -393,7 +409,7 @@ flowchart LR
   <td>Documentation node describing Example aggregated digest JSON.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>24</td>
   <td><code>Aggregator rules</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -401,7 +417,7 @@ flowchart LR
   <td>Documentation node describing Aggregator rules.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>25</td>
   <td><code>7. Database schema</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -409,7 +425,7 @@ flowchart LR
   <td>Documentation node describing 7. Database schema.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>26</td>
   <td><code>Database rules</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -417,7 +433,7 @@ flowchart LR
   <td>Documentation node describing Database rules.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>27</td>
   <td><code>8. API endpoints</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -425,7 +441,7 @@ flowchart LR
   <td>Documentation node describing 8. API endpoints.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>28</td>
   <td><code>Starting a job</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -433,7 +449,7 @@ flowchart LR
   <td>Documentation node describing Starting a job.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>29</td>
   <td><code>Job status</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -441,20 +457,12 @@ flowchart LR
   <td>Documentation node describing Job status.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>30</td>
   <td><code>9. Security and privacy controls</code><br><small style="color:var(--muted)">plan.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>Documentation node describing 9. Security and privacy controls.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>OpenRouter-specific privacy consideration</code><br><small style="color:var(--muted)">plan.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing OpenRouter-specific privacy consideration.</td>
 </tr>
 </table>
 
@@ -463,75 +471,88 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>plan.md</code></td><td>45 nodes</td></tr>
+      <tr><td><code>plan.md</code></td><td>46 nodes</td></tr>
 <tr><td><code>apps/api/package.json</code></td><td>38 nodes</td></tr>
 <tr><td><code>package.json</code></td><td>36 nodes</td></tr>
 <tr><td><code>apps/web/package.json</code></td><td>35 nodes</td></tr>
-<tr><td><code>README.md</code></td><td>25 nodes</td></tr>
+<tr><td><code>README.md</code></td><td>26 nodes</td></tr>
 <tr><td><code>apps/web/tsconfig.json</code></td><td>22 nodes</td></tr>
-<tr><td><code>packages/shared/package.json</code></td><td>14 nodes</td></tr>
-<tr><td><code>packages/shared/tsconfig.json</code></td><td>14 nodes</td></tr>
+<tr><td><code>docs/DATABASE.md</code></td><td>17 nodes</td></tr>
+<tr><td><code>docs/DEPLOYMENT.md</code></td><td>17 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x188, imports x26, extends x20, imports x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x241, imports x26, extends x20, references x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 3. Ingestion & Updates ====== -->
 <h2 id="ingest-cache-update">3. Ingestion &amp; Updates</h2>
-<p>Ingestion &amp; Updates groups implementation around integration, guidemd, docs, step, mostly in docs/INTEGRATION_GUIDE.md. This section covers 15 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Ingestion &amp; Updates groups implementation around docs, google, integration, oauthmd, mostly in docs/GOOGLE_OAUTH.md, docs/INTEGRATION_GUIDE.md. This section covers 30 nodes and 28 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Ingestion &amp; Updates (15 nodes, 14 edges)
-    docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6("1. Google Cloud OAuth 2.0 Setup<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_gistmymail_integration_se_26191eef("GistMyMail Integration &amp; Setup Guide<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_2_ai_provider_configurati_0ea7c1ad("2. AI Provider Configuration<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_3_database_configuration_be3368bc("3. Database Configuration<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_a59d8437("INTEGRATION_GUIDE.md")
-    docs_integration_guide_4_environment_variables_d_39b51adb("4. Environment Variables Dictionary<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_mode_a_openrouter_ai_gate_0094c21f("Mode A: OpenRouter AI Gateway (Cloud /...<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_mode_b_ollama_100_private_5eeedbc3("Mode B: Ollama (100% Private Local Infe...<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_mode_c_deterministic_mock_22ebbc2f("Mode C: Deterministic Mock Provider (Ze...<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_option_1_in_memory_mode_d_f03aa97f("Option 1: In-Memory Mode (Default / Zer...<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_option_2_postgresql_neon_da92c586("Option 2: PostgreSQL (Neon / Supabase /...<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_step_1_create_a_google_cl_72249350("Step 1: Create a Google Cloud Project<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_step_2_enable_the_gmail_a_07459b02("Step 2: Enable the Gmail API<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_step_3_configure_the_oaut_03f1cb7b("Step 3: Configure the OAuth Consent Screen<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_step_4_create_oauth_2_0_c_70b556ea("Step 4: Create OAuth 2.0 Client Credent...<br/><small>docs/INTEGRATION_GUIDE.md</small>")
-    docs_integration_guide_a59d8437 -->|contains| docs_integration_guide_gistmymail_integration_se_26191eef
+    %% Section: Ingestion &amp; Updates (30 nodes, 28 edges)
+    subgraph ingest_cache_update_docs_GOOGLE_OAUTH_md_b819eade["docs/GOOGLE_OAUTH.md"]
+        docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5("📋 Step-by-Step Setup Tutorial<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_gistmymail_complete_google_clo_a54c8834("🔑 GistMyMail — Complete Google Cloud OA...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_8b2e567a("GOOGLE_OAUTH.md")
+        docs_google_oauth_step_1_create_a_google_cloud_p_72cbacdf("Step 1: Create a Google Cloud Project<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_2_enable_the_gmail_api_10a50b29("Step 2: Enable the Gmail API<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_3_configure_the_oauth_con_0d3e4f6b("Step 3: Configure the OAuth Consent Screen<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_4_configure_data_access_e_e56b58ab("Step 4: Configure Data Access &amp; Exact S...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_5_add_test_users_critical_da3280b4("Step 5: Add Test Users (CRITICAL)<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_6_create_oauth_2_0_web_cl_9248c902("Step 6: Create OAuth 2.0 Web Client Cre...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_7_configure_environment_v_24a296f0("Step 7: Configure Environment Variables...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_step_8_restart_backend_test_th_04d48ba2("Step 8: Restart Backend &amp; Test the Conn...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_what_you_will_accomplish_860746f7("🎯 What You Will Accomplish<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_permission_scopes_principle_le_e3ada098("🔐 Permission Scopes Principle (Least Pr...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+        docs_google_oauth_moving_to_production_google_ve_f82ddc01("🚀 Moving to Production &amp; Google Verific...<br/><small>docs/GOOGLE_OAUTH.md</small>")
+    end
+    subgraph ingest_cache_update_docs_INTEGRATION_GUIDE_md_be065c11["docs/INTEGRATION_GUIDE.md"]
+        docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6("1. Google Cloud OAuth 2.0 Setup<br/><small>docs/INTEGRATION_GUIDE.md</small>")
+        docs_integration_guide_gistmymail_integration_se_26191eef("GistMyMail Integration &amp; Setup Guide<br/><small>docs/INTEGRATION_GUIDE.md</small>")
+        docs_integration_guide_2_ai_provider_configurati_0ea7c1ad("2. AI Provider Configuration<br/><small>docs/INTEGRATION_GUIDE.md</small>")
+        docs_integration_guide_3_database_configuration_be3368bc("3. Database Configuration<br/><small>docs/INTEGRATION_GUIDE.md</small>")
+    end
+    docs_google_oauth_8b2e567a -->|contains| docs_google_oauth_gistmymail_complete_google_clo_a54c8834
+    docs_google_oauth_gistmymail_complete_google_clo_a54c8834 -->|contains| docs_google_oauth_moving_to_production_google_ve_f82ddc01
+    docs_google_oauth_gistmymail_complete_google_clo_a54c8834 -->|contains| docs_google_oauth_permission_scopes_principle_le_e3ada098
+    docs_google_oauth_gistmymail_complete_google_clo_a54c8834 -->|contains| docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5
+    docs_google_oauth_gistmymail_complete_google_clo_a54c8834 -->|contains| docs_google_oauth_what_you_will_accomplish_860746f7
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_1_create_a_google_cloud_p_72cbacdf
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_2_enable_the_gmail_api_10a50b29
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_3_configure_the_oauth_con_0d3e4f6b
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_4_configure_data_access_e_e56b58ab
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_5_add_test_users_critical_da3280b4
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_6_create_oauth_2_0_web_cl_9248c902
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_7_configure_environment_v_24a296f0
+    docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 -->|contains| docs_google_oauth_step_8_restart_backend_test_th_04d48ba2
     docs_integration_guide_gistmymail_integration_se_26191eef -->|contains| docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6
     docs_integration_guide_gistmymail_integration_se_26191eef -->|contains| docs_integration_guide_2_ai_provider_configurati_0ea7c1ad
     docs_integration_guide_gistmymail_integration_se_26191eef -->|contains| docs_integration_guide_3_database_configuration_be3368bc
-    docs_integration_guide_gistmymail_integration_se_26191eef -->|contains| docs_integration_guide_4_environment_variables_d_39b51adb
-    docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6 -->|contains| docs_integration_guide_step_1_create_a_google_cl_72249350
-    docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6 -->|contains| docs_integration_guide_step_2_enable_the_gmail_a_07459b02
-    docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6 -->|contains| docs_integration_guide_step_3_configure_the_oaut_03f1cb7b
-    docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6 -->|contains| docs_integration_guide_step_4_create_oauth_2_0_c_70b556ea
-    docs_integration_guide_2_ai_provider_configurati_0ea7c1ad -->|contains| docs_integration_guide_mode_a_openrouter_ai_gate_0094c21f
-    docs_integration_guide_2_ai_provider_configurati_0ea7c1ad -->|contains| docs_integration_guide_mode_b_ollama_100_private_5eeedbc3
-    docs_integration_guide_2_ai_provider_configurati_0ea7c1ad -->|contains| docs_integration_guide_mode_c_deterministic_mock_22ebbc2f
-    docs_integration_guide_3_database_configuration_be3368bc -->|contains| docs_integration_guide_option_1_in_memory_mode_d_f03aa97f
-    docs_integration_guide_3_database_configuration_be3368bc -->|contains| docs_integration_guide_option_2_postgresql_neon_da92c586
+    %% Omitted for readability: 12 nodes, 0 edges
+    class docs_google_oauth_step_by_step_setup_tutorial_ab2e3bc5 concept;
+    class docs_google_oauth_gistmymail_complete_google_clo_a54c8834 concept;
+    class docs_google_oauth_8b2e567a concept;
+    class docs_google_oauth_step_1_create_a_google_cloud_p_72cbacdf concept;
+    class docs_google_oauth_step_2_enable_the_gmail_api_10a50b29 concept;
+    class docs_google_oauth_step_3_configure_the_oauth_con_0d3e4f6b concept;
+    class docs_google_oauth_step_4_configure_data_access_e_e56b58ab concept;
+    class docs_google_oauth_step_5_add_test_users_critical_da3280b4 concept;
+    class docs_google_oauth_step_6_create_oauth_2_0_web_cl_9248c902 concept;
+    class docs_google_oauth_step_7_configure_environment_v_24a296f0 concept;
+    class docs_google_oauth_step_8_restart_backend_test_th_04d48ba2 concept;
+    class docs_google_oauth_what_you_will_accomplish_860746f7 concept;
+    class docs_google_oauth_permission_scopes_principle_le_e3ada098 concept;
+    class docs_google_oauth_moving_to_production_google_ve_f82ddc01 concept;
     class docs_integration_guide_1_google_cloud_oauth_2_0_a042b5a6 concept;
     class docs_integration_guide_gistmymail_integration_se_26191eef concept;
     class docs_integration_guide_2_ai_provider_configurati_0ea7c1ad concept;
     class docs_integration_guide_3_database_configuration_be3368bc concept;
-    class docs_integration_guide_a59d8437 concept;
-    class docs_integration_guide_4_environment_variables_d_39b51adb concept;
-    class docs_integration_guide_mode_a_openrouter_ai_gate_0094c21f concept;
-    class docs_integration_guide_mode_b_ollama_100_private_5eeedbc3 concept;
-    class docs_integration_guide_mode_c_deterministic_mock_22ebbc2f concept;
-    class docs_integration_guide_option_1_in_memory_mode_d_f03aa97f concept;
-    class docs_integration_guide_option_2_postgresql_neon_da92c586 concept;
-    class docs_integration_guide_step_1_create_a_google_cl_72249350 concept;
-    class docs_integration_guide_step_2_enable_the_gmail_a_07459b02 concept;
-    class docs_integration_guide_step_3_configure_the_oaut_03f1cb7b concept;
-    class docs_integration_guide_step_4_create_oauth_2_0_c_70b556ea concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -555,6 +576,126 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
+  <td><code>GOOGLE_OAUTH.md</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing GOOGLE_OAUTH.md.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>🔑 GistMyMail — Complete Google Cloud OAuth 2.0 &amp; Gmail API Guide</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🔑 GistMyMail — Complete Google Cloud OAuth 2.0 &amp; Gmail API Guide.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>🎯 What You Will Accomplish</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🎯 What You Will Accomplish.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>🔐 Permission Scopes Principle (Least Privilege)</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🔐 Permission Scopes Principle (Least Privilege).</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>📋 Step-by-Step Setup Tutorial</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 📋 Step-by-Step Setup Tutorial.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>Step 1: Create a Google Cloud Project</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 1: Create a Google Cloud Project.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>Step 2: Enable the Gmail API</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 2: Enable the Gmail API.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>Step 3: Configure the OAuth Consent Screen</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 3: Configure the OAuth Consent Screen.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>Step 4: Configure Data Access &amp; Exact Scopes</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 4: Configure Data Access &amp; Exact Scopes.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>Step 5: Add Test Users (CRITICAL)</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 5: Add Test Users (CRITICAL).</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>Step 6: Create OAuth 2.0 Web Client Credentials</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 6: Create OAuth 2.0 Web Client Credentials.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>Step 7: Configure Environment Variables in GistMyMail</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 7: Configure Environment Variables in GistMyMail.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>Step 8: Restart Backend &amp; Test the Connection</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 8: Restart Backend &amp; Test the Connection.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>🛠️ OAuth Troubleshooting Checklist</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🛠️ OAuth Troubleshooting Checklist.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>🚀 Moving to Production &amp; Google Verification</code><br><small style="color:var(--muted)">docs/GOOGLE_OAUTH.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🚀 Moving to Production &amp; Google Verification.</td>
+</tr>
+<tr>
+  <td>16</td>
   <td><code>INTEGRATION_GUIDE.md</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -562,7 +703,7 @@ flowchart LR
   <td>Documentation node describing INTEGRATION_GUIDE.md.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>17</td>
   <td><code>GistMyMail Integration &amp; Setup Guide</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -570,7 +711,7 @@ flowchart LR
   <td>Documentation node describing GistMyMail Integration &amp; Setup Guide.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>18</td>
   <td><code>1. Google Cloud OAuth 2.0 Setup</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -578,7 +719,7 @@ flowchart LR
   <td>Documentation node describing 1. Google Cloud OAuth 2.0 Setup.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>19</td>
   <td><code>Step 1: Create a Google Cloud Project</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -586,7 +727,7 @@ flowchart LR
   <td>Documentation node describing Step 1: Create a Google Cloud Project.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>20</td>
   <td><code>Step 2: Enable the Gmail API</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -594,7 +735,7 @@ flowchart LR
   <td>Documentation node describing Step 2: Enable the Gmail API.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>21</td>
   <td><code>Step 3: Configure the OAuth Consent Screen</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -602,7 +743,7 @@ flowchart LR
   <td>Documentation node describing Step 3: Configure the OAuth Consent Screen.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>22</td>
   <td><code>Step 4: Create OAuth 2.0 Client Credentials</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -610,7 +751,7 @@ flowchart LR
   <td>Documentation node describing Step 4: Create OAuth 2.0 Client Credentials.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>23</td>
   <td><code>2. AI Provider Configuration</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -618,7 +759,7 @@ flowchart LR
   <td>Documentation node describing 2. AI Provider Configuration.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>24</td>
   <td><code>Mode A: OpenRouter AI Gateway (Cloud / Free Tier)</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -626,7 +767,7 @@ flowchart LR
   <td>Documentation node describing Mode A: OpenRouter AI Gateway (Cloud / Free Tier).</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>25</td>
   <td><code>Mode B: Ollama (100% Private Local Inference)</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -634,7 +775,7 @@ flowchart LR
   <td>Documentation node describing Mode B: Ollama (100% Private Local Inference).</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>26</td>
   <td><code>Mode C: Deterministic Mock Provider (Zero Setup / Fast Tests)</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -642,7 +783,7 @@ flowchart LR
   <td>Documentation node describing Mode C: Deterministic Mock Provider (Zero Setup / Fast Tests).</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>27</td>
   <td><code>3. Database Configuration</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -650,7 +791,7 @@ flowchart LR
   <td>Documentation node describing 3. Database Configuration.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>28</td>
   <td><code>Option 1: In-Memory Mode (Default / Zero Dependencies)</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -658,7 +799,7 @@ flowchart LR
   <td>Documentation node describing Option 1: In-Memory Mode (Default / Zero Dependencies).</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>29</td>
   <td><code>Option 2: PostgreSQL (Neon / Supabase / Local)</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -666,7 +807,7 @@ flowchart LR
   <td>Documentation node describing Option 2: PostgreSQL (Neon / Supabase / Local).</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>30</td>
   <td><code>4. Environment Variables Dictionary</code><br><small style="color:var(--muted)">docs/INTEGRATION_GUIDE.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -680,24 +821,25 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>docs/INTEGRATION_GUIDE.md</code></td><td>15 nodes</td></tr>
+      <tr><td><code>docs/GOOGLE_OAUTH.md</code></td><td>15 nodes</td></tr>
+<tr><td><code>docs/INTEGRATION_GUIDE.md</code></td><td>15 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x14. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x28. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 4. Serving API ====== -->
 <h2 id="serve-api">4. Serving API</h2>
-<p>Serving API groups implementation around api, apps, postgrests, interfacets, mostly in src/db/postgres.ts, src/db/interface.ts, src/db/memory.ts. This section covers 144 nodes and 315 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around api, apps, troubleshootingmd, docs, mostly in docs/TROUBLESHOOTING.md, src/db/postgres.ts, src/db/interface.ts. This section covers 168 nodes and 338 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (144 nodes, 315 edges)
+    %% Section: Serving API (168 nodes, 338 edges)
     subgraph serve_api_ai_aggregator_deterministic_ts_3fb83a8d["ai/aggregator/deterministic.ts"]
         apps_api_src_ai_aggregator_deterministic_normali_663e8fa9("normalizeForComparison()<br/><small>ai/aggregator/deterministic.ts</small>")
         apps_api_src_ai_aggregator_deterministic_validat_befdbfca("validateAndAggregateItems()<br/><small>ai/aggregator/deterministic.ts</small>")
@@ -739,7 +881,7 @@ flowchart LR
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_interface_databaserepository_55103da3
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_memory_memorydatabaserepository_af61b3b5
     apps_api_src_db_index_e5fbb80f -->|imports| apps_api_src_db_postgres_postgresdatabasereposit_1ffc9444
-    %% Omitted for readability: 126 nodes, 0 edges
+    %% Omitted for readability: 150 nodes, 0 edges
     class apps_api_src_ai_aggregator_deterministic_normali_663e8fa9 function;
     class apps_api_src_ai_aggregator_deterministic_validat_befdbfca function;
     class apps_api_src_ai_aggregator_deterministic_verifye_ea12d5bf function;
@@ -781,243 +923,243 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
-  <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small><br><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>Module file in src/db/interface.ts.</td>
+  <td><code>getAIProvider()</code><br><small style="color:var(--muted)">src/ai/index.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>generator.ts</code><br><small style="color:var(--muted)">src/digest/generator.ts</small></td>
+  <td>getAIProvider() node in src/ai/index.ts.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
-  <td><code>createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br>+18 more</td>
-  <td>DatabaseRepository node in src/db/interface.ts.</td>
+  <td><code>app.ts</code><br><small style="color:var(--muted)">api/src/app.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>accountsRoutes()</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br>+11 more</td>
+  <td>Module file in api/src/app.ts.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>.init()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>buildApp()</code><br><small style="color:var(--muted)">api/src/app.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.init() node in src/db/interface.ts.</td>
+  <td>External entry / no inbound edge</td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">api/src/index.ts</small><br><code>main()</code><br><small style="color:var(--muted)">api/src/index.ts</small></td>
+  <td>buildApp() node in api/src/app.ts.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.findUserById() node in src/db/interface.ts.</td>
+  <td><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>client.ts</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small><br>+5 more</td>
+  <td>Module file in src/auth/oauth.ts.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>BASE_SCOPES</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>.findUserByGoogleSub() node in src/db/interface.ts.</td>
+  <td>BASE_SCOPES node in src/auth/oauth.ts.</td>
 </tr>
 <tr>
   <td>6</td>
-  <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.createOrUpdateUser() node in src/db/interface.ts.</td>
+  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><span class="tag tag-cmd">Entry</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>exchangeOAuthCode()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>generateGoogleAuthUrl()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td>getOAuth2Client() node in src/auth/oauth.ts.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>generateGoogleAuthUrl()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.getAccountsForUser() node in src/db/interface.ts.</td>
+  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>authRoutes()</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small></td>
+  <td>generateGoogleAuthUrl() node in src/auth/oauth.ts.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>.getAccountById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>exchangeOAuthCode()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.getAccountById() node in src/db/interface.ts.</td>
+  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>authRoutes()</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>encryptToken()</code><br><small style="color:var(--muted)">src/security/encryption.ts</small></td>
+  <td>exchangeOAuthCode() node in src/auth/oauth.ts.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>.saveAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.saveAccount() node in src/db/interface.ts.</td>
+  <td><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><span class="tag tag-cmd">Entry</span></td>
+  <td><code>getOAuth2Client()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>client.ts</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br><code>decryptToken()</code><br><small style="color:var(--muted)">src/security/encryption.ts</small><br><code>fetchAccountEmails()</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br>+2 more</td>
+  <td>getAuthorizedGmailClient() node in src/auth/oauth.ts.</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>.updateAccountLabel()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.updateAccountLabel() node in src/db/interface.ts.</td>
+  <td><code>config.ts</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>app.ts</code><br><small style="color:var(--muted)">api/src/app.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>encryption.ts</code><br><small style="color:var(--muted)">src/security/encryption.ts</small><br>+4 more</td>
+  <td>Module file in api/src/config.ts.</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>.disconnectAccount()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>loadEnvironmentFiles()</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>.disconnectAccount() node in src/db/interface.ts.</td>
+  <td>loadEnvironmentFiles() node in api/src/config.ts.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>.getStoredRefreshToken()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>EnvSchema</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>.getStoredRefreshToken() node in src/db/interface.ts.</td>
+  <td>EnvSchema node in api/src/config.ts.</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>.saveEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>AppConfig</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>.saveEmailMessages() node in src/db/interface.ts.</td>
+  <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>.getEmailMessages()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>loadConfig()</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>.getEmailMessages() node in src/db/interface.ts.</td>
+  <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>.saveDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.saveDigest() node in src/db/interface.ts.</td>
+  <td><code>app.ts</code><br><small style="color:var(--muted)">api/src/app.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small></td>
+  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>encryption.ts</code><br><small style="color:var(--muted)">src/security/encryption.ts</small><br>+4 more</td>
+  <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>.getLatestDigest()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td><code>db/index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>config</code><br><small style="color:var(--muted)">api/src/config.ts</small><br><code>config.ts</code><br><small style="color:var(--muted)">api/src/config.ts</small></td>
+  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br>+12 more</td>
+  <td>Module file in src/db/index.ts.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>.getDigestById()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.getDigestById() node in src/db/interface.ts.</td>
+  <td>External entry / no inbound edge</td>
+  <td><code>accounts.routes.ts</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>accountsRoutes()</code><br><small style="color:var(--muted)">src/routes/accounts.routes.ts</small><br><code>auth.routes.ts</code><br><small style="color:var(--muted)">src/routes/auth.routes.ts</small><br>+17 more</td>
+  <td>getDatabase() node in src/db/index.ts.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>.getDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.getDeliveryPreference() node in src/db/interface.ts.</td>
+  <td><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>generator.ts</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">api/src/index.ts</small><br>+5 more</td>
+  <td>Module file in src/delivery/scheduler.ts.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>.saveDeliveryPreference()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.saveDeliveryPreference() node in src/db/interface.ts.</td>
+  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
+  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small><br><code>renderHtmlDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>renderPlainTextDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br>+2 more</td>
+  <td>processDueDelivery() node in src/delivery/scheduler.ts.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>.createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>startDeliveryScheduler()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.createDeliveryLog() node in src/db/interface.ts.</td>
+  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>index.ts</code><br><small style="color:var(--muted)">api/src/index.ts</small><br><code>main()</code><br><small style="color:var(--muted)">api/src/index.ts</small></td>
+  <td>startDeliveryScheduler() node in src/delivery/scheduler.ts.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>.getDueDeliveries()</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td><code>stopDeliveryScheduler()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>.getDueDeliveries() node in src/db/interface.ts.</td>
+  <td>stopDeliveryScheduler() node in src/delivery/scheduler.ts.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>memory.ts</code><br><small style="color:var(--muted)">src/db/memory.ts</small></td>
+  <td><code>generator.ts</code><br><small style="color:var(--muted)">src/digest/generator.ts</small></td>
   <td><span class="tag tag-class">Module</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>Module file in src/db/memory.ts.</td>
+  <td><code>getAIProvider()</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br>+3 more</td>
+  <td><code>client.ts</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>fetchAccountEmails()</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br>+2 more</td>
+  <td>Module file in src/digest/generator.ts.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>postgres.ts</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>DatabaseRepository</code><br><small style="color:var(--muted)">src/db/interface.ts</small><br><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>interface.ts</code><br><small style="color:var(--muted)">src/db/interface.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>Module file in src/db/postgres.ts.</td>
+  <td><code>generateUserDigest()</code><br><small style="color:var(--muted)">src/digest/generator.ts</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>getAIProvider()</code><br><small style="color:var(--muted)">src/ai/index.ts</small><br><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br>+2 more</td>
+  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>fetchAccountEmails()</code><br><small style="color:var(--muted)">src/gmail/client.ts</small><br>+2 more</td>
+  <td>generateUserDigest() node in src/digest/generator.ts.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>index.ts</code><br><small style="color:var(--muted)">src/db/index.ts</small></td>
-  <td><code>constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br><code>createDeliveryLog()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br><code>createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small><br>+17 more</td>
-  <td>PostgresDatabaseRepository node in src/db/postgres.ts.</td>
+  <td><code>renderer.ts</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
+  <td>Module file in src/digest/renderer.ts.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>.constructor()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><code>groupItems()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.constructor() node in src/db/postgres.ts.</td>
+  <td>External entry / no inbound edge</td>
+  <td><code>renderHtmlDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>renderPlainTextDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
+  <td>groupItems() node in src/digest/renderer.ts.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>.init()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><code>renderPlainTextDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>getDatabase()</code><br><small style="color:var(--muted)">src/db/index.ts</small><br><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.init() node in src/db/postgres.ts.</td>
+  <td><code>groupItems()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
+  <td>renderPlainTextDigest() node in src/digest/renderer.ts.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>.findUserById()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><code>renderHtmlDigest()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.findUserById() node in src/db/postgres.ts.</td>
+  <td><code>groupItems()</code><br><small style="color:var(--muted)">src/digest/renderer.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
+  <td>Exports documentation data to a target format.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>.findUserByGoogleSub()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.findUserByGoogleSub() node in src/db/postgres.ts.</td>
+  <td><code>sender.ts</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>oauth.ts</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>scheduler.ts</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small></td>
+  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
+  <td>Module file in src/gmail/sender.ts.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>.createOrUpdateUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><code>createMimeMessage()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.createOrUpdateUser() node in src/db/postgres.ts.</td>
+  <td>External entry / no inbound edge</td>
+  <td><code>sendDigestEmail()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
+  <td>createMimeMessage() node in src/gmail/sender.ts.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>.getAccountsForUser()</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
+  <td><code>sendDigestEmail()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>PostgresDatabaseRepository</code><br><small style="color:var(--muted)">src/db/postgres.ts</small></td>
-  <td>No direct outbound edge</td>
-  <td>.getAccountsForUser() node in src/db/postgres.ts.</td>
+  <td><code>createMimeMessage()</code><br><small style="color:var(--muted)">src/gmail/sender.ts</small><br><code>getAuthorizedGmailClient()</code><br><small style="color:var(--muted)">src/auth/oauth.ts</small><br><code>processDueDelivery()</code><br><small style="color:var(--muted)">src/delivery/scheduler.ts</small><br>+1 more</td>
+  <td><code>digest.routes.ts</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small><br><code>digestRoutes()</code><br><small style="color:var(--muted)">src/routes/digest.routes.ts</small></td>
+  <td>sendDigestEmail() node in src/gmail/sender.ts.</td>
 </tr>
 </table>
 
@@ -1026,91 +1168,88 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>src/db/postgres.ts</code></td><td>22 nodes</td></tr>
+      <tr><td><code>docs/TROUBLESHOOTING.md</code></td><td>24 nodes</td></tr>
+<tr><td><code>src/db/postgres.ts</code></td><td>22 nodes</td></tr>
 <tr><td><code>src/db/interface.ts</code></td><td>21 nodes</td></tr>
 <tr><td><code>src/db/memory.ts</code></td><td>21 nodes</td></tr>
 <tr><td><code>src/auth/oauth.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>api/src/config.ts</code></td><td>6 nodes</td></tr>
 <tr><td><code>ai/aggregator/deterministic.ts</code></td><td>4 nodes</td></tr>
 <tr><td><code>ai/providers/ollama.ts</code></td><td>4 nodes</td></tr>
-<tr><td><code>ai/providers/openrouter.ts</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x71, imports x64, method x64, calls x51. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: imports x71, contains x70, imports x64, method x64. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 5. Security & Global Graph ====== -->
 <h2 id="security-global">5. Security &amp; Global Graph</h2>
-<p>Security &amp; Global Graph groups implementation around docs, architecturemd, evaluationmd, securitymd, mostly in docs/ARCHITECTURE.md, docs/EVALUATION.md, docs/SECURITY.md. This section covers 33 nodes and 32 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Security &amp; Global Graph groups implementation around docs, setupmd, securitymd, step, mostly in docs/SETUP.md, docs/SECURITY.md. This section covers 31 nodes and 29 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Security &amp; Global Graph (33 nodes, 32 edges)
-    subgraph security_global_docs_ARCHITECTURE_md_d125c099["docs/ARCHITECTURE.md"]
-        docs_architecture_2_core_subsystems_25f3bf9a("2. Core Subsystems<br/><small>docs/ARCHITECTURE.md</small>")
-        docs_architecture_gistmymail_architecture_data_f_fd9afbe4("GistMyMail Architecture &amp; Data Flow<br/><small>docs/ARCHITECTURE.md</small>")
-        docs_architecture_60c309cf("ARCHITECTURE.md")
-        docs_architecture_1_high_level_system_architectu_a9c32df3("1. High-Level System Architecture<br/><small>docs/ARCHITECTURE.md</small>")
-        docs_architecture_2_1_multi_inbox_ingestion_purp_35ac2134("2.1 Multi-Inbox Ingestion &amp; Purpose Lab...<br/><small>docs/ARCHITECTURE.md</small>")
-        docs_architecture_2_2_the_deterministic_evidence_2c05e331("2.2 The Deterministic Evidence Verifier...<br/><small>docs/ARCHITECTURE.md</small>")
-        docs_architecture_2_3_prompt_injection_defense_q_f4b9a394("2.3 Prompt Injection Defense &amp; Quarantine<br/><small>docs/ARCHITECTURE.md</small>")
-    end
-    subgraph security_global_docs_EVALUATION_md_84b567f4["docs/EVALUATION.md"]
-        docs_evaluation_gistmymail_evaluation_hackathon_bf0694ae("GistMyMail Evaluation &amp; Hackathon Rubri...<br/><small>docs/EVALUATION.md</small>")
-        docs_evaluation_4_special_graphify_award_submiss_6ec500e6("4. Special Graphify Award Submission<br/><small>docs/EVALUATION.md</small>")
-        docs_evaluation_eff75e20("EVALUATION.md")
-        docs_evaluation_2_3_repeat_test_runs_benchmark_t_43c463b6("2. 3 Repeat Test Runs Benchmark Table<br/><small>docs/EVALUATION.md</small>")
-        docs_evaluation_3_automated_test_coverage_vitest_9d3cad75("3. Automated Test Coverage (Vitest)<br/><small>docs/EVALUATION.md</small>")
-    end
+    %% Section: Security &amp; Global Graph (31 nodes, 29 edges)
     subgraph security_global_docs_SECURITY_md_44dee0f3["docs/SECURITY.md"]
         docs_security_gistmymail_security_model_threat_d_b6fd02a6("GistMyMail Security Model &amp; Threat Defense<br/><small>docs/SECURITY.md</small>")
         docs_security_3_prompt_injection_defense_quarant_7153d95b("3. Prompt Injection Defense &amp; Quarantin...<br/><small>docs/SECURITY.md</small>")
-        docs_security_18d24c32("SECURITY.md")
         docs_security_2_cryptographic_token_protection_a_8ccae84c("2. Cryptographic Token Protection (AES-...<br/><small>docs/SECURITY.md</small>")
+        docs_security_1_threat_model_security_posture_553b2cf7("1. Threat Model &amp; Security Posture<br/><small>docs/SECURITY.md</small>")
+        docs_security_4_google_oauth_2_0_scope_minimizat_d4c8c491("4. Google OAuth 2.0 Scope Minimization<br/><small>docs/SECURITY.md</small>")
+        docs_security_5_security_checklist_for_deploymen_ad1a2bfe("5. Security Checklist for Deployments<br/><small>docs/SECURITY.md</small>")
+        docs_security_detection_mechanism_ad998e76("Detection Mechanism:<br/><small>docs/SECURITY.md</small>")
+        docs_security_key_security_properties_2af81c71("Key Security Properties:<br/><small>docs/SECURITY.md</small>")
+        docs_security_remediation_workflow_838491a1("Remediation Workflow:<br/><small>docs/SECURITY.md</small>")
+        docs_security_18d24c32("SECURITY.md")
     end
-    readme_f78a71af("README.md")
-    plan_bed97175("plan.md")
-    readme_f78a71af -->|references| docs_architecture_60c309cf
-    readme_f78a71af -->|references| docs_evaluation_eff75e20
-    readme_f78a71af -->|references| docs_security_18d24c32
-    readme_f78a71af -->|references| plan_bed97175
-    docs_architecture_60c309cf -->|contains| docs_architecture_gistmymail_architecture_data_f_fd9afbe4
-    docs_architecture_gistmymail_architecture_data_f_fd9afbe4 -->|contains| docs_architecture_1_high_level_system_architectu_a9c32df3
-    docs_architecture_gistmymail_architecture_data_f_fd9afbe4 -->|contains| docs_architecture_2_core_subsystems_25f3bf9a
-    docs_architecture_2_core_subsystems_25f3bf9a -->|contains| docs_architecture_2_1_multi_inbox_ingestion_purp_35ac2134
-    docs_architecture_2_core_subsystems_25f3bf9a -->|contains| docs_architecture_2_2_the_deterministic_evidence_2c05e331
-    docs_architecture_2_core_subsystems_25f3bf9a -->|contains| docs_architecture_2_3_prompt_injection_defense_q_f4b9a394
-    docs_evaluation_eff75e20 -->|contains| docs_evaluation_gistmymail_evaluation_hackathon_bf0694ae
-    docs_evaluation_gistmymail_evaluation_hackathon_bf0694ae -->|contains| docs_evaluation_2_3_repeat_test_runs_benchmark_t_43c463b6
-    docs_evaluation_gistmymail_evaluation_hackathon_bf0694ae -->|contains| docs_evaluation_3_automated_test_coverage_vitest_9d3cad75
-    docs_evaluation_gistmymail_evaluation_hackathon_bf0694ae -->|contains| docs_evaluation_4_special_graphify_award_submiss_6ec500e6
+    subgraph security_global_docs_SETUP_md_c8475714["docs/SETUP.md"]
+        docs_setup_gistmymail_complete_local_setup_devel_884c1398("🚀 GistMyMail — Complete Local Setup &amp; D...<br/><small>docs/SETUP.md</small>")
+        docs_setup_step_by_step_installation_7ccf5583("🛠️ Step-by-Step Installation<br/><small>docs/SETUP.md</small>")
+        docs_setup_port_troubleshooting_process_manageme_73aa6792("🔍 Port Troubleshooting &amp; Process Manage...<br/><small>docs/SETUP.md</small>")
+        docs_setup_running_automated_tests_benchmarks_4b43e57d("🧪 Running Automated Tests &amp; Benchmarks<br/><small>docs/SETUP.md</small>")
+        docs_setup_step_4_start_the_development_servers_a661c98d("Step 4: Start the Development Servers<br/><small>docs/SETUP.md</small>")
+        docs_setup_on_windows_powershell_9242c632("On Windows PowerShell:<br/><small>docs/SETUP.md</small>")
+        docs_setup_on_macos_linux_9320b161("On macOS / Linux:<br/><small>docs/SETUP.md</small>")
+        docs_setup_option_a_two_separate_terminals_recom_acba1a62("Option A: Two Separate Terminals (Recom...<br/><small>docs/SETUP.md</small>")
+    end
     docs_security_18d24c32 -->|contains| docs_security_gistmymail_security_model_threat_d_b6fd02a6
+    docs_security_gistmymail_security_model_threat_d_b6fd02a6 -->|contains| docs_security_1_threat_model_security_posture_553b2cf7
     docs_security_gistmymail_security_model_threat_d_b6fd02a6 -->|contains| docs_security_2_cryptographic_token_protection_a_8ccae84c
     docs_security_gistmymail_security_model_threat_d_b6fd02a6 -->|contains| docs_security_3_prompt_injection_defense_quarant_7153d95b
-    %% Omitted for readability: 15 nodes, 0 edges
-    class docs_architecture_2_core_subsystems_25f3bf9a concept;
-    class docs_architecture_gistmymail_architecture_data_f_fd9afbe4 concept;
-    class docs_architecture_60c309cf concept;
-    class docs_architecture_1_high_level_system_architectu_a9c32df3 concept;
-    class docs_architecture_2_1_multi_inbox_ingestion_purp_35ac2134 concept;
-    class docs_architecture_2_2_the_deterministic_evidence_2c05e331 concept;
-    class docs_architecture_2_3_prompt_injection_defense_q_f4b9a394 concept;
-    class docs_evaluation_gistmymail_evaluation_hackathon_bf0694ae concept;
-    class docs_evaluation_4_special_graphify_award_submiss_6ec500e6 concept;
-    class docs_evaluation_eff75e20 concept;
-    class docs_evaluation_2_3_repeat_test_runs_benchmark_t_43c463b6 concept;
-    class docs_evaluation_3_automated_test_coverage_vitest_9d3cad75 concept;
+    docs_security_gistmymail_security_model_threat_d_b6fd02a6 -->|contains| docs_security_4_google_oauth_2_0_scope_minimizat_d4c8c491
+    docs_security_gistmymail_security_model_threat_d_b6fd02a6 -->|contains| docs_security_5_security_checklist_for_deploymen_ad1a2bfe
+    docs_security_2_cryptographic_token_protection_a_8ccae84c -->|contains| docs_security_key_security_properties_2af81c71
+    docs_security_3_prompt_injection_defense_quarant_7153d95b -->|contains| docs_security_detection_mechanism_ad998e76
+    docs_security_3_prompt_injection_defense_quarant_7153d95b -->|contains| docs_security_remediation_workflow_838491a1
+    docs_setup_gistmymail_complete_local_setup_devel_884c1398 -->|contains| docs_setup_port_troubleshooting_process_manageme_73aa6792
+    docs_setup_gistmymail_complete_local_setup_devel_884c1398 -->|contains| docs_setup_running_automated_tests_benchmarks_4b43e57d
+    docs_setup_gistmymail_complete_local_setup_devel_884c1398 -->|contains| docs_setup_step_by_step_installation_7ccf5583
+    docs_setup_step_by_step_installation_7ccf5583 -->|contains| docs_setup_step_4_start_the_development_servers_a661c98d
+    docs_setup_step_4_start_the_development_servers_a661c98d -->|contains| docs_setup_option_a_two_separate_terminals_recom_acba1a62
+    docs_setup_port_troubleshooting_process_manageme_73aa6792 -->|contains| docs_setup_on_macos_linux_9320b161
+    docs_setup_port_troubleshooting_process_manageme_73aa6792 -->|contains| docs_setup_on_windows_powershell_9242c632
+    %% Omitted for readability: 13 nodes, 0 edges
     class docs_security_gistmymail_security_model_threat_d_b6fd02a6 concept;
     class docs_security_3_prompt_injection_defense_quarant_7153d95b concept;
-    class docs_security_18d24c32 concept;
     class docs_security_2_cryptographic_token_protection_a_8ccae84c concept;
-    class readme_f78a71af concept;
-    class plan_bed97175 concept;
+    class docs_security_1_threat_model_security_posture_553b2cf7 concept;
+    class docs_security_4_google_oauth_2_0_scope_minimizat_d4c8c491 concept;
+    class docs_security_5_security_checklist_for_deploymen_ad1a2bfe concept;
+    class docs_security_detection_mechanism_ad998e76 concept;
+    class docs_security_key_security_properties_2af81c71 concept;
+    class docs_security_remediation_workflow_838491a1 concept;
+    class docs_security_18d24c32 concept;
+    class docs_setup_gistmymail_complete_local_setup_devel_884c1398 concept;
+    class docs_setup_step_by_step_installation_7ccf5583 concept;
+    class docs_setup_port_troubleshooting_process_manageme_73aa6792 concept;
+    class docs_setup_running_automated_tests_benchmarks_4b43e57d concept;
+    class docs_setup_step_4_start_the_development_servers_a661c98d concept;
+    class docs_setup_on_windows_powershell_9242c632 concept;
+    class docs_setup_on_macos_linux_9320b161 concept;
+    class docs_setup_option_a_two_separate_terminals_recom_acba1a62 concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1134,182 +1273,174 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>README.md</code><br><small style="color:var(--muted)">README.md</small></td>
+  <td><code>SETUP.md</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing README.md.</td>
+  <td>Documentation node describing SETUP.md.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>ARCHITECTURE.md</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>🚀 GistMyMail — Complete Local Setup &amp; Development Guide</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing ARCHITECTURE.md.</td>
+  <td>Documentation node describing 🚀 GistMyMail — Complete Local Setup &amp; Development Guide.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>GistMyMail Architecture &amp; Data Flow</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>📋 System Prerequisites</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing GistMyMail Architecture &amp; Data Flow.</td>
+  <td>Documentation node describing 📋 System Prerequisites.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>1. High-Level System Architecture</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>🛠️ Step-by-Step Installation</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 1. High-Level System Architecture.</td>
+  <td>Documentation node describing 🛠️ Step-by-Step Installation.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>2. Core Subsystems</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Step 1: Clone the Repository</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2. Core Subsystems.</td>
+  <td>Documentation node describing Step 1: Clone the Repository.</td>
 </tr>
 <tr>
   <td>6</td>
-  <td><code>2.1 Multi-Inbox Ingestion &amp; Purpose Labeling</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Step 2: Install Workspace Dependencies</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2.1 Multi-Inbox Ingestion &amp; Purpose Labeling.</td>
+  <td>Documentation node describing Step 2: Install Workspace Dependencies.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>2.2 The Deterministic Evidence Verifier (The Guardrail)</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Step 3: Configure Environment Variables</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2.2 The Deterministic Evidence Verifier (The Guardrail).</td>
+  <td>Documentation node describing Step 3: Configure Environment Variables.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>2.3 Prompt Injection Defense &amp; Quarantine</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Step 4: Start the Development Servers</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2.3 Prompt Injection Defense &amp; Quarantine.</td>
+  <td>Documentation node describing Step 4: Start the Development Servers.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>2.4 Resilient Dual-Mode Database Layer</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Option A: Two Separate Terminals (Recommended)</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2.4 Resilient Dual-Mode Database Layer.</td>
+  <td>Documentation node describing Option A: Two Separate Terminals (Recommended).</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>2.5 Multi-Provider AI Inference Gateway</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Option B: Combined Concurrently (Single Terminal)</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2.5 Multi-Provider AI Inference Gateway.</td>
+  <td>Documentation node describing Option B: Combined Concurrently (Single Terminal).</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>3. Data Models &amp; Schemas</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Step 5: Verify Application Health</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 3. Data Models &amp; Schemas.</td>
+  <td>Documentation node describing Step 5: Verify Application Health.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>4. Architectural Knowledge Graph</code><br><small style="color:var(--muted)">docs/ARCHITECTURE.md</small></td>
+  <td><code>Step 6: Explore Development Demo Mode</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 4. Architectural Knowledge Graph.</td>
+  <td>Documentation node describing Step 6: Explore Development Demo Mode.</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>EVALUATION.md</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>🧪 Running Automated Tests &amp; Benchmarks</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing EVALUATION.md.</td>
+  <td>Documentation node describing 🧪 Running Automated Tests &amp; Benchmarks.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>GistMyMail Evaluation &amp; Hackathon Rubric Alignment</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>Run All Tests</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing GistMyMail Evaluation &amp; Hackathon Rubric Alignment.</td>
+  <td>Documentation node describing Run All Tests.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>1. Hackathon Metadata</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>Run Hackathon 3-Repeat-Runs Benchmark Matrix</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 1. Hackathon Metadata.</td>
+  <td>Documentation node describing Run Hackathon 3-Repeat-Runs Benchmark Matrix.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>2. 3 Repeat Test Runs Benchmark Table</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>🏗️ Production Build Verification</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 2. 3 Repeat Test Runs Benchmark Table.</td>
+  <td>Documentation node describing 🏗️ Production Build Verification.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>Benchmark Takeaways:</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>🔍 Port Troubleshooting &amp; Process Management</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing Benchmark Takeaways:.</td>
+  <td>Documentation node describing 🔍 Port Troubleshooting &amp; Process Management.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>3. Automated Test Coverage (Vitest)</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>On Windows PowerShell:</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 3. Automated Test Coverage (Vitest).</td>
+  <td>Documentation node describing On Windows PowerShell:.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>Verified Test Cases:</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>On macOS / Linux:</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing Verified Test Cases:.</td>
+  <td>Documentation node describing On macOS / Linux:.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>4. Special Graphify Award Submission</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>⏹️ Safe Shutdown &amp; Restart Procedures</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing 4. Special Graphify Award Submission.</td>
+  <td>Documentation node describing ⏹️ Safe Shutdown &amp; Restart Procedures.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>Graph Metrics:</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
+  <td><code>📚 Supportive Guides</code><br><small style="color:var(--muted)">docs/SETUP.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing Graph Metrics:.</td>
+  <td>Documentation node describing 📚 Supportive Guides.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>Visual Interfaces:</code><br><small style="color:var(--muted)">docs/EVALUATION.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Visual Interfaces:.</td>
-</tr>
-<tr>
-  <td>23</td>
   <td><code>SECURITY.md</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1317,7 +1448,7 @@ flowchart LR
   <td>Documentation node describing SECURITY.md.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>23</td>
   <td><code>GistMyMail Security Model &amp; Threat Defense</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1325,7 +1456,7 @@ flowchart LR
   <td>Documentation node describing GistMyMail Security Model &amp; Threat Defense.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>24</td>
   <td><code>1. Threat Model &amp; Security Posture</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1333,7 +1464,7 @@ flowchart LR
   <td>Documentation node describing 1. Threat Model &amp; Security Posture.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>25</td>
   <td><code>2. Cryptographic Token Protection (AES-256-GCM)</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1341,7 +1472,7 @@ flowchart LR
   <td>Documentation node describing 2. Cryptographic Token Protection (AES-256-GCM).</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>26</td>
   <td><code>Key Security Properties:</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1349,7 +1480,7 @@ flowchart LR
   <td>Documentation node describing Key Security Properties:.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>27</td>
   <td><code>3. Prompt Injection Defense &amp; Quarantine Pipeline</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1357,7 +1488,7 @@ flowchart LR
   <td>Documentation node describing 3. Prompt Injection Defense &amp; Quarantine Pipeline.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>28</td>
   <td><code>Detection Mechanism:</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -1365,12 +1496,20 @@ flowchart LR
   <td>Documentation node describing Detection Mechanism:.</td>
 </tr>
 <tr>
-  <td>30</td>
+  <td>29</td>
   <td><code>Remediation Workflow:</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>Documentation node describing Remediation Workflow:.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>4. Google OAuth 2.0 Scope Minimization</code><br><small style="color:var(--muted)">docs/SECURITY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 4. Google OAuth 2.0 Scope Minimization.</td>
 </tr>
 </table>
 
@@ -1379,16 +1518,13 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>docs/ARCHITECTURE.md</code></td><td>11 nodes</td></tr>
-<tr><td><code>docs/EVALUATION.md</code></td><td>10 nodes</td></tr>
+      <tr><td><code>docs/SETUP.md</code></td><td>21 nodes</td></tr>
 <tr><td><code>docs/SECURITY.md</code></td><td>10 nodes</td></tr>
-<tr><td><code>README.md</code></td><td>1 nodes</td></tr>
-<tr><td><code>plan.md</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x28, references x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x29. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1675,8 +1811,450 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 7. rules/graphify.md ====== -->
-<h2 id="rules-graphify-md">7. rules/graphify.md</h2>
+<!-- ====== 7. 🤖 GistMyMail — AI Providers & Inference Configuration ====== -->
+<h2 id="gistmymail-ai-providers-inference-configuration">7. 🤖 GistMyMail — AI Providers &amp; Inference Configuration</h2>
+<p>🤖 GistMyMail — AI Providers &amp; Inference Configuration groups implementation around providersmd, docs, step, openrouter, mostly in docs/AI_PROVIDERS.md. This section covers 17 nodes and 16 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: 🤖 GistMyMail — AI Providers &amp; Inference Configuration (17 nodes, 16 edges)
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6("🤖 GistMyMail — AI Providers &amp; Inference...<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e("🌐 1. OpenRouter Gateway Setup<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_2_ollama_local_inference_100_p_a93c0abf("💻 2. Ollama Local Inference (100% Private)<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_3_prompt_injection_defense_evi_412c4f9f("🛡️ 3. Prompt Injection Defense &amp; Eviden...<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_b8657df4("AI_PROVIDERS.md")
+    docs_ai_providers_ai_troubleshooting_checklist_323896b3("🛠️ AI Troubleshooting Checklist<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_deterministic_verifier_the_gro_bd97cfb3("Deterministic Verifier (The Ground Trut...<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_model_integrity_anti_silent_fa_352cf37a("Model Integrity &amp; Anti-Silent-Fallback...<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_step_1_create_an_openrouter_ac_b8575c3f("Step 1: Create an OpenRouter Account &amp;...<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_step_1_install_ollama_e54b6dab("Step 1: Install Ollama<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_step_2_configure_environment_v_f84aeb58("Step 2: Configure Environment Variables<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_step_2_pull_the_recommended_mo_ab718993("Step 2: Pull the Recommended Model<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_step_3_configure_environment_v_759b0f2b("Step 3: Configure Environment Variables<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_step_3_verified_free_models_on_4b019cbc("Step 3: Verified Free Models on OpenRouter<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_system_prompt_guardrail_2fb2f3a6("System Prompt Guardrail<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_verifying_ai_provider_with_liv_7b72916d("🧪 Verifying AI Provider with Live Autom...<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_provider_comparison_matrix_92d74f53("🧭 Provider Comparison Matrix<br/><small>docs/AI_PROVIDERS.md</small>")
+    docs_ai_providers_b8657df4 -->|contains| docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 -->|contains| docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 -->|contains| docs_ai_providers_2_ollama_local_inference_100_p_a93c0abf
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 -->|contains| docs_ai_providers_3_prompt_injection_defense_evi_412c4f9f
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 -->|contains| docs_ai_providers_ai_troubleshooting_checklist_323896b3
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 -->|contains| docs_ai_providers_provider_comparison_matrix_92d74f53
+    docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 -->|contains| docs_ai_providers_verifying_ai_provider_with_liv_7b72916d
+    docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e -->|contains| docs_ai_providers_model_integrity_anti_silent_fa_352cf37a
+    docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e -->|contains| docs_ai_providers_step_1_create_an_openrouter_ac_b8575c3f
+    docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e -->|contains| docs_ai_providers_step_2_configure_environment_v_f84aeb58
+    docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e -->|contains| docs_ai_providers_step_3_verified_free_models_on_4b019cbc
+    docs_ai_providers_2_ollama_local_inference_100_p_a93c0abf -->|contains| docs_ai_providers_step_1_install_ollama_e54b6dab
+    docs_ai_providers_2_ollama_local_inference_100_p_a93c0abf -->|contains| docs_ai_providers_step_2_pull_the_recommended_mo_ab718993
+    docs_ai_providers_2_ollama_local_inference_100_p_a93c0abf -->|contains| docs_ai_providers_step_3_configure_environment_v_759b0f2b
+    docs_ai_providers_3_prompt_injection_defense_evi_412c4f9f -->|contains| docs_ai_providers_deterministic_verifier_the_gro_bd97cfb3
+    docs_ai_providers_3_prompt_injection_defense_evi_412c4f9f -->|contains| docs_ai_providers_system_prompt_guardrail_2fb2f3a6
+    class docs_ai_providers_gistmymail_ai_providers_infere_7156e4b6 concept;
+    class docs_ai_providers_1_openrouter_gateway_setup_5dfaf26e concept;
+    class docs_ai_providers_2_ollama_local_inference_100_p_a93c0abf concept;
+    class docs_ai_providers_3_prompt_injection_defense_evi_412c4f9f concept;
+    class docs_ai_providers_b8657df4 concept;
+    class docs_ai_providers_ai_troubleshooting_checklist_323896b3 concept;
+    class docs_ai_providers_deterministic_verifier_the_gro_bd97cfb3 concept;
+    class docs_ai_providers_model_integrity_anti_silent_fa_352cf37a concept;
+    class docs_ai_providers_step_1_create_an_openrouter_ac_b8575c3f concept;
+    class docs_ai_providers_step_1_install_ollama_e54b6dab concept;
+    class docs_ai_providers_step_2_configure_environment_v_f84aeb58 concept;
+    class docs_ai_providers_step_2_pull_the_recommended_mo_ab718993 concept;
+    class docs_ai_providers_step_3_configure_environment_v_759b0f2b concept;
+    class docs_ai_providers_step_3_verified_free_models_on_4b019cbc concept;
+    class docs_ai_providers_system_prompt_guardrail_2fb2f3a6 concept;
+    class docs_ai_providers_verifying_ai_provider_with_liv_7b72916d concept;
+    class docs_ai_providers_provider_comparison_matrix_92d74f53 concept;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>AI_PROVIDERS.md</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing AI_PROVIDERS.md.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>🤖 GistMyMail — AI Providers &amp; Inference Configuration</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🤖 GistMyMail — AI Providers &amp; Inference Configuration.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>🧭 Provider Comparison Matrix</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🧭 Provider Comparison Matrix.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>🌐 1. OpenRouter Gateway Setup</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🌐 1. OpenRouter Gateway Setup.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>Step 1: Create an OpenRouter Account &amp; API Key</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 1: Create an OpenRouter Account &amp; API Key.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>Step 2: Configure Environment Variables</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 2: Configure Environment Variables.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>Step 3: Verified Free Models on OpenRouter</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 3: Verified Free Models on OpenRouter.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>Model Integrity &amp; Anti-Silent-Fallback Verification</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Model Integrity &amp; Anti-Silent-Fallback Verification.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>💻 2. Ollama Local Inference (100% Private)</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 💻 2. Ollama Local Inference (100% Private).</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>Step 1: Install Ollama</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 1: Install Ollama.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>Step 2: Pull the Recommended Model</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 2: Pull the Recommended Model.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>Step 3: Configure Environment Variables</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Step 3: Configure Environment Variables.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>🛡️ 3. Prompt Injection Defense &amp; Evidence Grounding</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🛡️ 3. Prompt Injection Defense &amp; Evidence Grounding.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>System Prompt Guardrail</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing System Prompt Guardrail.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>Deterministic Verifier (The Ground Truth Engine)</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Deterministic Verifier (The Ground Truth Engine).</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>🧪 Verifying AI Provider with Live Automated Tests</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🧪 Verifying AI Provider with Live Automated Tests.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>🛠️ AI Troubleshooting Checklist</code><br><small style="color:var(--muted)">docs/AI_PROVIDERS.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🛠️ AI Troubleshooting Checklist.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>docs/AI_PROVIDERS.md</code></td><td>17 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x16. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 8. 📬 GistMyMail — Email Digest Generation & Delivery Guide ====== -->
+<h2 id="gistmymail-email-digest-generation-delivery-guid">8. 📬 GistMyMail — Email Digest Generation &amp; Delivery Guide</h2>
+<p>📬 GistMyMail — Email Digest Generation &amp; Delivery Guide groups implementation around email, docs, deliverymd, delivery, mostly in docs/EMAIL_DELIVERY.md. This section covers 15 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: 📬 GistMyMail — Email Digest Generation &amp; Delivery Guide (15 nodes, 14 edges)
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6("📬 GistMyMail — Email Digest Generation...<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_6_how_the_background_schedul_29db507b("⚙️ 6. How the Background Scheduler Works<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_1_managing_connected_inboxes_97f865ba("🎛️ 1. Managing Connected Inboxes<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_3_authorizing_gmail_sending_936339ab("📤 3. Authorizing Gmail Sending (gmail....<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_2_on_demand_digest_generatio_24155820("⚡ 2. On-Demand Digest Generation<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_4_sending_a_test_digest_emai_f159b7f3("🧪 4. Sending a Test Digest Email<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_audit_logging_feedback_ecaadcd1("Audit Logging &amp; Feedback<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_continuous_daemon_26520577("Continuous Daemon<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_duplicate_delivery_preventio_9a8948d2("Duplicate Delivery Prevention<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_ingestion_filtering_account_40a3da14("Ingestion Filtering (Account Selection)<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_purpose_labels_c3cdabae("Purpose Labels<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_read_only_vs_send_authorized_c6773304("Read-Only vs Send-Authorized Accounts<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_5_configuring_daily_schedule_5768c9c3("⏰ 5. Configuring Daily Scheduled Delivery<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_end_to_end_delivery_flow_9e7987e5("🔄 End-to-End Delivery Flow<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_delivery_troubleshooting_f286270c("🛠️ Delivery Troubleshooting<br/><small>docs/EMAIL_DELIVERY.md</small>")
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_1_managing_connected_inboxes_97f865ba
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_2_on_demand_digest_generatio_24155820
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_3_authorizing_gmail_sending_936339ab
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_4_sending_a_test_digest_emai_f159b7f3
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_5_configuring_daily_schedule_5768c9c3
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_6_how_the_background_schedul_29db507b
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_delivery_troubleshooting_f286270c
+    docs_email_delivery_gistmymail_email_digest_gene_5991daa6 -->|contains| docs_email_delivery_end_to_end_delivery_flow_9e7987e5
+    docs_email_delivery_1_managing_connected_inboxes_97f865ba -->|contains| docs_email_delivery_ingestion_filtering_account_40a3da14
+    docs_email_delivery_1_managing_connected_inboxes_97f865ba -->|contains| docs_email_delivery_purpose_labels_c3cdabae
+    docs_email_delivery_3_authorizing_gmail_sending_936339ab -->|contains| docs_email_delivery_read_only_vs_send_authorized_c6773304
+    docs_email_delivery_6_how_the_background_schedul_29db507b -->|contains| docs_email_delivery_audit_logging_feedback_ecaadcd1
+    docs_email_delivery_6_how_the_background_schedul_29db507b -->|contains| docs_email_delivery_continuous_daemon_26520577
+    docs_email_delivery_6_how_the_background_schedul_29db507b -->|contains| docs_email_delivery_duplicate_delivery_preventio_9a8948d2
+    class docs_email_delivery_gistmymail_email_digest_gene_5991daa6 concept;
+    class docs_email_delivery_6_how_the_background_schedul_29db507b concept;
+    class docs_email_delivery_1_managing_connected_inboxes_97f865ba concept;
+    class docs_email_delivery_3_authorizing_gmail_sending_936339ab concept;
+    class docs_email_delivery_2_on_demand_digest_generatio_24155820 concept;
+    class docs_email_delivery_4_sending_a_test_digest_emai_f159b7f3 concept;
+    class docs_email_delivery_audit_logging_feedback_ecaadcd1 concept;
+    class docs_email_delivery_continuous_daemon_26520577 concept;
+    class docs_email_delivery_duplicate_delivery_preventio_9a8948d2 concept;
+    class docs_email_delivery_ingestion_filtering_account_40a3da14 concept;
+    class docs_email_delivery_purpose_labels_c3cdabae concept;
+    class docs_email_delivery_read_only_vs_send_authorized_c6773304 concept;
+    class docs_email_delivery_5_configuring_daily_schedule_5768c9c3 concept;
+    class docs_email_delivery_end_to_end_delivery_flow_9e7987e5 concept;
+    class docs_email_delivery_delivery_troubleshooting_f286270c concept;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>📬 GistMyMail — Email Digest Generation &amp; Delivery Guide</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 📬 GistMyMail — Email Digest Generation &amp; Delivery Guide.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>🔄 End-to-End Delivery Flow</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🔄 End-to-End Delivery Flow.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>🎛️ 1. Managing Connected Inboxes</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🎛️ 1. Managing Connected Inboxes.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>Ingestion Filtering (Account Selection)</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Ingestion Filtering (Account Selection).</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>Purpose Labels</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Purpose Labels.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>⚡ 2. On-Demand Digest Generation</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing ⚡ 2. On-Demand Digest Generation.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>📤 3. Authorizing Gmail Sending (`gmail.send`)</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 📤 3. Authorizing Gmail Sending (`gmail.send`).</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>Read-Only vs Send-Authorized Accounts</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Read-Only vs Send-Authorized Accounts.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>🧪 4. Sending a Test Digest Email</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🧪 4. Sending a Test Digest Email.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>⏰ 5. Configuring Daily Scheduled Delivery</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing ⏰ 5. Configuring Daily Scheduled Delivery.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>⚙️ 6. How the Background Scheduler Works</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing ⚙️ 6. How the Background Scheduler Works.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>Continuous Daemon</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Continuous Daemon.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>Duplicate Delivery Prevention</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Duplicate Delivery Prevention.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>Audit Logging &amp; Feedback</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Audit Logging &amp; Feedback.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>🛠️ Delivery Troubleshooting</code><br><small style="color:var(--muted)">docs/EMAIL_DELIVERY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🛠️ Delivery Troubleshooting.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>docs/EMAIL_DELIVERY.md</code></td><td>15 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x14. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 9. rules/graphify.md ====== -->
+<h2 id="rules-graphify-md">9. rules/graphify.md</h2>
 <p>rules/graphify.md groups implementation around rules, graphifymd, agents, graphify, mostly in .agents/rules/graphify.md. This section covers 2 nodes and 1 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1742,8 +2320,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 8. workflows/graphify.md ====== -->
-<h2 id="workflows-graphify-md">8. workflows/graphify.md</h2>
+<!-- ====== 10. workflows/graphify.md ====== -->
+<h2 id="workflows-graphify-md">10. workflows/graphify.md</h2>
 <p>workflows/graphify.md groups implementation around workflows, graphifymd, agents, workflow, mostly in .agents/workflows/graphify.md. This section covers 2 nodes and 1 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1809,8 +2387,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 9. vite.config.ts ====== -->
-<h2 id="vite-config-ts">9. vite.config.ts</h2>
+<!-- ====== 11. vite.config.ts ====== -->
+<h2 id="vite-config-ts">11. vite.config.ts</h2>
 <p>vite.config.ts groups implementation around viteconfigts, apps, web, mostly in apps/web/vite.config.ts. This section covers 1 nodes and 0 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1871,17 +2449,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>464</td></tr>
-      <tr><td>Edges</td><td>629</td></tr>
+      <tr><td>Nodes</td><td>591</td></tr>
+      <tr><td>Edges</td><td>754</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>22</td></tr>
-      <tr><td>Documented Sections</td><td>8</td></tr>
+      <tr><td>Communities</td><td>29</td></tr>
+      <tr><td>Documented Sections</td><td>10</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>624</td></tr>
+      <tr><td>EXTRACTED</td><td>749</td></tr>
       <tr><td>INFERRED</td><td>5</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -1890,7 +2468,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>Gistmymail — Architecture Documentation</p>
-  <p>Generated: 2026-10-25 09:41 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-10-25 10:00 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

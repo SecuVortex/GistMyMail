@@ -36,6 +36,8 @@ describe('OpenRouter Live Integration', () => {
     expect(result.output.summary.length).toBeGreaterThan(5);
     expect(result.latencyMs).toBeGreaterThan(0);
     expect(result.outputTokens).toBeGreaterThan(0);
+    expect(result.model.toLowerCase()).toContain('gemma-4');
+    expect(result.model).toBe(config.AI_MODEL);
 
     console.log('\n--- Live OpenRouter Extraction Verified ---');
     console.log('Model used:', result.model);

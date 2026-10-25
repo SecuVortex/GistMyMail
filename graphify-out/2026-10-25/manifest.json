@@ -25,8 +25,8 @@
     "semantic_hash": "2393c6ff6fa0934169218840be1112f5"
   },
   "apps/api/src/ai/providers/openrouter.ts": {
-    "mtime": 1792919428.6925683,
-    "ast_hash": "9ab87b7b622d67f70d7831a1e561b9d9",
+    "mtime": 1792921947.393203,
+    "ast_hash": "ee15a58d91bbe104c2b8cb3e9978d6e0",
     "semantic_hash": ""
   },
   "apps/api/src/ai/types.ts": {
@@ -45,8 +45,8 @@
     "semantic_hash": "7e995127a1054e258446e95308653c83"
   },
   "apps/api/src/config.ts": {
-    "mtime": 1792919359.3434677,
-    "ast_hash": "d999c3d18bf8dc98c940d7a2dffd6dcb",
+    "mtime": 1792922041.5534577,
+    "ast_hash": "09137733a2794110c17fc91f114f85f1",
     "semantic_hash": ""
   },
   "apps/api/src/db/index.ts": {
@@ -110,24 +110,24 @@
     "semantic_hash": "bfb345cd8587511704f067e83182fa79"
   },
   "apps/api/src/routes/accounts.routes.ts": {
-    "mtime": 1792914977.3855736,
-    "ast_hash": "bfada2779a0478c72166b66ea605d444",
-    "semantic_hash": "bfada2779a0478c72166b66ea605d444"
+    "mtime": 1792921076.6886992,
+    "ast_hash": "74703da41e315119fc66c2471fb6155c",
+    "semantic_hash": ""
   },
   "apps/api/src/routes/auth.routes.ts": {
-    "mtime": 1792914963.250314,
-    "ast_hash": "1dac58489c3de9373e62a856ccc95115",
-    "semantic_hash": "1dac58489c3de9373e62a856ccc95115"
+    "mtime": 1792920861.8821726,
+    "ast_hash": "75a16cc23c598a21cdf311fcb3d6fce4",
+    "semantic_hash": ""
   },
   "apps/api/src/routes/delivery.routes.ts": {
-    "mtime": 1792915008.0348036,
-    "ast_hash": "5592fb8ecb4b293aa382e547ba325c98",
-    "semantic_hash": "5592fb8ecb4b293aa382e547ba325c98"
+    "mtime": 1792920920.9481795,
+    "ast_hash": "404d709448050abb56997d7e7aeb8e05",
+    "semantic_hash": ""
   },
   "apps/api/src/routes/digest.routes.ts": {
-    "mtime": 1792914996.0452285,
-    "ast_hash": "45b8259600405e4bdb860190489c59f0",
-    "semantic_hash": "45b8259600405e4bdb860190489c59f0"
+    "mtime": 1792920905.509032,
+    "ast_hash": "ba3c965b2935d0f7a5778958f1aa9fcf",
+    "semantic_hash": ""
   },
   "apps/api/src/routes/health.routes.ts": {
     "mtime": 1792915019.1566896,
@@ -165,9 +165,9 @@
     "semantic_hash": "d07ccd6fe65278f71e92b771d94945bf"
   },
   "apps/web/src/App.tsx": {
-    "mtime": 1792915423.3170707,
-    "ast_hash": "a63bec2ffab184d3568bda087fdda518",
-    "semantic_hash": "a63bec2ffab184d3568bda087fdda518"
+    "mtime": 1792921225.1494408,
+    "ast_hash": "f3957a3a3c77c267737b4e5bffebc021",
+    "semantic_hash": ""
   },
   "apps/web/src/main.tsx": {
     "mtime": 1792915107.8399398,
@@ -185,9 +185,9 @@
     "semantic_hash": "02816d9670489b867e9b2ca68f062a63"
   },
   "package.json": {
-    "mtime": 1792915302.6756482,
-    "ast_hash": "453820e0b0a3a0e85dac58b366d28f9e",
-    "semantic_hash": "453820e0b0a3a0e85dac58b366d28f9e"
+    "mtime": 1792920463.8681166,
+    "ast_hash": "68c1b40bad5bd0ff04747c966311c321",
+    "semantic_hash": ""
   },
   "packages/shared/package.json": {
     "mtime": 1792914414.1479611,
@@ -215,8 +215,8 @@
     "semantic_hash": "a203b19e96da6e7d0ed6ec9926b6ec5a"
   },
   "apps/api/tests/openrouter-integration.test.ts": {
-    "mtime": 1792919585.8910594,
-    "ast_hash": "0abfc3424424f7507b65fe8239df12a1",
+    "mtime": 1792921993.2414904,
+    "ast_hash": "f927cdca9b620ba6764efdc9ae77a118",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792920231.8673346,
-    "ast_hash": "ce01fd625c56ac88586599bc5a56c3fd",
+    "mtime": 1792920482.83153,
+    "ast_hash": "9299aa14092a43feda91bd4385a9dd66",
     "semantic_hash": ""
   },
   "apps/web/index.html": {
@@ -272,6 +272,16 @@
   "docs/SECURITY.md": {
     "mtime": 1792920155.377703,
     "ast_hash": "8649a122baae65b613cbbf617d9167a0",
+    "semantic_hash": ""
+  },
+  "docs/GOOGLE_OAUTH.md": {
+    "mtime": 1792922120.2366323,
+    "ast_hash": "253819a8d87a3743bc2e732b71caaf0d",
+    "semantic_hash": ""
+  },
+  "docs/SETUP.md": {
+    "mtime": 1792922089.291219,
+    "ast_hash": "dcf8e1f442ee7dcdaf189a20aa3db1b6",
     "semantic_hash": ""
   }
 }

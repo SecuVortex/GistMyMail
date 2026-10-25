@@ -25,8 +25,8 @@
     "semantic_hash": "2393c6ff6fa0934169218840be1112f5"
   },
   "apps/api/src/ai/providers/openrouter.ts": {
-    "mtime": 1792919428.6925683,
-    "ast_hash": "9ab87b7b622d67f70d7831a1e561b9d9",
+    "mtime": 1792921947.393203,
+    "ast_hash": "ee15a58d91bbe104c2b8cb3e9978d6e0",
     "semantic_hash": ""
   },
   "apps/api/src/ai/types.ts": {
@@ -45,8 +45,8 @@
     "semantic_hash": "7e995127a1054e258446e95308653c83"
   },
   "apps/api/src/config.ts": {
-    "mtime": 1792919359.3434677,
-    "ast_hash": "d999c3d18bf8dc98c940d7a2dffd6dcb",
+    "mtime": 1792922041.5534577,
+    "ast_hash": "09137733a2794110c17fc91f114f85f1",
     "semantic_hash": ""
   },
   "apps/api/src/db/index.ts": {
@@ -215,8 +215,8 @@
     "semantic_hash": "a203b19e96da6e7d0ed6ec9926b6ec5a"
   },
   "apps/api/tests/openrouter-integration.test.ts": {
-    "mtime": 1792919585.8910594,
-    "ast_hash": "0abfc3424424f7507b65fe8239df12a1",
+    "mtime": 1792921993.2414904,
+    "ast_hash": "f927cdca9b620ba6764efdc9ae77a118",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792920482.83153,
-    "ast_hash": "9299aa14092a43feda91bd4385a9dd66",
+    "mtime": 1792922346.1995413,
+    "ast_hash": "74100037521715ba3aefce47b2aef3de",
     "semantic_hash": ""
   },
   "apps/web/index.html": {
@@ -272,6 +272,41 @@
   "docs/SECURITY.md": {
     "mtime": 1792920155.377703,
     "ast_hash": "8649a122baae65b613cbbf617d9167a0",
+    "semantic_hash": ""
+  },
+  "docs/GOOGLE_OAUTH.md": {
+    "mtime": 1792922120.2366323,
+    "ast_hash": "253819a8d87a3743bc2e732b71caaf0d",
+    "semantic_hash": ""
+  },
+  "docs/SETUP.md": {
+    "mtime": 1792922089.291219,
+    "ast_hash": "dcf8e1f442ee7dcdaf189a20aa3db1b6",
+    "semantic_hash": ""
+  },
+  "docs/AI_PROVIDERS.md": {
+    "mtime": 1792922390.4253228,
+    "ast_hash": "ad778d912caf3c8d0eeafd2dd090524e",
+    "semantic_hash": ""
+  },
+  "docs/DATABASE.md": {
+    "mtime": 1792922144.7891488,
+    "ast_hash": "3f8b2659cbc1461d44a643866bc6f346",
+    "semantic_hash": ""
+  },
+  "docs/DEPLOYMENT.md": {
+    "mtime": 1792922277.0649977,
+    "ast_hash": "73d527e71dc1cf9d66cd4eb0d0081eb4",
+    "semantic_hash": ""
+  },
+  "docs/EMAIL_DELIVERY.md": {
+    "mtime": 1792922253.2716541,
+    "ast_hash": "873f38f0ffd974a97272ba6346c488a3",
+    "semantic_hash": ""
+  },
+  "docs/TROUBLESHOOTING.md": {
+    "mtime": 1792922306.5816717,
+    "ast_hash": "e3082513f29eaed2cad9d05bc4dd423e",
     "semantic_hash": ""
   }
 }

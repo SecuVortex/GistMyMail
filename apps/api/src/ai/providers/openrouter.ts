@@ -35,20 +35,15 @@ CRITICAL INTEGRITY RULES:
   "uncertainties": []
 }`;
 
-    // Include fallback free model if primary model is rate-limited upstream
-    const modelsToTry = [this.model];
-    if (this.model.includes(':free') && !this.model.includes('nvidia/nemotron-3.5-lightning:free')) {
-      modelsToTry.push('nvidia/nemotron-3.5-lightning:free');
-    }
-
     const payload = {
-      models: modelsToTry.length > 1 ? modelsToTry : undefined,
-      model: modelsToTry.length === 1 ? modelsToTry[0] : undefined,
+      model: this.model,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `Subject: ${email.subject}\nFrom: ${email.sender}\nDate: ${email.receivedAt}\n\nEmail Body:\n${email.cleanedBody || email.snippet}` }
       ]
     };
+
+    console.log(`[OpenRouter] Sending extraction request for model: ${this.model}`);
 
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
@@ -63,7 +58,8 @@ CRITICAL INTEGRITY RULES:
 
     if (!res.ok) {
       const errText = await res.text();
-      throw new Error(`OpenRouter API request failed with HTTP ${res.status}: ${errText}`);
+      console.error(`[OpenRouter] Request failed for model "${this.model}" (HTTP ${res.status}):`, errText);
+      throw new Error(`OpenRouter API request failed for model "${this.model}" with HTTP ${res.status}: ${errText}`);
     }
 
     const data = await res.json() as {
@@ -71,6 +67,15 @@ CRITICAL INTEGRITY RULES:
       choices?: Array<{ message?: { content?: string } }>;
       usage?: { prompt_tokens?: number; completion_tokens?: number };
     };
+
+    const actualModel = data.model || this.model;
+    console.log(`[OpenRouter] Request successful. Requested: ${this.model}, Actual: ${actualModel}`);
+
+    // Verify model integrity - ensure no silent fallback occurred upstream
+    if (actualModel && !actualModel.startsWith(this.model.split(':')[0]) && !this.model.startsWith(actualModel)) {
+      console.error(`[OpenRouter] Model mismatch! Requested "${this.model}", but OpenRouter returned "${actualModel}"`);
+      throw new Error(`OpenRouter returned unexpected model "${actualModel}" instead of requested model "${this.model}"`);
+    }
 
     const rawContent = data.choices?.[0]?.message?.content || '{}';
 

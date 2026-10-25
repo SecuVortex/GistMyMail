@@ -3,20 +3,28 @@ import path from 'node:path';
 import { z } from 'zod';
 
 function loadEnvironmentFiles() {
-  if (typeof process.loadEnvFile === 'function') {
-    const candidates = [
-      path.resolve(process.cwd(), '.env'),
-      path.resolve(process.cwd(), '../../.env'),
-      path.resolve(process.cwd(), '../.env')
-    ];
-    for (const p of candidates) {
-      if (fs.existsSync(p)) {
-        try {
-          process.loadEnvFile(p);
-          break;
-        } catch {
-          // Ignore parsing or access errors
+  const candidates = [
+    path.resolve(process.cwd(), '.env'),
+    path.resolve(process.cwd(), '../../.env'),
+    path.resolve(process.cwd(), '../.env')
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) {
+      try {
+        const content = fs.readFileSync(p, 'utf-8');
+        for (const line of content.split(/\r?\n/)) {
+          const trimmed = line.trim();
+          if (!trimmed || trimmed.startsWith('#')) continue;
+          const eqIdx = trimmed.indexOf('=');
+          if (eqIdx !== -1) {
+            const key = trimmed.slice(0, eqIdx).trim();
+            const val = trimmed.slice(eqIdx + 1).trim();
+            process.env[key] = val;
+          }
         }
+        break;
+      } catch {
+        // Ignore parsing or access errors
       }
     }
   }
@@ -36,7 +44,7 @@ const EnvSchema = z.object({
   GOOGLE_CLIENT_SECRET: z.string().optional().default(''),
   GOOGLE_REDIRECT_URI: z.string().default('http://localhost:3000/auth/google/callback'),
   AI_PROVIDER: z.enum(['mock', 'openrouter', 'ollama']).default('mock'),
-  AI_MODEL: z.string().default('llama3.2:3b'),
+  AI_MODEL: z.string().default('google/gemma-4-31b-it'),
   OPENROUTER_API_KEY: z.string().optional().default(''),
   OLLAMA_BASE_URL: z.string().default('http://localhost:11434'),
   SCHEDULER_ENABLED: z.coerce.boolean().default(true),
