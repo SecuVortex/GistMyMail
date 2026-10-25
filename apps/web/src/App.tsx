@@ -20,7 +20,8 @@ import {
   ChevronDown,
   ChevronUp,
   Inbox,
-  Filter
+  Filter,
+  Copy
 } from 'lucide-react';
 
 export default function App() {
@@ -40,6 +41,9 @@ export default function App() {
   const [newInboxEmail, setNewInboxEmail] = useState<string>('');
   const [newInboxLabel, setNewInboxLabel] = useState<string>('Clients');
   const [showAddInboxModal, setShowAddInboxModal] = useState<boolean>(false);
+  const [inboxTab, setInboxTab] = useState<'oauth' | 'custom'>('oauth');
+  const [linkUrl, setLinkUrl] = useState<string>('');
+  const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
   // Benchmarking State
   const [benchmarkRunning, setBenchmarkRunning] = useState<boolean>(false);
@@ -266,6 +270,38 @@ export default function App() {
       }
     } catch (err) {
       showNotification((err as Error).message, 'error');
+    }
+  };
+
+  const handleOpenAddInbox = async () => {
+    setShowAddInboxModal(true);
+    setCopiedLink(false);
+    try {
+      const res = await fetch('/api/accounts/link-url', { credentials: 'include' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.linkUrl) {
+          setLinkUrl(data.linkUrl);
+          return;
+        }
+      }
+    } catch {
+      // Fallback
+    }
+    const fallbackTarget = user?.id || '';
+    setLinkUrl(`${window.location.origin}/auth/google${fallbackTarget ? `?link_user=${encodeURIComponent(fallbackTarget)}` : ''}`);
+  };
+
+  const handleCopyLink = async () => {
+    const fallbackTarget = user?.id || '';
+    const urlToCopy = linkUrl || `${window.location.origin}/auth/google${fallbackTarget ? `?link_user=${encodeURIComponent(fallbackTarget)}` : ''}`;
+    try {
+      await navigator.clipboard.writeText(urlToCopy);
+      setCopiedLink(true);
+      showNotification('✓ Link copied! Open this in your 2nd Chrome profile to connect your other Gmail account.');
+      setTimeout(() => setCopiedLink(false), 3000);
+    } catch {
+      showNotification('Failed to copy to clipboard. Please copy manually.', 'error');
     }
   };
 
@@ -809,7 +845,7 @@ export default function App() {
                   </p>
                 </div>
                 <button
-                  onClick={() => setShowAddInboxModal(true)}
+                  onClick={handleOpenAddInbox}
                   className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg border border-indigo-200 text-xs font-semibold flex items-center gap-1 transition"
                   title="Add another inbox"
                 >
@@ -819,43 +855,133 @@ export default function App() {
 
               {/* Add Inbox Inline Modal/Drawer */}
               {showAddInboxModal && (
-                <form onSubmit={handleAddCustomInbox} className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-2.5 text-xs">
-                  <div className="font-semibold text-slate-800">Add Inbox for Testing</div>
-                  <input
-                    type="email"
-                    placeholder="e.g. client.work@gmail.com"
-                    value={newInboxEmail}
-                    onChange={e => setNewInboxEmail(e.target.value)}
-                    required
-                    className="w-full p-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-indigo-500 outline-none"
-                  />
-                  <div className="flex gap-2">
-                    <select
-                      value={newInboxLabel}
-                      onChange={e => setNewInboxLabel(e.target.value)}
-                      className="flex-1 p-2 bg-white border border-slate-300 rounded text-xs"
-                    >
-                      <option value="College">College</option>
-                      <option value="Business">Business</option>
-                      <option value="Clients">Clients</option>
-                      <option value="Personal">Personal</option>
-                      <option value="Newsletter">Newsletter</option>
-                    </select>
-                    <button
-                      type="submit"
-                      className="px-3 py-2 bg-indigo-600 text-white rounded text-xs font-semibold hover:bg-indigo-700 transition"
-                    >
-                      Save
-                    </button>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3.5 text-xs shadow-xs">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+                    <span className="font-bold text-slate-900">Add Another Gmail Inbox</span>
                     <button
                       type="button"
                       onClick={() => setShowAddInboxModal(false)}
-                      className="px-2.5 py-2 text-slate-600 hover:bg-slate-200 rounded text-xs"
+                      className="text-slate-400 hover:text-slate-600 text-xs font-bold px-1"
                     >
-                      Cancel
+                      ✕
                     </button>
                   </div>
-                </form>
+
+                  {/* Mode switcher tabs */}
+                  <div className="flex p-0.5 bg-slate-200/70 rounded-lg">
+                    <button
+                      type="button"
+                      onClick={() => setInboxTab('oauth')}
+                      className={`flex-1 py-1 px-2 rounded-md font-semibold text-[11px] transition ${
+                        inboxTab === 'oauth'
+                          ? 'bg-white text-indigo-700 shadow-2xs'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      Google OAuth (Real)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setInboxTab('custom')}
+                      className={`flex-1 py-1 px-2 rounded-md font-semibold text-[11px] transition ${
+                        inboxTab === 'custom'
+                          ? 'bg-white text-indigo-700 shadow-2xs'
+                          : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      Simulated Test Inbox
+                    </button>
+                  </div>
+
+                  {inboxTab === 'oauth' ? (
+                    <div className="space-y-3">
+                      {/* Option A: Same profile */}
+                      <div className="p-3 bg-white border border-slate-200 rounded-lg space-y-1.5">
+                        <div className="font-semibold text-slate-800 flex items-center gap-1.5">
+                          <UserIcon className="w-3.5 h-3.5 text-indigo-600" />
+                          <span>Option 1: Connect in this Chrome Profile</span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 leading-normal">
+                          Opens the Google account chooser so you can select or click <em>"+ Use another account"</em>.
+                        </p>
+                        <a
+                          href={`/auth/google${user?.id ? `?link_user=${encodeURIComponent(user.id)}` : ''}`}
+                          className="mt-1 w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition text-xs shadow-xs"
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                          Connect with Google OAuth
+                        </a>
+                      </div>
+
+                      {/* Option B: 2nd Chrome profile */}
+                      <div className="p-3 bg-white border border-indigo-200 bg-indigo-50/40 rounded-lg space-y-2">
+                        <div className="font-semibold text-indigo-950 flex items-center justify-between">
+                          <span className="flex items-center gap-1.5">
+                            <ExternalLink className="w-3.5 h-3.5 text-indigo-600" />
+                            Option 2: 2nd Chrome Profile (Logged In)
+                          </span>
+                          <span className="text-[10px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.5 rounded">
+                            Recommended for you
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 leading-normal">
+                          Copy this personal linking link and paste it into your <strong>2nd Chrome profile</strong> where your other Gmail is already logged in:
+                        </p>
+                        
+                        <div className="flex items-center gap-1.5">
+                          <input
+                            type="text"
+                            readOnly
+                            value={linkUrl || `${window.location.origin}/auth/google${user?.id ? `?link_user=${encodeURIComponent(user.id)}` : ''}`}
+                            className="flex-1 p-2 bg-slate-50 border border-slate-200 rounded text-[11px] font-mono text-slate-700 select-all outline-none"
+                          />
+                          <button
+                            type="button"
+                            onClick={handleCopyLink}
+                            className="px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded text-xs flex items-center gap-1 shrink-0 transition"
+                          >
+                            {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                            {copiedLink ? 'Copied!' : 'Copy Link'}
+                          </button>
+                        </div>
+                        <p className="text-[10px] text-slate-500">
+                          ⚡ Approving in your 2nd profile will seamlessly attach that Gmail inbox to your main account here.
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleAddCustomInbox} className="space-y-2.5">
+                      <div className="font-semibold text-slate-800">Add Simulated Inbox</div>
+                      <input
+                        type="email"
+                        placeholder="e.g. client.work@gmail.com"
+                        value={newInboxEmail}
+                        onChange={e => setNewInboxEmail(e.target.value)}
+                        required
+                        className="w-full p-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-indigo-500 outline-none"
+                      />
+                      <div className="flex gap-2">
+                        <select
+                          value={newInboxLabel}
+                          onChange={e => setNewInboxLabel(e.target.value)}
+                          className="flex-1 p-2 bg-white border border-slate-300 rounded text-xs"
+                        >
+                          <option value="College">College</option>
+                          <option value="Business">Business</option>
+                          <option value="Clients">Clients</option>
+                          <option value="Personal">Personal</option>
+                          <option value="Newsletter">Newsletter</option>
+                        </select>
+                        <button
+                          type="submit"
+                          className="px-3 py-2 bg-indigo-600 text-white rounded text-xs font-semibold hover:bg-indigo-700 transition"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </form>
+                  )}
+                </div>
               )}
 
               {/* Inboxes List */}

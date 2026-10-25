@@ -6,8 +6,18 @@ import { config } from '../config.js';
 export const authRoutes: FastifyPluginAsync = async (fastify) => {
   // Start OAuth
   fastify.get('/auth/google', async (request, reply) => {
-    const requestSend = (request.query as { send?: string })?.send === 'true';
-    const state = Math.random().toString(36).substring(2) + Date.now().toString(36);
+    const query = request.query as { send?: string; link?: string; link_user?: string };
+    const requestSend = query?.send === 'true';
+
+    // Determine if this OAuth is linking to an existing user session or an explicit target user ID
+    const linkingUserId = query?.link_user || request.cookies.session_user_id || null;
+
+    const nonce = Math.random().toString(36).substring(2) + Date.now().toString(36);
+    const stateObj = {
+      nonce,
+      linkingUserId: linkingUserId || undefined
+    };
+    const state = Buffer.from(JSON.stringify(stateObj)).toString('base64url');
     
     reply.setCookie('oauth_state', state, {
       path: '/',
@@ -33,29 +43,60 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
       return reply.status(400).send({ error: 'Missing authorization code from Google OAuth' });
     }
 
-    const savedState = request.cookies.oauth_state;
-    if (savedState && state && savedState !== state) {
-      return reply.status(403).send({ error: 'OAuth state mismatch (potential CSRF attack)' });
+    // Parse state data to extract linkingUserId if present
+    let linkingUserId: string | null = null;
+    if (state) {
+      try {
+        const decoded = JSON.parse(Buffer.from(state, 'base64url').toString('utf8'));
+        if (decoded && typeof decoded.linkingUserId === 'string') {
+          linkingUserId = decoded.linkingUserId;
+        }
+      } catch {
+        // Fallback for legacy plain state strings
+      }
+    }
+
+    // Fallback to cookie if state didn't carry it
+    if (!linkingUserId && request.cookies.session_user_id) {
+      linkingUserId = request.cookies.session_user_id;
     }
 
     try {
       const tokenData = await exchangeOAuthCode(code);
       const db = await getDatabase();
 
-      // Create or update user
-      const user = await db.createOrUpdateUser({
-        id: `usr_${tokenData.googleSub}`,
-        email: tokenData.email,
-        name: tokenData.name,
-        googleSub: tokenData.googleSub
-      });
+      let targetUser = null;
+      if (linkingUserId) {
+        targetUser = await db.findUserById(linkingUserId);
+      }
 
-      // Save connected account
+      // If no valid linking user found, create or update as primary user
+      if (!targetUser) {
+        targetUser = await db.createOrUpdateUser({
+          id: `usr_${tokenData.googleSub}`,
+          email: tokenData.email,
+          name: tokenData.name,
+          googleSub: tokenData.googleSub
+        });
+      }
+
+      // Check existing accounts for targetUser to determine label and duplicate check
+      const existingAccounts = await db.getAccountsForUser(targetUser.id);
+      const existingAcc = existingAccounts.find(
+        a => a.googleSub === tokenData.googleSub || a.email.toLowerCase() === tokenData.email.toLowerCase()
+      );
+
+      // Determine label: if first account -> Personal, second -> Business, third -> Clients
+      let defaultLabel = 'Personal';
+      if (existingAccounts.length === 1 && !existingAcc) defaultLabel = 'Business';
+      else if (existingAccounts.length >= 2 && !existingAcc) defaultLabel = 'Clients';
+
+      // Save connected account attached to targetUser
       await db.saveAccount({
-        id: `acc_${tokenData.googleSub}`,
-        userId: user.id,
+        id: existingAcc ? existingAcc.id : `acc_${tokenData.googleSub}`,
+        userId: targetUser.id,
         email: tokenData.email,
-        label: 'Personal',
+        label: existingAcc ? existingAcc.label : defaultLabel,
         googleSub: tokenData.googleSub,
         hasSendPermission: tokenData.hasSendScope,
         isSelectedForDigest: true,
@@ -63,8 +104,8 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
         encryptedRefreshToken: tokenData.encryptedRefreshToken
       });
 
-      // Set application session cookie
-      reply.setCookie('session_user_id', user.id, {
+      // Set application session cookie for targetUser
+      reply.setCookie('session_user_id', targetUser.id, {
         path: '/',
         httpOnly: true,
         secure: config.NODE_ENV === 'production',

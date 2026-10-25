@@ -1,7 +1,7 @@
 # Graph Report - Gistmymail  (2026-10-25)
 
 ## Corpus Check
-- 59 files · ~35,864 words
+- 59 files · ~36,584 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7a220292`
+- Built from commit: `406d099c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

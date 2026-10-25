@@ -21,6 +21,16 @@ export const accountsRoutes: FastifyPluginAsync = async (fastify) => {
     return { accounts };
   });
 
+  // Generate a cross-profile linking URL for connecting secondary Chrome profiles / browsers
+  fastify.get('/api/accounts/link-url', async (request, reply) => {
+    const userId = getUserId(request);
+    if (!userId) {
+      return reply.status(401).send({ error: 'Please sign in or enter Demo Mode first.' });
+    }
+    const linkUrl = `${config.APP_BASE_URL}/auth/google?link_user=${encodeURIComponent(userId)}`;
+    return { linkUrl };
+  });
+
   // Connect a new account (Demo/Mock or Direct Link)
   fastify.post('/api/accounts/connect-demo', async (request, reply) => {
     let userId = getUserId(request);

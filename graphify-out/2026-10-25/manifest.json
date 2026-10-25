@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792920482.83153,
-    "ast_hash": "9299aa14092a43feda91bd4385a9dd66",
+    "mtime": 1792922346.1995413,
+    "ast_hash": "74100037521715ba3aefce47b2aef3de",
     "semantic_hash": ""
   },
   "apps/web/index.html": {
@@ -282,6 +282,31 @@
   "docs/SETUP.md": {
     "mtime": 1792922089.291219,
     "ast_hash": "dcf8e1f442ee7dcdaf189a20aa3db1b6",
+    "semantic_hash": ""
+  },
+  "docs/AI_PROVIDERS.md": {
+    "mtime": 1792922390.4253228,
+    "ast_hash": "ad778d912caf3c8d0eeafd2dd090524e",
+    "semantic_hash": ""
+  },
+  "docs/DATABASE.md": {
+    "mtime": 1792922144.7891488,
+    "ast_hash": "3f8b2659cbc1461d44a643866bc6f346",
+    "semantic_hash": ""
+  },
+  "docs/DEPLOYMENT.md": {
+    "mtime": 1792922277.0649977,
+    "ast_hash": "73d527e71dc1cf9d66cd4eb0d0081eb4",
+    "semantic_hash": ""
+  },
+  "docs/EMAIL_DELIVERY.md": {
+    "mtime": 1792922253.2716541,
+    "ast_hash": "873f38f0ffd974a97272ba6346c488a3",
+    "semantic_hash": ""
+  },
+  "docs/TROUBLESHOOTING.md": {
+    "mtime": 1792922306.5816717,
+    "ast_hash": "e3082513f29eaed2cad9d05bc4dd423e",
     "semantic_hash": ""
   }
 }

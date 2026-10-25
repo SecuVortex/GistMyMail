@@ -30,7 +30,7 @@ export function generateGoogleAuthUrl(state: string, requestSendScope = false): 
 
   return oauth2Client.generateAuthUrl({
     access_type: 'offline',
-    prompt: 'consent',
+    prompt: 'consent select_account',
     scope: scopes,
     state
   });
