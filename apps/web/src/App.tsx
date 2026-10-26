@@ -347,7 +347,7 @@ export default function App() {
     }
   };
 
-  // Run the 3 Repeat Test Runs required by Hack Day Jaipur Guide
+  // Run the 3 Repeat Test Runs benchmark matrix
   const runRepeatBenchmarks = async () => {
     setBenchmarkRunning(true);
     setBenchmarkResults([]);
@@ -444,7 +444,7 @@ export default function App() {
                   GistMyMail
                 </h1>
                 <span className="text-[11px] font-semibold bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-200">
-                  Hack Day Jaipur 2026
+                  Production Ready
                 </span>
                 <span className="text-[11px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" /> Deterministic Verification
@@ -775,10 +775,10 @@ export default function App() {
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">
-                    Developer & Hackathon Verification Hub
+                    Developer & Benchmark Verification Hub
                   </span>
                   <span className="text-[10px] bg-slate-200 text-slate-700 font-mono px-2 py-0.2 rounded-full">
-                    Hack Day Jaipur
+                    Benchmark Suite
                   </span>
                 </div>
                 {showDevHub ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
@@ -787,7 +787,7 @@ export default function App() {
               {showDevHub && (
                 <div className="p-5 border-t border-slate-200 space-y-4 bg-white text-xs">
                   <p className="text-slate-600 leading-relaxed">
-                    Evaluates multi-inbox latency, deterministic quote verification rate, and throughput over 3 repeat runs as required by the hackathon rubric.
+                    Evaluates multi-inbox latency, deterministic quote verification rate, and throughput over 3 repeat runs to guarantee zero hallucinations and latency stability.
                   </p>
 
                   <div className="flex flex-wrap items-center gap-3">

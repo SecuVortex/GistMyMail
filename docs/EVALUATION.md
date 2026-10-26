@@ -1,15 +1,14 @@
-# GistMyMail Evaluation & Hackathon Rubric Alignment
+# GistMyMail Performance Evaluation & Benchmarks
 
-> Official evaluation documentation, 3-run benchmark tables, test case coverage, and Graphify prize alignment for **Hack Day Jaipur 2026** (LNMIIT, Jaipur).
+> Comprehensive evaluation documentation, 3-run benchmark tables, test case coverage, and Graphify architecture analysis.
 
 ---
 
-## 1. Hackathon Metadata
+## 1. Project Specifications
 
-- **Event:** Hack Day Jaipur 2026 (Hacktoberfest / LNMIIT Jaipur)
-- **Date:** 25 October 2026
-- **Track:** Local Inference Agents / Narrow Agentic Tools
-- **Special Category Target:** **Special Graphify Award**
+- **Project:** GistMyMail
+- **Focus:** Local Inference Agents / Narrow Agentic Tools
+- **Architecture Knowledge Graph:** **Graphify AST Knowledge Graph** (638 nodes)
 - **Author:** Lakshya Agarwal (`secuvortex`)
 
 ---
@@ -20,9 +19,9 @@ To verify deterministic performance, latency stability, and evidence grounding, 
 
 | Run # | Latency | Inboxes Processed | Items Extracted | Verbatim Quote Verification | Hallucinated Dates Blocked | Throughput Rate |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Run 1** | **6 ms** | 2 (`College` + `Business`) | 6 | **100% (6/6)** | **100% (0 fabricated)** | ~91,000 t/s |
+| **Run 1** | **10 ms** | 2 (`College` + `Business`) | 6 | **100% (6/6)** | **100% (0 fabricated)** | ~91,000 t/s |
 | **Run 2** | **1 ms** | 2 (`College` + `Business`) | 6 | **100% (6/6)** | **100% (0 fabricated)** | ~91,000 t/s |
-| **Run 3** | **0 ms** | 2 (`College` + `Business`) | 6 | **100% (6/6)** | **100% (0 fabricated)** | ~91,000 t/s |
+| **Run 3** | **1 ms** | 2 (`College` + `Business`) | 6 | **100% (6/6)** | **100% (0 fabricated)** | ~91,000 t/s |
 
 ### Benchmark Takeaways:
 - **Zero Hallucination Tolerance:** Across all 3 test runs, 100% of generated deadlines were grounded in exact verbatim quotes from the source email bodies.
@@ -64,14 +63,14 @@ pnpm test
 
 ---
 
-## 4. Special Graphify Award Submission
+## 4. Graphify Knowledge Graph Architecture
 
 GistMyMail implements deep architectural observability using [Graphify](https://github.com/Graphify-Labs/graphify):
 
 ### Graph Metrics:
-- **Total Nodes:** 395 AST code and concept symbols
-- **Total Edges:** 549 dependency and call relationships
-- **Subsystem Clusters:** 21 auto-detected architectural domains
+- **Total Nodes:** 638 AST code and concept symbols
+- **Total Edges:** 801 dependency and call relationships
+- **Subsystem Clusters:** 29 auto-detected architectural domains
 
 ### Visual Interfaces:
 - [**Network Graph (`graph.html`)**](file:///d:/Personal/MY%20LEARNING/MY%20PROJECTS/Gistmymail/graphify-out/graph.html): Cyber-glassmorphic graph with live metrics, node inspector with 1-click source copying, dynamic cluster isolation, and focus-dimming.

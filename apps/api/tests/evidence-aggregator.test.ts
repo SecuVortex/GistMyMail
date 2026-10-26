@@ -27,7 +27,7 @@ describe('Deterministic Evidence & Deadline Aggregator', () => {
       accountLabel: 'College',
       gmailMessageId: 'g123',
       threadId: 't123',
-      sender: 'prof@lnmiit.ac.in',
+      sender: 'prof@university.edu',
       senderName: 'Prof. Sharma',
       subject: 'Lab Deadline',
       snippet: 'Please submit by 5 PM on 28 October 2026',

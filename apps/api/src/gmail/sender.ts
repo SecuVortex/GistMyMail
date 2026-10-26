@@ -78,7 +78,7 @@ export async function sendDigestEmail(params: {
   }
 
   try {
-    const gmail = await getAuthorizedGmailClient(encryptedRefreshToken);
+    const gmail = await getAuthorizedGmailClient(encryptedRefreshToken!);
     const raw = createMimeMessage({
       from: senderAccount.email,
       to: destinationEmail,

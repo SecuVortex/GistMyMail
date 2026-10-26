@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { generateUserDigest } from '../src/digest/generator.js';
 
-describe('Hack Day Jaipur 2026 — 3 Repeat Test Runs Benchmark', () => {
+describe('GistMyMail — 3 Repeat Test Runs Multi-Inbox Benchmark', () => {
   it('executes 3 repeated runs, recording latency, tokens/sec, and verification metrics', async () => {
     const runsSummary: Array<{
       run: number;
@@ -38,7 +38,7 @@ describe('Hack Day Jaipur 2026 — 3 Repeat Test Runs Benchmark', () => {
     }
 
     console.log('\n=============================================================');
-    console.log(' HACK DAY JAIPUR 2026 — 3 REPEAT TEST RUNS METRICS TABLE');
+    console.log(' GISTMYMAIL — 3 REPEAT TEST RUNS METRICS TABLE');
     console.log('=============================================================');
     console.table(runsSummary);
     console.log('=============================================================\n');

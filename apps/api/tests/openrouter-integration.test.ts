@@ -18,7 +18,7 @@ describe('OpenRouter Live Integration', () => {
       accountLabel: 'College',
       gmailMessageId: 'gmail_msg_live_01',
       threadId: 'thread_01',
-      sender: 'hod.cse@lnmiit.ac.in',
+      sender: 'hod.cse@university.edu',
       senderName: 'Prof. CSE',
       subject: 'Urgent: Major Project Synopsis Submission Deadline',
       snippet: 'Submit your synopsis by Monday 10:00 AM.',

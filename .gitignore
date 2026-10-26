@@ -22,3 +22,8 @@ coverage
 
 # Graphify build output (commit graphify-out/ if required for hackathon submission)
 # graphify-out
+graphify-out/20*
+graphify-out/cache/
+*.sig
+
+

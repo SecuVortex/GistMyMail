@@ -1,7 +1,6 @@
-# 📑 GistMyMail — Hackathon Presentation Deck (6 Slides)
+# 📑 GistMyMail — Product Presentation Deck (6 Slides)
 
-> **Event:** Hack Day Jaipur 2026 (LNMIIT / Hacktoberfest)  
-> **Track:** Local Inference Agents / Narrow Agentic Tools • Special Graphify Award Target  
+> **Focus:** Local Inference Agents / Narrow Agentic Tools • Graphify Knowledge Graph  
 > **Presenter:** Lakshya Agarwal ([@secuvortex](https://github.com/SecuVortex/GistMyMail))  
 > **Repository:** [github.com/SecuVortex/GistMyMail](https://github.com/SecuVortex/GistMyMail)  
 > **Format:** 6-Page Executive Pitch Deck with Slide Content, Visual Cues & Speaker Notes  
@@ -35,10 +34,10 @@ Turning 5 noisy inboxes into 1 actionable, trustworthy daily briefing — withou
 - 🛡️ **Zero-Hallucination Guardrail:** 100% verbatim quote verification on every extracted commitment
 - 💻 **100% Private Local Inference:** First-class Ollama support (`llama3.2:3b`) + OpenRouter cloud gateway
 - 🔐 **Hardened Security:** AES-256-GCM encrypted token vault & prompt injection quarantine
-- 🌐 **Graphify Knowledge Graph:** 591 nodes, 754 edges, 29 architectural communities
+- 🌐 **Graphify Knowledge Graph:** 638 nodes, 801 edges, 29 architectural communities
 
 ### **Visual Layout:**
-- Left Column: Hero branding with GistMyMail emblem, Hack Day Jaipur LNMIIT & Hacktoberfest badges.
+- Left Column: Hero branding with GistMyMail emblem and open-source badges.
 - Right Column: Split mockup showing 3 chaotic inboxes (`College`, `Clients`, `Business`) distilling into a single, clean morning briefing card.
 
 ---
@@ -164,7 +163,7 @@ flowchart LR
 ### **Headline:**
 ## Quantitative Evaluation & Knowledge Graph Architecture
 
-### **Hack Day Jaipur 2026 — 3 Repeat Runs Benchmark Matrix:**
+### **3 Repeat Runs Benchmark Matrix:**
 | Metric | Run 1 | Run 2 | Run 3 | Target / Rubric | Result |
 |---|:---:|:---:|:---:|---|:---:|
 | **Latency** | **10 ms** | **1 ms** | **1 ms** | `< 2000 ms` | **Exceeded (99% faster)** |
@@ -174,8 +173,8 @@ flowchart LR
 | **Hallucinated Dates Blocked** | **0 fabricated** | **0 fabricated** | **0 fabricated** | Zero ungrounded dates | **0 Allowed** |
 | **Throughput** | ~91,000 t/s | ~91,000 t/s | ~91,000 t/s | High throughput | **Ultra-Fast** |
 
-### **Special Graphify Award Integration:**
-- **Codebase Graph Size:** **591 AST Nodes**, **754 Dependency Edges**, **29 Architectural Communities**.
+### **Graphify Knowledge Graph Integration:**
+- **Codebase Graph Size:** **638 AST Nodes**, **801 Dependency Edges**, **29 Architectural Communities**.
 - **Interactive Cyber-Glassmorphic Graph:** Embedded in `graphify-out/graph.html` with real-time node inspector, neighborhood highlighting, and callflow diagrams.
 
 ### **Automated Test Matrix:**
@@ -188,10 +187,10 @@ flowchart LR
 ---
 
 ### 🎙️ Speaker Script (Slide 5 — 45s):
-> *"To prove reliability, we subjected GistMyMail to rigorous automated testing aligned with the Hack Day Jaipur judging rubric.*  
+> *"To prove reliability, we subjected GistMyMail to rigorous automated testing across multi-inbox batches.*  
 > *As shown in our 3 repeat runs benchmark table, the deterministic pipeline runs with sub-10ms latency and 100% quote verification accuracy across every run — zero fabricated dates made it past the filter.*  
 > *Our full test suite has 9 out of 9 passing tests, including a live integration test against OpenRouter.*  
-> *Furthermore, for the Special Graphify Award, we mapped our entire monorepo into an AST knowledge graph with **591 nodes, 754 edges, and 29 architectural communities**. Anyone can open `graphify-out/graph.html` to visually explore the dependency flow between every route, service, and security layer."*
+> *Furthermore, we mapped our entire monorepo into an AST knowledge graph with **638 nodes, 801 edges, and 29 architectural communities**. Anyone can open `graphify-out/graph.html` to visually explore the dependency flow between every route, service, and security layer."*
 
 ---
 
@@ -223,8 +222,8 @@ flowchart LR
 > *"To conclude, GistMyMail isn't just a prototype — it is a fully functioning, security-hardened SaaS platform.*  
 > *You can clone it today, run `pnpm dev`, and have a multi-inbox email digest running in less than two minutes.*  
 > *Our roadmap includes on-device voice briefings with Whisper and automatic Google Calendar synchronization for verified meeting events.*  
-> *All code, comprehensive documentation, and our 591-node knowledge graph are live on GitHub under the MIT License.*  
-> *Thank you so much to the judges, LNMIIT, and the Hacktoberfest Hack Day Jaipur organizers. I would love to answer your questions and demonstrate the live dashboard!"*
+> *All code, comprehensive documentation, and our 638-node knowledge graph are live on GitHub under the MIT License.*  
+> *Thank you so much. I would love to answer your questions and demonstrate the live dashboard!"*
 
 ---
 
